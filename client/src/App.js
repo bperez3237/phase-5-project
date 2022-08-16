@@ -1,7 +1,16 @@
 import logo from './logo.svg';
+import {useEffect, useState} from 'react'
 import './App.css';
 
 function App() {
+
+  useEffect(()=> {
+    fetch(`/cost_codes`)
+      .then(r=>r.json())
+      .then((data)=>console.log(data))
+  })
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,14 +18,6 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
