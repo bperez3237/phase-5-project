@@ -27,4 +27,5 @@ e4 = Employee.create(name: Faker::Name.name , labor_rate: 43, labor_union: 'Labo
 e5 = Employee.create(name: Faker::Name.name , labor_rate: 43, labor_union: 'Laborer')
 
 
+
 puts 'done seeding'
