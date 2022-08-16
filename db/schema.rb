@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_010904) do
+ActiveRecord::Schema.define(version: 2022_08_16_102637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.text "description"
+    t.integer "cost_code_id"
   end
 
   create_table "cost_codes", force: :cascade do |t|
@@ -31,7 +32,6 @@ ActiveRecord::Schema.define(version: 2022_08_16_010904) do
   create_table "costs", force: :cascade do |t|
     t.float "hours"
     t.integer "employee_id"
-    t.integer "cost_code_id"
     t.integer "activity_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
