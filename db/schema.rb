@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_102637) do
+ActiveRecord::Schema.define(version: 2022_08_16_104049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2022_08_16_102637) do
     t.float "budget_quantity"
     t.float "current_hours"
     t.float "current_quantity"
+    t.string "name"
   end
 
   create_table "costs", force: :cascade do |t|
