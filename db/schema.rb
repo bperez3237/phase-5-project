@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_005018) do
+ActiveRecord::Schema.define(version: 2022_08_16_010904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2022_08_16_005018) do
 
   create_table "cost_codes", force: :cascade do |t|
     t.integer "user_id"
+    t.string "code"
     t.float "budget_hours"
     t.float "budget_quantity"
     t.float "current_hours"
@@ -28,8 +29,9 @@ ActiveRecord::Schema.define(version: 2022_08_16_005018) do
   end
 
   create_table "costs", force: :cascade do |t|
-    t.integer "cost_code_id"
+    t.float "hours"
     t.integer "employee_id"
+    t.integer "cost_code_id"
     t.integer "activity_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -43,7 +45,8 @@ ActiveRecord::Schema.define(version: 2022_08_16_005018) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.boolean "is_admin"
+    t.string "username"
+    t.string "password_digest"
   end
 
 end

@@ -1,0 +1,2 @@
+class CostCode < ApplicationRecord
+end
