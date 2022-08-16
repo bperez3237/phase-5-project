@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import {useEffect, useState} from 'react'
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CostCodes from './components/CostCodes'
 
 function App() {
+  const [costCodes, setCostCodes] = useState([])
 
   useEffect(()=> {
     fetch(`/cost_codes`)
       .then(r=>r.json())
-      .then((data)=>console.log(data))
-  })
+      .then((data)=>setCostCodes(data))
+  },[])
 
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<CostCodes codes={costCodes}/>}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
