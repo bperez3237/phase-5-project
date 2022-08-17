@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :costs, only: [:create]
   resources :activities, only: [:create] 
-  # resources :employees
+  resources :employees, only: [:index]
   resources :cost_codes, only: [:index, :show]
   # resources :users
   # Routing logic: fallback requests for React Router.
