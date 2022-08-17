@@ -15,7 +15,8 @@ function Navigator() {
           <Container>
             <Navbar.Brand href="/">Look Back</Navbar.Brand>
             <Nav className='me-auto'>
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/">View Codes</Nav.Link>
+              <Nav.Link href="/upload">Upload</Nav.Link>
               <Button className='justify-content-end' variant="light" >Logout</Button>
             </Nav>
           </Container>
