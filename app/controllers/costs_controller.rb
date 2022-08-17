@@ -2,7 +2,11 @@ class CostsController < ApplicationController
 
     def create
         cost = Cost.create(cost_params)
-        render json: cost, status: :created
+        if cost.valid?
+            render json: cost, status: :created
+        else
+            render json: { error: cost.errors }, status: :unprocessable_entity
+        end
     end
 
     def index
