@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :costs, only: [:create]
-  resources :activities, only: [:create] 
+  resources :costs, only: [:create, :index]
+  resources :activities, only: [:create, :index] 
   resources :employees, only: [:index]
   resources :cost_codes, only: [:index, :show]
   # resources :users

@@ -5,6 +5,11 @@ class CostsController < ApplicationController
         render json: cost, status: :created
     end
 
+    def index
+        costs = Cost.all 
+        render json: costs
+    end
+
     private
 
     def cost_params

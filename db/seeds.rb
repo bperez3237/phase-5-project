@@ -21,11 +21,11 @@ cc5 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-2500',
 
 
 puts 'seeding employees'
-e1 = Employee.create(name: Faker::Name.name , labor_rate: 50, labor_union: 'Carpenter')
-e2 = Employee.create(name: Faker::Name.name , labor_rate: 50, labor_union: 'Carpenter')
-e3 = Employee.create(name: Faker::Name.name , labor_rate: 60, labor_union: 'Dockbuilder')
-e4 = Employee.create(name: Faker::Name.name , labor_rate: 43, labor_union: 'Laborer')
-e5 = Employee.create(name: Faker::Name.name , labor_rate: 43, labor_union: 'Laborer')
+e1 = Employee.create(name: Faker::Name.name , labor_rate: 50.05, labor_union: 'Carpenter')
+e2 = Employee.create(name: Faker::Name.name , labor_rate: 50.05, labor_union: 'Carpenter')
+e3 = Employee.create(name: Faker::Name.name , labor_rate: 60.0, labor_union: 'Dockbuilder')
+e4 = Employee.create(name: Faker::Name.name , labor_rate: 43.5, labor_union: 'Laborer')
+e5 = Employee.create(name: Faker::Name.name , labor_rate: 43.5, labor_union: 'Laborer')
 
 
 
