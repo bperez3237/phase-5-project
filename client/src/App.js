@@ -1,6 +1,9 @@
 import {useEffect, useState} from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CostCodes from './components/CostCodes'
+import CostCodesList from './containers/CostCodesList'
+import Navigator from './containers/Navigator';
+
+
 
 function App() {
   const [costCodes, setCostCodes] = useState([])
@@ -14,9 +17,9 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Navigator></Navigator>
       <Routes>
-        <Route path='/' element={<CostCodes codes={costCodes}/>}>
-        </Route>
+        <Route path='/' element={<CostCodesList codes={costCodes}/>} />
       </Routes>
     </BrowserRouter>
   );
