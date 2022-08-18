@@ -3,13 +3,13 @@ import {useState, useEffect} from 'react'
 import {Button, Form} from 'react-bootstrap'
 
 function CostForm() {
-    const [costActivityObj, setCostActivityObj] = useState({
+    // const [costActivityObj, setCostActivityObj] = useState({
         // "date": ,
-        "description": "",
-        "cost_code_id": "",
-        "employee_id": "",
-        "hours": "",
-    })
+    //     "description": "",
+    //     "cost_code_id": "",
+    //     "employee_id": "",
+    //     "hours": "",
+    // })
 
 
      // for each activity:
@@ -18,14 +18,14 @@ function CostForm() {
         //         fetch(POST cost)
 
 
-    function handleChange(e, param) {
-        const newObj = {...costActivityObj, [param]: e.target.value}
-        setCostActivityObj(newObj)
-    }
+    // function handleChange(e, param) {
+    //     const newObj = {...costActivityObj, [param]: e.target.value}
+    //     setCostActivityObj(newObj)
+    // }
 
 
     function handleSubmitCost(activity_id, costObj) {
-        
+
         fetch('/costs', {
             method: 'POST',
             headers: {
@@ -53,7 +53,6 @@ function CostForm() {
             })
 
     }
-
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
@@ -111,31 +110,10 @@ function CostForm() {
         timesheetObj.forEach((activity)=>handleSubmitActivity(activity))
     }
 
-
-
-
     return (
         <div>
             <h1>hi</h1>
-            <Form>
-                <Form.Group>
-                    {/* <Form.Label>date</Form.Label>
-                    <Form.Control value={costObj.date}></Form.Control> */}
-                    
-                    <Form.Label>activity desc</Form.Label>
-                    <Form.Control onChange={(e)=>handleChange(e,'activity_id')} value={costActivityObj.activity_id}></Form.Control>
-
-                    <Form.Label>cost code</Form.Label>
-                    <Form.Control onChange={(e)=>handleChange(e,'cost_code_id')} value={costActivityObj.cost_code_id}></Form.Control>
-
-                    <Form.Label>employee</Form.Label>
-                    <Form.Control onChange={(e)=>handleChange(e,'employee_id')} value={costActivityObj.employee_id}></Form.Control>
-
-                    <Form.Label>hours</Form.Label>
-                    <Form.Control onChange={(e)=>handleChange(e,'hours')} value={costActivityObj.hours}></Form.Control>
-                </Form.Group>
-                <Button onClick={handleSubmitTimesheet}>Submit</Button>
-            </Form>
+            <Button onClick={handleSubmitTimesheet}>Submit</Button>
         </div>
         
     )
