@@ -1,10 +1,10 @@
-
+import React from "react";
+import CostForm from "../containers/CostForm";
 
 function Upload() {
 
     return (
-
-        <h1>hi</h1>
+        <CostForm />
     )
 }
 
