@@ -9,7 +9,6 @@ class ActivitiesController < ApplicationController
         end
     end
 
-
     def index
         activities = Activity.all 
         render json: activities
