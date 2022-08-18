@@ -12,10 +12,10 @@ function App() {
     <BrowserRouter>
     <Navigator></Navigator>
       <Switch>
-        <Route path='/' element={<ViewCodes />} />
-        <Route path='/upload' element={<Upload />} />
-        <Route path='/review_activities' element={<ReviewActivities />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route exact path='/'><ViewCodes /></Route>
+        <Route path='/upload'><Upload /></Route>
+        <Route path='/review_activities'><ReviewActivities /></Route>
+        <Route path='/login'><LoginPage /></Route>
       </Switch>
     </BrowserRouter>
   );
