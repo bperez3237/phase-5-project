@@ -1,10 +1,17 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
 import CostCode from '../components/CostCode'
 
-function CostCodesList({codes}) {
+function CostCodesList() {
+    const [costCodes, setCostCodes] = useState([])
 
-    console.log(codes)
-    const codeElems = codes.map((code)=><CostCode key={code.id} code={code} />)
+    useEffect(()=> {
+        fetch(`/cost_codes`)
+        .then(r=>r.json())
+        .then((data)=>setCostCodes(data))
+    },[])
+    
+    const codeElems = costCodes.map((code)=><CostCode key={code.id} code={code} />)
 
     return(
         <>
