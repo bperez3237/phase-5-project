@@ -8,7 +8,7 @@ function ActivityList() {
         fetch('/activities')
             .then(r=>r.json())
             .then((data)=>setActivities(data))
-    })
+    },[])
 
     const activityElems = activities.map((activity)=><Activity key={activity.id} activity={activity} />)
 

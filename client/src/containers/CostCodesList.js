@@ -7,8 +7,8 @@ function CostCodesList() {
 
     useEffect(()=> {
         fetch(`/cost_codes`)
-        .then(r=>r.json())
-        .then((data)=>setCostCodes(data))
+            .then(r=>r.json())
+            .then((data)=>setCostCodes(data))
     },[])
     
     const codeElems = costCodes.map((code)=><CostCode key={code.id} code={code} />)
