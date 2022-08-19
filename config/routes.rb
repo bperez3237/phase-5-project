@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :cost_codes, only: [:index, :show]
   resources :users, only: [:show, :index]
 
+  resources :activities, only: [:index, :show] do
+    resources :costs, only: [:show, :index]
+  end
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get '/me', to: 'users#auto_login'

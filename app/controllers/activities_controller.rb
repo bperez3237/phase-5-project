@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
     def create
         activity = Activity.create(cost_code_id: params[:cost_code_id], description: params[:description])
         if activity.valid?
-            render json: activity, status: :created
+            render json: activity,  status: :created
         else 
             render json: { error: activity.errors }, status: :unprocessable_entity
         end
@@ -20,6 +20,11 @@ class ActivitiesController < ApplicationController
     
     def index
         activities = Activity.all 
-        render json: activities
+        render json: activities, include: :costs
+    end
+
+    def show 
+        activity = Activity.find(params[:id])
+        render json: activity, include: :costs
     end
 end

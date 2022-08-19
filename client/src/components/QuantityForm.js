@@ -1,9 +1,15 @@
 import {Button, Form } from 'react-bootstrap'
+import {useState,useEffect} from 'react'
 
-function QuantityForm() {
+function QuantityForm({activity}) {
+    console.log(activity)
+
 
     return (
-        <h2>bye</h2>
+        <>
+            <Form.Label>activity.name</Form.Label>
+            <Form.Control />
+        </>
     )
 }
 export default QuantityForm;

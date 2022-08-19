@@ -16,9 +16,7 @@ function App() {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((data) => {
-          console.log(data)
-          setUser(data)});
+        r.json().then((data) => setUser(data));
       } else {
         r.json().then((err) => console.log('error',err));
       }

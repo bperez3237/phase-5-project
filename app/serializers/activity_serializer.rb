@@ -1,3 +1,3 @@
 class ActivitySerializer < ActiveModel::Serializer
-  attributes :id, :description, :cost_code_id
+  attributes :id, :description, :cost_code_id, :costs
 end
