@@ -9,6 +9,7 @@ function QFormList() {
     },[])
     const activityFormElems = activities.map((activity)=><QuantityForm key={activity.id} activity={activity}/>)
 
+    console.log(activities)
 
     return(
         <>

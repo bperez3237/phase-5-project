@@ -14,8 +14,6 @@ function LoginForm({setUser}) {
             password: password
         }
 
-        // setUser(loginObj)
-
         fetch('/login', {
             method: 'POST',
             headers: {

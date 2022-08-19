@@ -19,6 +19,7 @@ function Navigator({setUser}) {
               <Nav.Link href="/upload">Upload</Nav.Link>
               <Nav.Link href="/review_activities">Review Activities</Nav.Link>
               <Nav.Link href="/enter">Enter Quantities</Nav.Link>
+              <Nav.Link href="/report">Weekly Report</Nav.Link>
               <Button className='justify-content-end' variant="light" onClick={handleLogoutClick}>Logout</Button>
             </Nav>
           </Container>

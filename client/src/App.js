@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import ReviewActivities from './pages/ReviewActivities';
 import Upload from './pages/Upload';
 import ViewCodes from './pages/ViewCodes';
+import ReportPage from './pages/ReportPage'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path='/upload'><Upload /></Route>
         <Route path='/review_activities'><ReviewActivities /></Route>
         <Route path='/enter'><EnterQuantities /></Route>
+        <Route path='/report'><ReportPage /></Route>
         <Route path='/'><ViewCodes /></Route>
       </Switch>
     </UserContext.Provider>

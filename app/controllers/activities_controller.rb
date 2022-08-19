@@ -9,14 +9,15 @@ class ActivitiesController < ApplicationController
         end
     end
 
-    def update
-        activity = Activity.update(cost_code_id: params[:cost_code_id], description: params[:description])
-        if activity.valid?
-            render json: activity, status: :created
-        else 
-            render json: { error: activity.errors }, status: :unprocessable_entity
-        end
-    end
+    # def update
+    #     activity = Activity.find(params[:id])
+    #     activity.update(activity_params)
+    #     if activity.valid?
+    #         render json: activity, status: :created
+    #     else 
+    #         render json: { error: activity.errors }, status: :unprocessable_entity
+    #     end
+    # end
     
     def index
         activities = Activity.all 
@@ -26,5 +27,11 @@ class ActivitiesController < ApplicationController
     def show 
         activity = Activity.find(params[:id])
         render json: activity, include: :costs
+    end
+
+    private
+
+    def activity_params
+        params.permit(:costs,:cost_code,:description,:cost_code_id)
     end
 end

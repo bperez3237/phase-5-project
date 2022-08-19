@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :costs, only: [:create, :index]
   resources :activities, only: [:create, :index, :update] 
   resources :employees, only: [:index]
-  resources :cost_codes, only: [:index, :show]
+  resources :cost_codes, only: [:index, :show, :update]
   resources :users, only: [:show, :index]
 
   resources :activities, only: [:index, :show] do
