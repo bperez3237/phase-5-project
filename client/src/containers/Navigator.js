@@ -1,14 +1,14 @@
 import React from "react";
 import {Button, Container, Nav,  Navbar} from 'react-bootstrap'
 
-function Navigator() {
-    // function handleLogoutClick() {
-    //     fetch("/logout", { method: "DELETE" }).then((r) => {
-    //       if (r.ok) {
-    //         setUser(null);
-    //       }
-    //     });
-    //   }
+function Navigator({setUser}) {
+    function handleLogoutClick() {
+        fetch("/logout", { method: "DELETE" }).then((r) => {
+          if (r.ok) {
+            setUser(null);
+          }
+        });
+      }
 
     return (
         <Navbar bg='dark' variant='dark'>
@@ -18,7 +18,7 @@ function Navigator() {
               <Nav.Link href="/">View Codes</Nav.Link>
               <Nav.Link href="/upload">Upload</Nav.Link>
               <Nav.Link href="/review_activities">Review Activities</Nav.Link>
-              <Button className='justify-content-end' variant="light" >Logout</Button>
+              <Button className='justify-content-end' variant="light" onClick={handleLogoutClick}>Logout</Button>
             </Nav>
           </Container>
         </Navbar>

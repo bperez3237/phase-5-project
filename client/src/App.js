@@ -28,7 +28,7 @@ function App() {
     )
   } else {return (
     <BrowserRouter>
-    <Navigator></Navigator>
+    <Navigator setUser={setUser} />
     <UserContext.Provider value={{user,setUser}}>
       <Switch>
         <Route path='/upload'><Upload /></Route>
