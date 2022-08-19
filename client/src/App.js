@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { UserContext } from './components/UserContext';
 import Navigator from './containers/Navigator';
+import EnterQuantities from './pages/EnterQuantities';
 import LoginPage from './pages/LoginPage';
 import ReviewActivities from './pages/ReviewActivities';
 import Upload from './pages/Upload';
@@ -35,6 +36,7 @@ function App() {
       <Switch>
         <Route path='/upload'><Upload /></Route>
         <Route path='/review_activities'><ReviewActivities /></Route>
+        <Route path='/enter'><EnterQuantities /></Route>
         <Route path='/'><ViewCodes /></Route>
       </Switch>
     </UserContext.Provider>
