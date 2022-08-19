@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create, :show]
+    # skip_before_action :authorized, only: [:create, :auto_login]
 
+    def index
+        users = User.all 
+        render json: users
+    end
 
     def create
         user = User.create(user_params)
@@ -13,7 +17,17 @@ class UsersController < ApplicationController
     end
 
     def show 
-        user = User.find(params[:id])
+        user = User.find_by(username: params[:username])
+        if user
+            render json: user
+        else
+            render json: { error: 'User not found'}, status: :unauthorized
+        end
+    end
+
+    def auto_login
+        user = User.find(session[:user_id])
+        # byebug
         if user
             render json: user
         else

@@ -5,7 +5,7 @@ require 'byebug'
 
 puts 'seeding users'
 my_user = User.create(username: 'brian123', password_digest: 'password', name: 'Brian')
-u1 = User.create(username: Faker::Internet.unique.username, password_digest: Faker::Internet.unique.password, name: Faker::Name.name )
+u1 = User.create(username: Faker::Internet.unique.username, password_digest: 'password3', name: Faker::Name.name )
 u2 =  User.create(username: Faker::Internet.unique.username, password_digest: Faker::Internet.unique.password, name: Faker::Name.name )
 u3 =  User.create(username: Faker::Internet.unique.username, password_digest: Faker::Internet.unique.password, name: Faker::Name.name )
 u4 =  User.create(username: Faker::Internet.unique.username, password_digest: Faker::Internet.unique.password, name: Faker::Name.name )
