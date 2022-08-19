@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../components/UserContext";
 import CostForm from "../containers/CostForm";
 
+
 function Upload() {
+    const {user, setUser} = useContext(UserContext)
 
     return (
-        <CostForm />
+        <>
+            <CostForm />
+            <h1>{user.name}</h1>
+        </>
     )
 }
 

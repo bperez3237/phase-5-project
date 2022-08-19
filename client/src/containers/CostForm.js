@@ -58,51 +58,51 @@ function CostForm() {
         e.preventDefault()
 
         const timesheetObj = [{
-            "cost_code_id": 26,
+            "cost_code_id": 36,
             "description": 'alksdjncqlkjcnoqeuqwncklane foin ckajnclkjc',
             'costs': [{
-                'employee_id': 26,
+                'employee_id': 36,
                 'hours': 104
             },{
-                'employee_id': 29,
+                'employee_id': 38,
                 'hours': 202
             },{
-                'employee_id': 27,
+                'employee_id': 38,
                 'hours': 32
             },{
-                'employee_id': 27,
+                'employee_id': 38,
                 'hours': 40
             },{
-                'employee_id': 27,
+                'employee_id': 37,
                 'hours': 39
             }]
         },{
-            "cost_code_id": 29,
+            "cost_code_id": 37,
             "description": 'alksdjncqlkjcnoqeuqwncklane foin ckajnclkjc',
             'costs': [{
-                'employee_id': 26,
+                'employee_id': 37,
                 'hours': 10
             },{
-                'employee_id': 29,
+                'employee_id': 40,
                 'hours': 20
             },{
-                'employee_id': 27,
+                'employee_id': 40,
                 'hours': 39
             }]
         },{
-            "cost_code_id": 30,
+            "cost_code_id": 37,
             "description": 'alksdjncqlkjcnoqeuqwncklane foin ckajnclkjc',
             'costs': [{
-                'employee_id': 26,
+                'employee_id': 37,
                 'hours': 100
             },{
-                'employee_id': 29,
+                'employee_id': 38,
                 'hours': 201
             },{
-                'employee_id': 27,
+                'employee_id': 38,
                 'hours': 390
             },{
-                'employee_id': 27,
+                'employee_id': 39,
                 'hours': 390
             }]
         }]
