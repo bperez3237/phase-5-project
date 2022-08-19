@@ -11,11 +11,9 @@ function QFormList() {
 
 
     return(
-        <Form>
-            <Form.Group>
-                {activityFormElems}
-            </Form.Group>
-        </Form>
+        <>
+            {activityFormElems}
+        </>
     )
 }
 
