@@ -20,7 +20,7 @@ class ActivitiesController < ApplicationController
     
     def index
         activities = Activity.all 
-        render json: activities, include: :costs
+        render json: activities, include: [:costs, :cost_code]
     end
 
     def show 
