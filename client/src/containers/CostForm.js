@@ -49,7 +49,7 @@ function CostForm() {
 
 
     function handleSubmitCost(activity_id, costObj) {
-        console.log(costObj)
+        // console.log(costObj)
         fetch('/costs', {
             method: 'POST',
             headers: {
@@ -133,8 +133,8 @@ function CostForm() {
 
 
         console.log('submit timesheet')
-        // activityObj.forEach((activity)=>handleSubmitActivity(activity))
-        handleSubmitActivity(activityObj[0])
+        activityObj.forEach((activity)=>handleSubmitActivity(activity))
+        // handleSubmitActivity(activityObj[0])
     }
 
 

@@ -6,7 +6,8 @@ class ActivitiesController < ApplicationController
         if activity.valid? & cost_code
             render json: activity,  status: :created
         else 
-            render json: { error: {activity: activity.errors, cost_code: cost_code.errors} }, status: :unprocessable_entity
+            puts activity.description
+            render json: { error: { activity: activity.errors, cost_code: cost_code.errors} }, status: :unprocessable_entity
         end
     end
 

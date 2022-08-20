@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_104049) do
+ActiveRecord::Schema.define(version: 2022_08_20_033242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2022_08_16_104049) do
   create_table "activities", force: :cascade do |t|
     t.text "description"
     t.integer "cost_code_id"
+    t.date "day"
+    t.boolean "approved"
   end
 
   create_table "cost_codes", force: :cascade do |t|
