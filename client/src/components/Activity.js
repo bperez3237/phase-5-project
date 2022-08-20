@@ -1,6 +1,9 @@
+import { useContext } from 'react'
 import {Button} from 'react-bootstrap'
+import { ActivityContext } from '../context/ActivitiesContext'
 
 function Activity({activity}) {
+    const {activities,setActivities} = useContext(ActivityContext)
 
     function handleApprove() {
         console.log('approve')
@@ -9,7 +12,7 @@ function Activity({activity}) {
             headers: {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify({...activity, approved: true})
-        }).then(r=>r.json()).then((data)=>console.log(data))
+        }).then(r=>r.json()).then((data)=>setActivities([...activities.filter((activity)=>activity.id!=data.id),data]))
     }
 
     function handleReject() {
@@ -19,7 +22,7 @@ function Activity({activity}) {
             headers: {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify({...activity, approved: null})
-        }).then(r=>r.json()).then((data)=>console.log(data))
+        }).then(r=>r.json()).then((data)=>setActivities([...activities.filter((activity)=>activity.id!=data.id),data]))
     }
 
     return(

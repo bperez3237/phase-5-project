@@ -1,11 +1,11 @@
-import CostReport from "../components/CodeReport";
+import CodeReport from "../components/CodeReport";
 
 function WeeklyReport( ){
 
 
     return(
         <>
-            <CostReport />
+            <CodeReport />
         </>
     )
 }

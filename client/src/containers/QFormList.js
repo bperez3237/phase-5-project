@@ -7,13 +7,13 @@ function QFormList() {
     useEffect(()=>{
        fetch('/activities').then(r=>r.json()).then((data)=>setActivities(data))
     },[])
+
     const activityFormElems = activities.map((activity)=>{
-        if (activity.approved != true) {
-            <QuantityForm key={activity.id} activity={activity}/>
+        if (activity.approved == true) {
+            return <QuantityForm key={activity.id} activity={activity}/>
         }
     })
 
-    console.log(activities)
 
     return(
         <>

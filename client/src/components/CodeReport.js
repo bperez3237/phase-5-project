@@ -1,9 +1,9 @@
 
-function CostReport({code}) {
+function CodeReport({code}) {
 
     return(
         <h1>code</h1>
     )
 }
 
-export default CostReport;
+export default CodeReport;

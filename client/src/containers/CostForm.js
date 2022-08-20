@@ -1,34 +1,12 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {Button, Form, FormGroup} from 'react-bootstrap'
-// import {xlsx} from 'client/node_modules/xlsx'
 var xlsx = require("xlsx")
 
 function CostForm() {
     const [data,setData] = useState(null)
     const [activityObj,setActivityObj] = useState([])
     const [j,setJ] = useState(null)
-
-
-    // const [costActivityObj, setCostActivityObj] = useState({
-        // "date": ,
-    //     "description": "",
-    //     "cost_code_id": "",
-    //     "employee_id": "",
-    //     "hours": "",
-    // })
-
-
-     // for each activity:
-        //     fetch(POST activity)
-        //     for each cost:
-        //         fetch(POST cost)
-
-
-    // function handleChange(e, param) {
-    //     const newObj = {...costActivityObj, [param]: e.target.value}
-    //     setCostActivityObj(newObj)
-    // }
 
     const readUploadFile = (e) => {
         e.preventDefault();

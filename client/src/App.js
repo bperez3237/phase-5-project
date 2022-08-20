@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { UserContext } from './components/UserContext';
+import { UserContext } from './context/UserContext';
 import Navigator from './containers/Navigator';
 import EnterQuantities from './pages/EnterQuantities';
 import LoginPage from './pages/LoginPage';
