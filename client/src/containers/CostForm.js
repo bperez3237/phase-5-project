@@ -6,6 +6,8 @@ var xlsx = require("xlsx")
 
 function CostForm() {
     const [data,setData] = useState(null)
+    const [activityObj,setActivityObj] = useState([])
+    const [j,setJ] = useState(null)
 
 
     // const [costActivityObj, setCostActivityObj] = useState({
@@ -38,7 +40,8 @@ function CostForm() {
                 const sheetName = workbook.SheetNames[0];
                 const worksheet = workbook.Sheets[sheetName];
                 const json = xlsx.utils.sheet_to_json(worksheet);
-                setData(json);
+                setData(workbook);
+                setJ(json)
             };
             reader.readAsArrayBuffer(e.target.files[0]);
         }
@@ -133,14 +136,126 @@ function CostForm() {
 
     function formatActivityObj(e) {
         e.preventDefault()
-        // console.log(data)
+        console.log(data)
+        // data.SheetNames.forEach((sheetName)=>{
+        //     console.log(sheetName)
+        //     var cellMax = ['a',0]
+        //     Object.keys(data.Sheets[sheetName]).forEach((cell)=>{
+        //         if (cell.includes('margin') || cell.includes('ref')) {
+        //             console.log('do nothing')
+        //         } else {
+        //             var chars = cell.slice(0, cell.search(/\d/));
+        //             var numbs = cell.replace(chars, '');
+
+        //             console.log(chars, numbs); 
+        //         } 
+        //     })
+            
+        //     // console.log()
+        
+        // })
+
+        // data.forEach((row)=>{
+        //     console.log(row)
+
+        // })
         // console.log(data[0])
         // data[0].forEach((act)=>console.log(act))
         // console.log(Object.keys(data[0]))
-        for (const activity in data[0]) {
-            console.log(activity)
-            console.log(data[0][activity])
+
+        // for (const activity in data[0]) {
+        //     console.log(activity)
+        //     console.log(data[0][activity])
+        // }
+
+        // const objArray = []
+
+
+        // data.SheetNames.forEach((sheetName)=>{
+        //     Object.keys(data.Sheets[sheetName]).forEach((cell)=>{
+        //         if (cell.includes('margin')||cell.includes('ref')) {
+        //             console.log('do nothing')
+        //         } else {
+        //             var chars = cell.slice(0, cell.search(/\d/));
+        //             var numbs = cell.replace(chars, '');
+                    
+        //             if (chars=='A') {
+        //                 console.log('do nothing')
+        //             } else if (numbs == 1) {
+        //                 // console.log(cell, chars, numbs); 
+        //                 // console.log(data.Sheets[sheetName][`${chars}1`])
+
+        //                 objArray.push({'date': sheetName ,
+        //                 'cost_code': data.Sheets[sheetName][`${chars}2`] ? data.Sheets[sheetName][`${chars}2`]['v'] : 'None',
+        //                 'description': data.Sheets[sheetName][`${chars}1`]['v'], 
+        //                 'costs':[]})
+        //             } else if (numbs == 2) {
+        //                 console.log('do nothing again')
+        //             } else {
+
+        //             }
+        //         }
+        //     })
+        // })
+
+        // console.log(objArray)
+        // console.log(objArray[1]['cost_code']['v'])
+
+        // data.SheetNames.forEach((sheetName)=>{
+        //     Object.keys(data.Sheets[sheetName]).forEach((cell)=>{
+        //         if (cell.includes('margin')||cell.includes('ref')) {
+        //             console.log('do nothing')
+        //         } else {
+        //             var chars = cell.slice(0, cell.search(/\d/));
+        //             var numbs = cell.replace(chars, '');
+                    
+        //             if (chars=='A' || numbs == 1 || numbs == 2) {
+        //                 console.log('do nothing again')
+        //             } else {
+        //                 var cc = data.Sheets[sheetName][`${chars}2`]['v']
+        //                 var desc = data.Sheets[sheetName][`${chars}1`]['v']
+        //                 console.log(cell, data.Sheets[sheetName][cell]['v'])
+        //                 // objArray.filter((obj)=>obj.)
+        //             }
+
+        //         }
+        //     })
+        // })
+
+
+        // console.log(j)
+        // console.log(j.length)
+        // for (const activity in j[0]) {
+        //     console.log(activity)
+        //     console.log(j[0][activity])
+        //     for (let i = 1; i < j.length; i ++) {
+        //         if (j[0][activity] in j[i]) {
+        //             console.log(j[i]["Employee"])
+        //         }
+        //     }
+        // }
+
+        
+        const costDic = {}
+        for (const row in j) {
+            console.log(row)
+            if (row != 0) {
+                Object.keys(j[row]).forEach((key)=>{
+                    if (key!=='Employee') {
+                        console.log(j[row]["Employee"],key,j[0][key],j[row][key])
+                        if (!costDic[key]) {
+                            costDic[key] = {
+                                "cost_code": j[0][key],
+                                "costs": [{'employee': j[row]["Employee"], "hours": j[row][key]}]
+                            }
+                        } else {
+                            costDic[key]['costs'].push({'employee': j[row]["Employee"], "hours": j[row][key]})
+                        }
+                    }
+                })
+            }
         }
+        console.log(costDic)
     }
 
     return (
