@@ -139,10 +139,14 @@ function CostForm() {
         const arr = []
         for (const activity in dic) {
             console.log(activity)
+            console.log(dic[activity])
             arr.push({
-                "code": 0
+                "code": dic[activity]['cost_code'],
+                "description": activity,
+                'costs': dic[activity]['costs']
             })
         }
+        console.log(arr)
     }
 
 

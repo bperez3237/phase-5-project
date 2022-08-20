@@ -1,11 +1,12 @@
 class CostsController < ApplicationController
 
     def create
-        cost = Cost.create(cost_params)
-        if cost.valid?
+        employee = Employee.find_by(name: params[:name])
+        cost = Cost.create(activity_id: params[:activity_id], hours: params[:hours], employee_id: employee.id)
+        if cost.valid? & employee
             render json: cost, status: :created
         else
-            render json: { error: cost.errors }, status: :unprocessable_entity
+            render json: { error: {costs: cost.errors , employee: employee.errors} }, status: :unprocessable_entity
         end
     end
 
