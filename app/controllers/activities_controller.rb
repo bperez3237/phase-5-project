@@ -1,11 +1,12 @@
 class ActivitiesController < ApplicationController
 
     def create
+        cost_code = CostCode.find_by(code: params[:code])
         activity = Activity.create(cost_code_id: params[:cost_code_id], description: params[:description])
-        if activity.valid?
+        if activity.valid? & cost_code
             render json: activity,  status: :created
         else 
-            render json: { error: activity.errors }, status: :unprocessable_entity
+            render json: { error: {activity: activity.errors, cost_code: cost_code.errors} }, status: :unprocessable_entity
         end
     end
 

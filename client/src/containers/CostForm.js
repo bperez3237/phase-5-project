@@ -134,6 +134,18 @@ function CostForm() {
         timesheetObj.forEach((activity)=>handleSubmitActivity(activity))
     }
 
+
+    function dicToArray(dic) {
+        const arr = []
+        for (const activity in dic) {
+            console.log(activity)
+            arr.push({
+                "code": 0
+            })
+        }
+    }
+
+
     function formatActivityObj(e) {
         e.preventDefault()
         console.log(data)
@@ -235,14 +247,12 @@ function CostForm() {
         //     }
         // }
 
-        
+
         const costDic = {}
         for (const row in j) {
-            console.log(row)
             if (row != 0) {
                 Object.keys(j[row]).forEach((key)=>{
                     if (key!=='Employee') {
-                        console.log(j[row]["Employee"],key,j[0][key],j[row][key])
                         if (!costDic[key]) {
                             costDic[key] = {
                                 "cost_code": j[0][key],
@@ -255,7 +265,7 @@ function CostForm() {
                 })
             }
         }
-        console.log(costDic)
+        dicToArray(costDic)
     }
 
     return (
