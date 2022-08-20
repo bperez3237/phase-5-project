@@ -49,7 +49,7 @@ function CostForm() {
 
 
     function handleSubmitCost(activity_id, costObj) {
-
+        console.log(costObj)
         fetch('/costs', {
             method: 'POST',
             headers: {
@@ -131,22 +131,24 @@ function CostForm() {
             }]
         }]
 
-        timesheetObj.forEach((activity)=>handleSubmitActivity(activity))
+
+        console.log('submit timesheet')
+        // activityObj.forEach((activity)=>handleSubmitActivity(activity))
+        handleSubmitActivity(activityObj[0])
     }
 
 
     function dicToArray(dic) {
         const arr = []
         for (const activity in dic) {
-            console.log(activity)
-            console.log(dic[activity])
             arr.push({
                 "code": dic[activity]['cost_code'],
                 "description": activity,
                 'costs': dic[activity]['costs']
             })
         }
-        console.log(arr)
+        // console.log(arr)
+        return arr
     }
 
 
@@ -269,13 +271,13 @@ function CostForm() {
                 })
             }
         }
-        dicToArray(costDic)
+        setActivityObj(dicToArray(costDic))
     }
 
     return (
         <div>
             <h1>hi</h1>
-            {/* <Button onClick={handleSubmitTimesheet}>Submit</Button> */}
+            <Button onClick={handleSubmitTimesheet}>Submit</Button>
             <form >
                 <label htmlFor="upload">Upload File</label>
                 <input

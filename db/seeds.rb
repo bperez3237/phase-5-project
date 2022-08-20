@@ -13,19 +13,28 @@ u5 =  User.create(username: Faker::Internet.unique.username, password_digest: Fa
 u6 =  User.create(username: Faker::Internet.unique.username, password_digest: Faker::Internet.unique.password, name: Faker::Name.name )
 
 puts 'seeding cost codes'
-cc1 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1000', name: 'formwork', budget_hours: 1700, budget_quantity: 34, current_hours: 1400, current_quantity: 20)
+# byebug/
+cc1 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1000', name: 'nb formwork', budget_hours: 1700, budget_quantity: 34, current_hours: 1400, current_quantity: 20)
+# puts 'one seeds'
 cc2 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1900', name: 'concrete', budget_hours: 2000, budget_quantity: 68, current_hours: 1640, current_quantity: 60)
 cc3 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-3100', name: 'trenching', budget_hours: 300, budget_quantity: 102, current_hours: 110, current_quantity: 16)
 cc4 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '05-6000', name: 'structural steel', budget_hours: 4000, budget_quantity: 23, current_hours: 160, current_quantity: 6)
 cc5 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-2500', name: 'utilities', budget_hours: 700, budget_quantity: 50, current_hours: 300, current_quantity: 20)
+cc6 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-2300', name: 'ductbanks', budget_hours: 700, budget_quantity: 50, current_hours: 300, current_quantity: 20)
+cc7 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1100', name: 'eb formwork', budget_hours: 700, budget_quantity: 50, current_hours: 300, current_quantity: 20)
+cc8 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-2600', name: 'utilities', budget_hours: 700, budget_quantity: 50, current_hours: 300, current_quantity: 20)
+
 
 
 puts 'seeding employees'
-e1 = Employee.create(name: Faker::Name.name , labor_rate: 50.05, labor_union: 'Carpenter')
-e2 = Employee.create(name: Faker::Name.name , labor_rate: 50.05, labor_union: 'Carpenter')
-e3 = Employee.create(name: Faker::Name.name , labor_rate: 60.0, labor_union: 'Dockbuilder')
-e4 = Employee.create(name: Faker::Name.name , labor_rate: 43.5, labor_union: 'Laborer')
-e5 = Employee.create(name: Faker::Name.name , labor_rate: 43.5, labor_union: 'Laborer')
+e1 = Employee.create(name: 'Vincent Delessio' , labor_rate: 50.05, labor_union: 'Carpenter')
+e2 = Employee.create(name: 'Melvin Galloway' , labor_rate: 50.05, labor_union: 'Carpenter')
+e3 = Employee.create(name: 'Flavio' , labor_rate: 60.0, labor_union: 'Dockbuilder')
+e4 = Employee.create(name: 'Paul Armour' , labor_rate: 43.5, labor_union: 'Laborer')
+e5 = Employee.create(name: 'Sam Footman' , labor_rate: 43.5, labor_union: 'Laborer')
+e6 = Employee.create(name: 'Terrell Smalls' , labor_rate: 50.05, labor_union: 'Carpenter')
+e7 = Employee.create(name: 'James Tretola' , labor_rate: 60.0, labor_union: 'Dockbuilder')
+e8 = Employee.create(name: 'Chris Sollin' , labor_rate: 43.5, labor_union: 'Laborer')
 
 
 

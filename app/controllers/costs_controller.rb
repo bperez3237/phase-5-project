@@ -1,7 +1,7 @@
 class CostsController < ApplicationController
 
     def create
-        employee = Employee.find_by(name: params[:name])
+        employee = Employee.find_by(name: params[:employee])
         cost = Cost.create(activity_id: params[:activity_id], hours: params[:hours], employee_id: employee.id)
         if cost.valid? & employee
             render json: cost, status: :created
