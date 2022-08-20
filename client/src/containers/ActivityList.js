@@ -8,9 +8,17 @@ function ActivityList() {
         fetch('/activities')
             .then(r=>r.json())
             .then((data)=>setActivities(data))
-    },[])
+    },[activities])
 
-    const activityElems = activities.map((activity)=><Activity key={activity.id} activity={activity} />)
+    const activityElems = activities.map((activity)=>{
+        if (activity.approved != true) {
+            return <Activity key={activity.id} activity={activity} />
+        } else {
+            return <></>
+        }
+    })
+
+    console.log(activities)
 
     return( 
         <>{activityElems}</>

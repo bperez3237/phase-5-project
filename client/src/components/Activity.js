@@ -4,6 +4,12 @@ function Activity({activity}) {
 
     function handleApprove() {
         console.log('approve')
+        fetch(`/activities/${activity.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify({...activity, approved: true})
+        }).then(r=>r.json()).then((data)=>console.log(data))
     }
 
     function handleReject() {

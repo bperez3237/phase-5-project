@@ -6,20 +6,19 @@ class ActivitiesController < ApplicationController
         if activity.valid? & cost_code
             render json: activity,  status: :created
         else 
-            puts activity.description
             render json: { error: { activity: activity.errors, cost_code: cost_code.errors} }, status: :unprocessable_entity
         end
     end
 
-    # def update
-    #     activity = Activity.find(params[:id])
-    #     activity.update(activity_params)
-    #     if activity.valid?
-    #         render json: activity, status: :created
-    #     else 
-    #         render json: { error: activity.errors }, status: :unprocessable_entity
-    #     end
-    # end
+    def update
+        activity = Activity.find(params[:id])
+        activity.update(activity_params)
+        if activity.valid?
+            render json: activity, status: :created
+        else 
+            render json: { error: activity.errors }, status: :unprocessable_entity
+        end
+    end
     
     def index
         activities = Activity.all 
