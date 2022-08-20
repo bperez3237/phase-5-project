@@ -11,14 +11,13 @@ function ActivityList() {
     },[activities])
 
     const activityElems = activities.map((activity)=>{
-        if (activity.approved != true) {
+        if (activity.approved == false) {
             return <Activity key={activity.id} activity={activity} />
         } else {
             return <></>
         }
     })
 
-    console.log(activities)
 
     return( 
         <>{activityElems}</>
