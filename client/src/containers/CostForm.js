@@ -144,7 +144,8 @@ function CostForm() {
             arr.push({
                 "code": dic[activity]['cost_code'],
                 "description": activity,
-                'costs': dic[activity]['costs']
+                'costs': dic[activity]['costs'],
+                "date": '07-22-2022'
             })
         }
         // console.log(arr)
