@@ -8,10 +8,12 @@ import ReviewActivities from './pages/ReviewActivities';
 import Upload from './pages/Upload';
 import ViewCodes from './pages/ViewCodes';
 import ReportPage from './pages/ReportPage'
+import { ActivitiesContext } from './context/ActivitiesContext';
 
 
 function App() {
   const [user,setUser] = useState(null)
+  const [activities, setActivities] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -32,6 +34,7 @@ function App() {
     <BrowserRouter>
     <Navigator setUser={setUser} />
     <UserContext.Provider value={{user,setUser}}>
+      <ActivitiesContext.Provider value={{activities, setActivities}}>
       <Switch>
         <Route path='/upload'><Upload /></Route>
         <Route path='/review_activities'><ReviewActivities /></Route>
@@ -39,6 +42,7 @@ function App() {
         <Route path='/report'><ReportPage /></Route>
         <Route path='/'><ViewCodes /></Route>
       </Switch>
+      </ActivitiesContext.Provider>
     </UserContext.Provider>
     </BrowserRouter>
   );

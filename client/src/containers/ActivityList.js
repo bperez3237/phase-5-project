@@ -1,6 +1,5 @@
 import Activity from "../components/Activity";
-import {useState, useEffect, useContext} from 'react'
-import { ActivityContext } from "../context/ActivitiesContext";
+import { useEffect, useContext} from 'react'
 
 function ActivityList() {
     const {activities, setActivities} = useContext(ActivityContext)
@@ -12,11 +11,9 @@ function ActivityList() {
     },[])
 
     const activityElems = activities.map((activity)=>{
-        if (activity.approved == false) {
+        if (activity.approved === false) {
             return <Activity key={activity.id} activity={activity} setActivities={setActivities}/>
-        } else {
-            return <h4 key={activity.id}>approved</h4>
-        }
+        } else return null
     })
 
 

@@ -1,5 +1,5 @@
 import {Button, Form } from 'react-bootstrap'
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 
 function QuantityForm({activity}) {
     const [value, setValue] = useState(0)

@@ -1,6 +1,5 @@
 import ActivityList from "../containers/ActivityList";
 import {useState} from 'react'
-import { ActivityContext } from "../context/ActivitiesContext";
 
 function ReviewActivities() {
     const [activities, setActivities] = useState([])

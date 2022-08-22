@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { createContext, useContext } from 'react'
 import {useState, useEffect} from 'react'
 import {Button, Form, FormGroup} from 'react-bootstrap'
+import { ActivitiesContext } from '../context/ActivitiesContext'
 var xlsx = require("xlsx")
 
 function CostForm() {
     const [data,setData] = useState(null)
     const [activityObj,setActivityObj] = useState([])
     const [j,setJ] = useState(null)
+    const {activities, setActivities} = useContext(ActivitiesContext)
 
     const readUploadFile = (e) => {
         e.preventDefault();
@@ -36,7 +38,7 @@ function CostForm() {
                 body: JSON.stringify({...costObj, activity_id: activity_id})
         })
             .then(r=>r.json())
-            .then(data=>console.log(data))
+            .then(data=>setActivities([...activities,data]))
     }
 
     function handleSubmitActivity(activityObj) {
@@ -58,57 +60,6 @@ function CostForm() {
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
-
-        const timesheetObj = [{
-            "cost_code_id": 36,
-            "description": 'alksdjncqlkjcnoqeuqwncklane foin ckajnclkjc',
-            'costs': [{
-                'employee_id': 36,
-                'hours': 104
-            },{
-                'employee_id': 38,
-                'hours': 202
-            },{
-                'employee_id': 38,
-                'hours': 32
-            },{
-                'employee_id': 38,
-                'hours': 40
-            },{
-                'employee_id': 37,
-                'hours': 39
-            }]
-        },{
-            "cost_code_id": 37,
-            "description": 'alksdjncqlkjcnoqeuqwncklane foin ckajnclkjc',
-            'costs': [{
-                'employee_id': 37,
-                'hours': 10
-            },{
-                'employee_id': 40,
-                'hours': 20
-            },{
-                'employee_id': 40,
-                'hours': 39
-            }]
-        },{
-            "cost_code_id": 37,
-            "description": 'alksdjncqlkjcnoqeuqwncklane foin ckajnclkjc',
-            'costs': [{
-                'employee_id': 37,
-                'hours': 100
-            },{
-                'employee_id': 38,
-                'hours': 201
-            },{
-                'employee_id': 38,
-                'hours': 390
-            },{
-                'employee_id': 39,
-                'hours': 390
-            }]
-        }]
-
 
         console.log('submit timesheet')
         activityObj.forEach((activity)=>handleSubmitActivity(activity))
@@ -250,7 +201,10 @@ function CostForm() {
                 })
             }
         }
+        // console.log(dicToArray(costDic))
         setActivityObj(dicToArray(costDic))
+        // return dicToArray(costDic)
+        
     }
 
     return (
