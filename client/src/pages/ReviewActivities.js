@@ -6,9 +6,9 @@ function ReviewActivities() {
     
 
     return(
-        <ActivityContext.Provider value={{activities,setActivities}} >
+        <>
             <ActivityList />
-        </ActivityContext.Provider>
+        </>
     )
 }
 

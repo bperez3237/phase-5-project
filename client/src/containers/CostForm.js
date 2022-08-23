@@ -5,11 +5,16 @@ import { ActivitiesContext } from '../context/ActivitiesContext'
 var xlsx = require("xlsx")
 
 function CostForm() {
-    const [data,setData] = useState(null)
     const [activityObj,setActivityObj] = useState([])
-    const [j,setJ] = useState(null)
+    const [excelData,setExcelData] = useState(null)
     const {activities, setActivities} = useContext(ActivitiesContext)
 
+    useEffect(()=>{
+        formatActivityObj()
+        console.log('formatted')
+    },[excelData])
+
+    // console.log(activities)
     const readUploadFile = (e) => {
         e.preventDefault();
         if (e.target.files) {
@@ -17,11 +22,30 @@ function CostForm() {
             reader.onload = (e) => {
                 const data = e.target.result;
                 const workbook = xlsx.read(data, { type: "array" });
-                const sheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[sheetName];
-                const json = xlsx.utils.sheet_to_json(worksheet);
-                setData(workbook);
-                setJ(json)
+                var allActivities = {}
+                // console.log(workbook.SheetNames)
+                // for (const sheet in Object.values(workbook.SheetNames)) {
+                //     console.log(sheet)
+                //     const worksheet = workbook.Sheets[sheet];
+                //     allActivities =  [...allActivities, xlsx.utils.sheet_to_json(worksheet)]
+                // }
+
+                workbook.SheetNames.forEach((sheet)=>{
+                    // console.log(sheet)
+                    const worksheet = workbook.Sheets[sheet]
+                    // allActivities = allActivities.push(xlsx.utils.sheet_to_json(worksheet))
+                    // console.log(xlsx.utils.sheet_to_json(worksheet))
+                    // const sheetData = xlsx.utils.sheet_to_json(worksheet).map((row)=> ({...row, date: sheet}))
+                    allActivities[sheet] = xlsx.utils.sheet_to_json(worksheet)
+                    // allActivities = allActivities.concat(sheetData)
+                })
+                // const sheetName = workbook.SheetNames[0];
+                // const worksheet = workbook.Sheets[sheetName];
+                // const json = xlsx.utils.sheet_to_json(worksheet);
+                // console.log(allActivities)
+                setExcelData(allActivities)
+                console.log(allActivities)
+                // setExcelData(json)÷
             };
             reader.readAsArrayBuffer(e.target.files[0]);
         }
@@ -38,20 +62,20 @@ function CostForm() {
                 body: JSON.stringify({...costObj, activity_id: activity_id})
         })
             .then(r=>r.json())
-            .then(data=>setActivities([...activities,data]))
+            .then(data=>console.log(data))
     }
 
-    function handleSubmitActivity(activityObj) {
+    function handleSubmitActivity(obj) {
 
         fetch('/activities', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(activityObj)
+            }, body: JSON.stringify(obj)
         })
             .then(r=>r.json())
             .then((newActivity)=>{
-                activityObj.costs.forEach((cost)=>{
+                obj.costs.forEach((cost)=>{
                     handleSubmitCost(newActivity.id, cost)
                 })
             })
@@ -60,145 +84,50 @@ function CostForm() {
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
-
+        // console.log(activities)
+        // console.log(activityObj)
         console.log('submit timesheet')
         activityObj.forEach((activity)=>handleSubmitActivity(activity))
-        // handleSubmitActivity(activityObj[0])
     }
 
 
     function dicToArray(dic) {
         const arr = []
+        // console.log(dic)
         for (const activity in dic) {
             arr.push({
                 "code": dic[activity]['cost_code'],
                 "description": activity,
                 'costs': dic[activity]['costs'],
-                "date": '07-22-2022'
+                "day": dic[activity]['date']
             })
         }
-        // console.log(arr)
+        console.log(arr)
         return arr
     }
 
 
-    function formatActivityObj(e) {
-        e.preventDefault()
-        console.log(data)
-        // data.SheetNames.forEach((sheetName)=>{
-        //     console.log(sheetName)
-        //     var cellMax = ['a',0]
-        //     Object.keys(data.Sheets[sheetName]).forEach((cell)=>{
-        //         if (cell.includes('margin') || cell.includes('ref')) {
-        //             console.log('do nothing')
-        //         } else {
-        //             var chars = cell.slice(0, cell.search(/\d/));
-        //             var numbs = cell.replace(chars, '');
-
-        //             console.log(chars, numbs); 
-        //         } 
-        //     })
-            
-        //     // console.log()
-        
-        // })
-
-        // data.forEach((row)=>{
-        //     console.log(row)
-
-        // })
-        // console.log(data[0])
-        // data[0].forEach((act)=>console.log(act))
-        // console.log(Object.keys(data[0]))
-
-        // for (const activity in data[0]) {
-        //     console.log(activity)
-        //     console.log(data[0][activity])
-        // }
-
-        // const objArray = []
-
-
-        // data.SheetNames.forEach((sheetName)=>{
-        //     Object.keys(data.Sheets[sheetName]).forEach((cell)=>{
-        //         if (cell.includes('margin')||cell.includes('ref')) {
-        //             console.log('do nothing')
-        //         } else {
-        //             var chars = cell.slice(0, cell.search(/\d/));
-        //             var numbs = cell.replace(chars, '');
-                    
-        //             if (chars=='A') {
-        //                 console.log('do nothing')
-        //             } else if (numbs == 1) {
-        //                 // console.log(cell, chars, numbs); 
-        //                 // console.log(data.Sheets[sheetName][`${chars}1`])
-
-        //                 objArray.push({'date': sheetName ,
-        //                 'cost_code': data.Sheets[sheetName][`${chars}2`] ? data.Sheets[sheetName][`${chars}2`]['v'] : 'None',
-        //                 'description': data.Sheets[sheetName][`${chars}1`]['v'], 
-        //                 'costs':[]})
-        //             } else if (numbs == 2) {
-        //                 console.log('do nothing again')
-        //             } else {
-
-        //             }
-        //         }
-        //     })
-        // })
-
-        // console.log(objArray)
-        // console.log(objArray[1]['cost_code']['v'])
-
-        // data.SheetNames.forEach((sheetName)=>{
-        //     Object.keys(data.Sheets[sheetName]).forEach((cell)=>{
-        //         if (cell.includes('margin')||cell.includes('ref')) {
-        //             console.log('do nothing')
-        //         } else {
-        //             var chars = cell.slice(0, cell.search(/\d/));
-        //             var numbs = cell.replace(chars, '');
-                    
-        //             if (chars=='A' || numbs == 1 || numbs == 2) {
-        //                 console.log('do nothing again')
-        //             } else {
-        //                 var cc = data.Sheets[sheetName][`${chars}2`]['v']
-        //                 var desc = data.Sheets[sheetName][`${chars}1`]['v']
-        //                 console.log(cell, data.Sheets[sheetName][cell]['v'])
-        //                 // objArray.filter((obj)=>obj.)
-        //             }
-
-        //         }
-        //     })
-        // })
-
-
-        // console.log(j)
-        // console.log(j.length)
-        // for (const activity in j[0]) {
-        //     console.log(activity)
-        //     console.log(j[0][activity])
-        //     for (let i = 1; i < j.length; i ++) {
-        //         if (j[0][activity] in j[i]) {
-        //             console.log(j[i]["Employee"])
-        //         }
-        //     }
-        // }
-
+    function formatActivityObj() {
+        // console.log(excelData)
 
         const costDic = {}
-        for (const row in j) {
-            if (row != 0) {
-                Object.keys(j[row]).forEach((key)=>{
-                    if (key!=='Employee') {
-                        if (!costDic[key]) {
-                            costDic[key] = {
-                                "cost_code": j[0][key],
-                                "costs": [{'employee': j[row]["Employee"], "hours": j[row][key]}]
+        for (const date in excelData) {
+            for (const row in excelData[date]) {
+                if (row != 0) {
+                    Object.keys(excelData[date][row]).forEach((key)=>{
+                        if (key!=='Employee') {
+                            if (!costDic[key]) {
+                                costDic[key] = {
+                                    "date": (date === 'Monday' ? "07-22-2022" : (date === 'Tuesday' ? "07-23-2022" : "07-24-2022")),
+                                    "cost_code": excelData[date][0][key],
+                                    "costs": [{'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]}]
+                                }
+                            } else {
+                                costDic[key]['costs'].push({'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]})
                             }
-                        } else {
-                            costDic[key]['costs'].push({'employee': j[row]["Employee"], "hours": j[row][key]})
                         }
-                    }
-                })
+                    })
+                }
             }
         }
         // console.log(dicToArray(costDic))
@@ -220,7 +149,6 @@ function CostForm() {
                     onChange={readUploadFile}
                     accept=".xlsx, .xls"
                 />
-                <button onClick={formatActivityObj}>run</button>
             </form>
         </div>
         
