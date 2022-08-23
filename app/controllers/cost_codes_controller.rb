@@ -20,6 +20,18 @@ class CostCodesController < ApplicationController
         end
     end
 
+    def with_costs
+        cost_codes = CostCode.all 
+        res = []
+        cost_codes.each do |cost_code|
+            activities = cost_code.activities
+            if activities != []
+                res << cost_code
+            end
+        end
+        render json: res
+    end
+
     private
 
     def cost_code_params
