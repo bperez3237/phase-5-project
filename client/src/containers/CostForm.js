@@ -1,21 +1,23 @@
 import React, { createContext, useContext } from 'react'
 import {useState, useEffect} from 'react'
 import {Button, Form} from 'react-bootstrap'
-// import { ActivitiesContext } from '../context/ActivitiesContext'
+import { ActivitiesContext } from '../context/ActivitiesContext'
 var xlsx = require("xlsx")
 
 function CostForm() {
     const [activityObj,setActivityObj] = useState([])
     const [excelData,setExcelData] = useState('')
     // const {activities, setActivities} = useContext(ActivitiesContext)
+    const [costs, setCosts] = useState([])
 
     useEffect(()=>{
         formatActivityObj()
     },[excelData])
 
-    
+    useEffect(()=>{
+        fetch('/costs').then(r=>r.json()).then(data=>setCosts(data))
+    },[])
 
-    // console.log(activities)
     const readUploadFile = (e) => {
         console.log('here')
         e.preventDefault();
@@ -31,7 +33,6 @@ function CostForm() {
                     allActivities[sheet] = xlsx.utils.sheet_to_json(worksheet)
                 })
                 setExcelData(allActivities)
-                console.log(allActivities)
             };
             reader.readAsArrayBuffer(e.target.files[0]);
         }
@@ -48,7 +49,7 @@ function CostForm() {
         })
             .then(r=>r.json())
             .then(data=>{
-                
+                setCosts([...costs,data])
                 console.log(data)})
     }
 
@@ -71,8 +72,11 @@ function CostForm() {
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
-        console.log(activityObj)
-        activityObj.forEach((activity)=>handleSubmitActivity(activity))
+        if (costs !== []) {
+            console.log('data already exists')
+        } else {
+            activityObj.forEach((activity)=>handleSubmitActivity(activity))
+        }
     }
 
 
@@ -95,7 +99,7 @@ function CostForm() {
         const costDic = {}
         for (const date in excelData) {
             for (const row in excelData[date]) {
-                // conditional does work if !== is used instead of !=
+                // conditional does work if !== is used instead of != because row is a string
                 if (row != 0) {
                     Object.keys(excelData[date][row]).forEach((key)=>{
                         if (key!=='Employee') {
