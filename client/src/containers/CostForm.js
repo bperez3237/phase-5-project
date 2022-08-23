@@ -1,20 +1,23 @@
 import React, { createContext, useContext } from 'react'
 import {useState, useEffect} from 'react'
-import {Button, Form, FormGroup} from 'react-bootstrap'
-import { ActivitiesContext } from '../context/ActivitiesContext'
+import {Button, Form} from 'react-bootstrap'
+// import { ActivitiesContext } from '../context/ActivitiesContext'
 var xlsx = require("xlsx")
 
 function CostForm() {
     const [activityObj,setActivityObj] = useState([])
-    const [excelData,setExcelData] = useState(null)
-    const {activities, setActivities} = useContext(ActivitiesContext)
+    const [excelData,setExcelData] = useState('')
+    // const {activities, setActivities} = useContext(ActivitiesContext)
 
     useEffect(()=>{
         formatActivityObj()
     },[excelData])
 
+    
+
     // console.log(activities)
     const readUploadFile = (e) => {
+        console.log('here')
         e.preventDefault();
         if (e.target.files) {
             const reader = new FileReader();
@@ -28,6 +31,7 @@ function CostForm() {
                     allActivities[sheet] = xlsx.utils.sheet_to_json(worksheet)
                 })
                 setExcelData(allActivities)
+                console.log(allActivities)
             };
             reader.readAsArrayBuffer(e.target.files[0]);
         }
@@ -43,7 +47,9 @@ function CostForm() {
                 body: JSON.stringify({...costObj, activity_id: activity_id})
         })
             .then(r=>r.json())
-            .then(data=>console.log(data))
+            .then(data=>{
+                
+                console.log(data)})
     }
 
     function handleSubmitActivity(obj) {
@@ -65,6 +71,7 @@ function CostForm() {
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
+        console.log(activityObj)
         activityObj.forEach((activity)=>handleSubmitActivity(activity))
     }
 
@@ -88,6 +95,7 @@ function CostForm() {
         const costDic = {}
         for (const date in excelData) {
             for (const row in excelData[date]) {
+                // conditional does work if !== is used instead of !=
                 if (row != 0) {
                     Object.keys(excelData[date][row]).forEach((key)=>{
                         if (key!=='Employee') {
@@ -111,17 +119,14 @@ function CostForm() {
     return (
         <div>
             <h1>Upload Timesheet</h1>
-            <form >
-                <label htmlFor="upload">Upload File</label>
-                <input
-                    type="file"
-                    name="upload"
-                    id="upload"
-                    onChange={readUploadFile}
-                    accept=".xlsx, .xls"
-                />
-                <Button onClick={handleSubmitTimesheet}>Upload</Button>
-            </form>
+            <Form>
+                <Form.Group >
+                    <Form.Label htmlFor="upload">Upload File</Form.Label>
+                    <Form.Control type="file" onChange={readUploadFile} accept=".xlsx, .xls" />
+                    <br/>
+                    <Button onClick={handleSubmitTimesheet}>Upload</Button>
+                    </Form.Group>
+                </Form>
         </div>
         
     )
