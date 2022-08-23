@@ -11,7 +11,6 @@ function CostForm() {
 
     useEffect(()=>{
         formatActivityObj()
-        console.log('formatted')
     },[excelData])
 
     // console.log(activities)
@@ -23,29 +22,12 @@ function CostForm() {
                 const data = e.target.result;
                 const workbook = xlsx.read(data, { type: "array" });
                 var allActivities = {}
-                // console.log(workbook.SheetNames)
-                // for (const sheet in Object.values(workbook.SheetNames)) {
-                //     console.log(sheet)
-                //     const worksheet = workbook.Sheets[sheet];
-                //     allActivities =  [...allActivities, xlsx.utils.sheet_to_json(worksheet)]
-                // }
 
                 workbook.SheetNames.forEach((sheet)=>{
-                    // console.log(sheet)
                     const worksheet = workbook.Sheets[sheet]
-                    // allActivities = allActivities.push(xlsx.utils.sheet_to_json(worksheet))
-                    // console.log(xlsx.utils.sheet_to_json(worksheet))
-                    // const sheetData = xlsx.utils.sheet_to_json(worksheet).map((row)=> ({...row, date: sheet}))
                     allActivities[sheet] = xlsx.utils.sheet_to_json(worksheet)
-                    // allActivities = allActivities.concat(sheetData)
                 })
-                // const sheetName = workbook.SheetNames[0];
-                // const worksheet = workbook.Sheets[sheetName];
-                // const json = xlsx.utils.sheet_to_json(worksheet);
-                // console.log(allActivities)
                 setExcelData(allActivities)
-                console.log(allActivities)
-                // setExcelData(json)÷
             };
             reader.readAsArrayBuffer(e.target.files[0]);
         }
@@ -53,7 +35,6 @@ function CostForm() {
 
 
     function handleSubmitCost(activity_id, costObj) {
-        // console.log(costObj)
         fetch('/costs', {
             method: 'POST',
             headers: {
@@ -84,16 +65,12 @@ function CostForm() {
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
-        // console.log(activities)
-        // console.log(activityObj)
-        console.log('submit timesheet')
         activityObj.forEach((activity)=>handleSubmitActivity(activity))
     }
 
 
     function dicToArray(dic) {
         const arr = []
-        // console.log(dic)
         for (const activity in dic) {
             arr.push({
                 "code": dic[activity]['cost_code'],
@@ -102,13 +79,11 @@ function CostForm() {
                 "day": dic[activity]['date']
             })
         }
-        console.log(arr)
         return arr
     }
 
 
     function formatActivityObj() {
-        // console.log(excelData)
 
         const costDic = {}
         for (const date in excelData) {
@@ -130,16 +105,12 @@ function CostForm() {
                 }
             }
         }
-        // console.log(dicToArray(costDic))
         setActivityObj(dicToArray(costDic))
-        // return dicToArray(costDic)
-        
     }
 
     return (
         <div>
-            <h1>hi</h1>
-            <Button onClick={handleSubmitTimesheet}>Submit</Button>
+            <h1>Upload Timesheet</h1>
             <form >
                 <label htmlFor="upload">Upload File</label>
                 <input
@@ -149,6 +120,7 @@ function CostForm() {
                     onChange={readUploadFile}
                     accept=".xlsx, .xls"
                 />
+                <Button onClick={handleSubmitTimesheet}>Upload</Button>
             </form>
         </div>
         

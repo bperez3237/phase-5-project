@@ -11,6 +11,7 @@ function ActivityList() {
             .then((data)=>setActivities(data))
     },[])
 
+    console.log(activities)
     const activityElems = activities.map((activity)=>{
         if (activity.approved === false) {
             return <Activity key={activity.id} activity={activity} setActivities={setActivities}/>
