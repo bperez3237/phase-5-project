@@ -9,11 +9,18 @@ Rails.application.routes.draw do
     resources :costs, only: [:show, :index]
   end
 
+  resources :cost_codes, only: [:show] do
+    resources :activities, only: [:index]
+  end
+
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get '/me', to: 'users#auto_login'
 
   get '/codes_with_costs', to: 'cost_codes#with_costs'
+
+  get '/total_hours/:id', to: 'activities#total_hours'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

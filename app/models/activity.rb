@@ -5,5 +5,15 @@ class Activity < ApplicationRecord
     has_many :costs
     has_many :employees, through: :costs
 
-    belongs_to :cost_code
+    belongs_to :cost_code 
+
+
+    def total_hours
+        if activity.costs
+            sum = activity.costs.sum("hours")
+            render json: sum
+        else 
+            render json: 0
+        end
+    end
 end

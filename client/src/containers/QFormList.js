@@ -3,21 +3,26 @@ import { useState, useEffect } from 'react'
 // import {Button, Form} from 'react-bootstrap'
 
 function QFormList() {
-    const [activities, setActivities] = useState([])
+    const [costCodes, setCostCodes] = useState([])
+
     useEffect(()=>{
-       fetch('/activities').then(r=>r.json()).then((data)=>setActivities(data))
+        fetch('/codes_with_costs')
+            .then(r=>r.json()).then(data=>setCostCodes(data))
     },[])
 
-    const activityFormElems = activities.map((activity)=>{
-        if (activity.approved === true) {
-            return <QuantityForm key={activity.id} activity={activity}/>
-        } else return null
-    })
+
+    // const activityFormElems = activities.map((activity)=>{
+    //     if (activity.approved === true) {
+    //         return <QuantityForm key={activity.id} activity={activity}/>
+    //     } else return null
+    // })
+
+    const costCodeElems = costCodes.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} />)
 
 
     return(
         <>
-            {activityFormElems}
+            {costCodeElems}
         </>
     )
 }
