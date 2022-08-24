@@ -9,11 +9,11 @@ class Activity < ApplicationRecord
 
 
     def total_hours
-        if activity.costs
-            sum = activity.costs.sum("hours")
-            render json: sum
+        if self.costs
+            value = self.costs.sum("hours")
         else 
-            render json: 0
+            value = 0
         end
+        value
     end
 end
