@@ -11,15 +11,17 @@ function ActivityList() {
             .then((data)=>setActivities(data))
     },[])
 
-    const activityElems = activities.map((activity)=>{
-        if (activity.approved === false) {
-            return <Activity key={activity.id} activity={activity} setActivities={setActivities}/>
-        } else return null
-    })
+    console.log(activities)
+    // const activityElems = activities.map((activity)=>{
+    //     if (activity.approved === false) {
+    //         return <Activity key={activity.id} activity={activity} setActivities={setActivities}/>
+    //     } else return null
+    // })
 
 
     return( 
-        <>{activityElems}</>
+        // <>{activityElems}</>
+        <></>
         
     )
 }

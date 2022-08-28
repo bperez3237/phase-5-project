@@ -25,8 +25,8 @@ class ActivitiesController < ApplicationController
 
     def index
         activities = Activity.all 
-        cost_code = CostCode.find(params[:cost_code_id])
-        if cost_code
+        if params[:cost_code_id]
+            cost_code = CostCode.find(params[:cost_code_id])
             render json: cost_code.activities
         else
             render json: activities, include: [:costs, :cost_code]
