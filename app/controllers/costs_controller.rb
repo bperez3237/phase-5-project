@@ -10,6 +10,7 @@ class CostsController < ApplicationController
                 render json: cost, status: :created
             else
                 render json: { error: cost_code.errors}, status: :unprocessable_entity
+            end
         else
             render json: { error: {costs: cost.errors , employee: employee.errors} }, status: :unprocessable_entity
         end

@@ -9,7 +9,6 @@ function WeeklyReport( ){
             .then(r=>r.json()).then(data=>setCostCodes(data))
     },[])
 
-    console.log(costCodes)
 
     const codeElems = costCodes.map((code)=> <CodeReport key={code.id} code={code}/>)
 
