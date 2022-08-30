@@ -87,7 +87,7 @@ function CostForm() {
                 "code": dic[activity]['cost_code'],
                 "description": activity,
                 'costs': dic[activity]['costs'],
-                "day": dic[activity]['date']
+                "date": dic[activity]['date']
             })
         }
         return arr

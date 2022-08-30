@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import CostCode from '../components/CostCode'
+import {Container} from 'react-bootstrap'
 
 function CostCodesList() {
     const [costCodes, setCostCodes] = useState([])
@@ -14,9 +15,9 @@ function CostCodesList() {
     const codeElems = costCodes.map((code)=><CostCode key={code.id} code={code} />)
 
     return(
-        <>
-        {codeElems}
-        </>
+        <Container style={{border:'1px', borderStyle:'solid'}}>
+            {codeElems}
+        </Container>
     )
 }
 export default CostCodesList;
