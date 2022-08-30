@@ -35,6 +35,6 @@ class CostCodesController < ApplicationController
     private
 
     def cost_code_params
-        params.permit(:budget_hours,:budget_quantity,:current_hours,:current_quantity,:code,:name,:user_id)
+        params.permit(:budget_hours,:budget_quantity,:unit_of_measure,:code,:name,:user_id)
     end
 end

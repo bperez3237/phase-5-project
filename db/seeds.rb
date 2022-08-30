@@ -14,15 +14,15 @@ u6 =  User.create(username: Faker::Internet.unique.username, password_digest: Fa
 
 puts 'seeding cost codes'
 # byebug/
-cc1 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1000', name: 'nb formwork', budget_hours: 1700, budget_quantity: 34, current_hours: 1400, current_quantity: 20)
+cc1 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1000', name: 'nb formwork', budget_hours: 1700, budget_quantity: 34, )
 # puts 'one seeds'
-cc2 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1900', name: 'concrete', budget_hours: 2000, budget_quantity: 68, current_hours: 1640, current_quantity: 60)
-cc3 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-3100', name: 'trenching', budget_hours: 300, budget_quantity: 102, current_hours: 110, current_quantity: 16)
-cc4 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '05-6000', name: 'structural steel', budget_hours: 4000, budget_quantity: 23, current_hours: 160, current_quantity: 6)
-cc5 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-2500', name: 'utilities', budget_hours: 700, budget_quantity: 50, current_hours: 300, current_quantity: 20)
-cc6 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-2300', name: 'ductbanks', budget_hours: 700, budget_quantity: 50, current_hours: 300, current_quantity: 20)
-cc7 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1100', name: 'eb formwork', budget_hours: 700, budget_quantity: 50, current_hours: 300, current_quantity: 20)
-cc8 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-2600', name: 'utilities', budget_hours: 700, budget_quantity: 50, current_hours: 300, current_quantity: 20)
+cc2 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1900', name: 'concrete', budget_hours: 2000, budget_quantity: 68, unit_of_measure: 'CY')
+cc3 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-3100', name: 'trenching', budget_hours: 300, budget_quantity: 102, unit_of_measure: 'CY')
+cc4 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '05-6000', name: 'structural steel', budget_hours: 4000, budget_quantity: 23, unit_of_measure: 'EA')
+cc5 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-2500', name: 'utilities', budget_hours: 700, budget_quantity: 50, unit_of_measure: 'LF')
+cc6 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-2300', name: 'ductbanks', budget_hours: 700, budget_quantity: 50,unit_of_measure: 'CY' )
+cc7 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1100', name: 'eb formwork', budget_hours: 700, budget_quantity: 50,unit_of_measure: 'SF' )
+cc8 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-2600', name: 'utilities', budget_hours: 700, budget_quantity: 50, unit_of_measure: 'SF')
 
 
 

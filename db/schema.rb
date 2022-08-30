@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_30_212250) do
+ActiveRecord::Schema.define(version: 2022_08_30_213821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,8 @@ ActiveRecord::Schema.define(version: 2022_08_30_212250) do
     t.string "code"
     t.float "budget_hours"
     t.float "budget_quantity"
-    t.float "current_hours"
-    t.float "current_quantity"
     t.string "name"
+    t.string "unit_of_measure"
   end
 
   create_table "costs", force: :cascade do |t|
