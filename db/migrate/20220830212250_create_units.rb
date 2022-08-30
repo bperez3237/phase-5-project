@@ -5,7 +5,6 @@ class CreateUnits < ActiveRecord::Migration[6.1]
       t.float :quantity
       t.date :date
 
-      t.timestamps
     end
 
     rename_column :activities, :day, :date
