@@ -1,3 +1,3 @@
 class ActivitySerializer < ActiveModel::Serializer
-  attributes :id, :description, :cost_code_id, :costs, :cost_code, :day, :approved
+  attributes :id, :description, :cost_code_id, :costs, :cost_code, :date, :approved
 end

@@ -16,17 +16,17 @@ function QuantityForm({ costCode}) {
     function handleSubmit(e) {
         e.preventDefault()
 
-        const newCcObj = {...costCode, current_quantity: costCode.current_quantity+value}
-        fetch(`/cost_codes/${costCode.id}`, {
-            method: 'PATCH',
+        const params = {cost_code_id: costCode.id, quantity: value}
+        fetch(`/units`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(newCcObj)
+            }, body: JSON.stringify(params)
         }).then((r)=>{
             if (r.ok) {
-                r.json().then((updatedCc)=>{
+                r.json().then((unit)=>{
                     setSubmittedStatus(true)
-                    console.log(updatedCc)
+                    console.log(unit)
                 })
             } else {
                 r.json().then((err)=>console.log('error',err))
@@ -37,7 +37,7 @@ function QuantityForm({ costCode}) {
 
 
     const activityElems = activities.map((activity)=>{
-        return (<div>
+        return (<div key={activity.id}>
             <p>{activity.description}</p><TotalHours id={activity.id}/>
         </div>)
     })

@@ -18,6 +18,7 @@ function CostForm() {
         fetch('/costs').then(r=>r.json()).then(data=>setCosts(data))
     },[])
 
+
     const readUploadFile = (e) => {
         console.log('here')
         e.preventDefault();
@@ -72,7 +73,8 @@ function CostForm() {
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
-        if (costs !== []) {
+        
+        if (costs.length > 0) {
             console.log('data already exists')
         } else {
             activityObj.forEach((activity)=>handleSubmitActivity(activity))

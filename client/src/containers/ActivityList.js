@@ -12,16 +12,16 @@ function ActivityList() {
     },[])
 
     console.log(activities)
-    // const activityElems = activities.map((activity)=>{
-    //     if (activity.approved === false) {
-    //         return <Activity key={activity.id} activity={activity} setActivities={setActivities}/>
-    //     } else return null
-    // })
+    const activityElems = activities.map((activity)=>{
+        if (activity.approved === false) {
+            return <Activity key={activity.id} activity={activity} setActivities={setActivities}/>
+        } else return null
+    })
 
 
     return( 
-        // <>{activityElems}</>
-        <></>
+        <>{activityElems}</>
+        // <></>
         
     )
 }
