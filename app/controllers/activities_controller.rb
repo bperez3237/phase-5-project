@@ -40,15 +40,6 @@ class ActivitiesController < ApplicationController
     end
 
 
-    def total_hours
-        activity = Activity.find(params[:id])
-        if activity
-            render json: activity.total_hours
-        else 
-            render json: { error: 'Invalid activity id'}, status: :not_found
-        end
-    end
-
     private
 
     def activity_params

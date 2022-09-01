@@ -9,16 +9,8 @@ function WeeklyReport( ){
             .then(r=>r.json()).then(data=>setCostCodes(data))
     },[])
 
-    // useEffect(()=>{
-    //     fetch('/units')
-    //         .then(r=>r.json()).then(data=>setCostCodes(data))
-    // },[])
 
-
-    console.log(costCodes)
-
-
-    const codeElems = costCodes.map((code)=> <CodeReport key={code.id} code={code}/>)
+    const codeElems = costCodes.map((costCode)=> <CodeReport key={costCode.id} costCode={costCode}/>)
 
 
     return(

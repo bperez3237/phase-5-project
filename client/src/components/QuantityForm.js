@@ -1,15 +1,15 @@
 import {Button, Form } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 
-function QuantityForm({ costCode}) {
+function QuantityForm({costCode}) {
     const [value, setValue] = useState(0)
     const [cc,setCc] = useState(costCode)
     const [activities, setActivities] = useState([])
     const [submittedStatus, setSubmittedStatus] = useState(false)
 
-
     useEffect(()=> {
         fetch(`/cost_codes/${costCode.id}/activities`).then(r=>r.json()).then(data=>setActivities(data))
+        setSubmittedStatus(costCode.units.length>0 ? true : false)
     },[])
 
     function handleSubmit(e) {
@@ -44,7 +44,7 @@ function QuantityForm({ costCode}) {
 
     if (submittedStatus) {return <h2>{cc.code} is submitted. </h2>}
     else {return (
-        <Form style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
+        <Form className='m-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Label>{costCode.code}</Form.Label><br></br>
                 <Form.Label>Hours this week: {costCode.current_hours}</Form.Label>

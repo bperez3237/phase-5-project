@@ -10,13 +10,6 @@ function QFormList() {
             .then(r=>r.json()).then(data=>setCostCodes(data))
     },[])
 
-
-    // const activityFormElems = activities.map((activity)=>{
-    //     if (activity.approved === true) {
-    //         return <QuantityForm key={activity.id} activity={activity}/>
-    //     } else return null
-    // })
-
     const costCodeElems = costCodes.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} />)
 
 

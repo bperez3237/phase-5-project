@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 
   get '/report', to: 'cost_codes#report'
 
-  get '/total_hours/:id', to: 'activities#total_hours'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
