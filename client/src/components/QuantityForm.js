@@ -1,6 +1,5 @@
 import {Button, Form } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
-import TotalHours from './TotalHours'
 
 function QuantityForm({ costCode}) {
     const [value, setValue] = useState(0)
