@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
   end
 
+  resources :work_weeks, only: [:show] do 
+    resources :activities, only: [:index, :show]
+  end
+
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
