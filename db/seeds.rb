@@ -14,7 +14,7 @@ u6 =  User.create(username: Faker::Internet.unique.username, password_digest: Fa
 
 puts 'seeding cost codes'
 # byebug/
-cc1 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1000', name: 'nb formwork', budget_hours: 1700, budget_quantity: 34, )
+cc1 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1000', name: 'nb formwork', budget_hours: 1700, budget_quantity: 34, unit_of_measure: 'SF' )
 # puts 'one seeds'
 cc2 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '03-1900', name: 'concrete', budget_hours: 2000, budget_quantity: 68, unit_of_measure: 'CY')
 cc3 = CostCode.create(user_id: User.order('RANDOM()').first.id, code: '33-3100', name: 'trenching', budget_hours: 300, budget_quantity: 102, unit_of_measure: 'CY')

@@ -21,8 +21,6 @@ function ActivityList() {
 
     return( 
         <>{activityElems}</>
-        // <></>
-        
     )
 }
 

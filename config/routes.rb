@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get '/me', to: 'users#auto_login'
 
-  get '/codes_with_costs', to: 'cost_codes#with_costs'
+  get '/report', to: 'cost_codes#report'
 
   get '/total_hours/:id', to: 'activities#total_hours'
 

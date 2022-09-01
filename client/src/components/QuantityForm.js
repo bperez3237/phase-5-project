@@ -38,7 +38,7 @@ function QuantityForm({ costCode}) {
 
     const activityElems = activities.map((activity)=>{
         return (<div key={activity.id}>
-            <p>{activity.description}</p><TotalHours id={activity.id}/>
+            <p>{activity.description} - {activity.total_hours} hours</p>
         </div>)
     })
     
@@ -47,7 +47,8 @@ function QuantityForm({ costCode}) {
     else {return (
         <Form style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
             <Form.Group>
-                <Form.Label>{costCode.code}</Form.Label>
+                <Form.Label>{costCode.code}</Form.Label><br></br>
+                <Form.Label>Hours this week: {costCode.current_hours}</Form.Label>
                 <Form.Control value={value} onChange={(e)=>setValue(e.target.value)}/>
                 <Form.Label>remaining quantity: {costCode.budget_quantity - costCode.current_quantity}</Form.Label>
                 <Button type='submit' >Submit</Button>

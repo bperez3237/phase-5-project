@@ -4,4 +4,9 @@ class Cost < ApplicationRecord
 
     belongs_to :employee
     belongs_to :activity
+
+    def labor_cost
+        result = self.employee.labor_rate * self.hours
+        result
+    end
 end

@@ -6,7 +6,7 @@ function QFormList() {
     const [costCodes, setCostCodes] = useState([])
 
     useEffect(()=>{
-        fetch('/codes_with_costs')
+        fetch('/report')
             .then(r=>r.json()).then(data=>setCostCodes(data))
     },[])
 

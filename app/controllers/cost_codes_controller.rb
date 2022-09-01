@@ -20,16 +20,19 @@ class CostCodesController < ApplicationController
         end
     end
 
-    def with_costs
-        cost_codes = CostCode.all 
-        res = []
-        cost_codes.each do |cost_code|
-            activities = cost_code.activities
-            if activities != []
-                res << cost_code
-            end
-        end
-        render json: res
+    def report
+        # cost_codes = CostCode.joins(:units)
+        cost_codes = CostCode.joins(:activities).distinct
+        # res = []
+        # cost_codes.each do |cost_code|
+        #     activities = cost_code.activities
+        #     if activities != []
+        #         res << cost_code
+        #     end
+        # end
+        
+        render json: cost_codes, include: [:units, :activities]
+        # render json: cost_codes
     end
 
     private
