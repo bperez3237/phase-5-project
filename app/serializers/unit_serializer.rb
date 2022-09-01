@@ -1,5 +1,6 @@
 class UnitSerializer < ActiveModel::Serializer
-  attributes :id, :cost_code_id, :quantity
+  attributes :id, :cost_code_id, :work_week_id,:quantity
 
   belongs_to :cost_code
+  
 end

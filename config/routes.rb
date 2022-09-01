@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :work_weeks
   resources :units, only: [:create, :index, :show]
   resources :costs, only: [:create, :index]
   resources :activities, only: [:create, :index, :update] 

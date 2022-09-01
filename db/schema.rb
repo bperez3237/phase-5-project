@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_30_213821) do
+ActiveRecord::Schema.define(version: 2022_09_01_225039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_08_30_213821) do
     t.integer "cost_code_id"
     t.date "date"
     t.boolean "approved"
+    t.integer "work_week_id"
   end
 
   create_table "cost_codes", force: :cascade do |t|
@@ -49,12 +50,19 @@ ActiveRecord::Schema.define(version: 2022_08_30_213821) do
     t.integer "cost_code_id"
     t.float "quantity"
     t.date "date"
+    t.integer "work_week_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
     t.string "password_digest"
+  end
+
+  create_table "work_weeks", force: :cascade do |t|
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

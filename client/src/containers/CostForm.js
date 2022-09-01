@@ -9,6 +9,7 @@ function CostForm() {
     const [excelData,setExcelData] = useState('')
     // const {activities, setActivities} = useContext(ActivitiesContext)
     const [costs, setCosts] = useState([])
+    const [week, setWeek] = useState("09/04/22")
 
     useEffect(()=>{
         formatActivityObj()
@@ -17,7 +18,6 @@ function CostForm() {
     useEffect(()=>{
         fetch('/costs').then(r=>r.json()).then(data=>setCosts(data))
     },[])
-
 
     const readUploadFile = (e) => {
         console.log('here')
@@ -131,8 +131,15 @@ function CostForm() {
                     <Form.Control type="file" onChange={readUploadFile} accept=".xlsx, .xls" />
                     <br/>
                     <Button onClick={handleSubmitTimesheet}>Upload</Button>
-                    </Form.Group>
-                </Form>
+                </Form.Group>
+            </Form>
+            <select onChange={(e)=>setWeek(e.target.value)}>
+                <option value="09/04/22">09/04/22</option>
+                <option value="09/11/22">09/11/22</option>
+                <option value="09/18/22">09/18/22</option>
+                <option value="09/25/22">09/25/22</option>
+                <option value="10/02/22">10/02/22</option>
+            </select>
         </div>
         
     )

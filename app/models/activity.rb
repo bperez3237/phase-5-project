@@ -6,6 +6,7 @@ class Activity < ApplicationRecord
     has_many :employees, through: :costs
 
     belongs_to :cost_code 
+    belongs_to :work_week
 
 
     def total_hours

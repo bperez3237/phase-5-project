@@ -1,0 +1,2 @@
+class WorkWeeksController < ApplicationController
+end

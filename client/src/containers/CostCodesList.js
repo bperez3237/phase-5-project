@@ -14,6 +14,8 @@ function CostCodesList() {
     
     const codeElems = costCodes.map((code)=><CostCode key={code.id} code={code} />)
 
+
+    console.log(costCodes)
     return(
         <Container style={{border:'1px', borderStyle:'solid'}}>
             {codeElems}
