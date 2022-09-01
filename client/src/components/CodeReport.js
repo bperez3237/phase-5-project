@@ -16,7 +16,7 @@ function CodeReport({costCode}) {
     const budgetprodrate = Math.round(100*(costCode.budget_quantity/costCode.budget_hours))/100
 
     // = ((actual_quantity/budget_rate)-actual hours)*labor_rate
-    const estimatedValue = ((costCode.current_quantity/budgetprodrate) - costCode.current_hours)
+    const estimatedValue = ((costCode.current_quantity/budgetprodrate) - costCode.current_hours)*(costCode.current_cost/costCode.current_hours)
 
 
     return(
@@ -26,7 +26,7 @@ function CodeReport({costCode}) {
                     <h1>{costCode.code} - {costCode.name}</h1>
                 </Col>
                 <Col>
-                    <h3>Estimated Value: {} </h3>
+                    <h3>Estimated Value: {estimatedValue} </h3>
                 </Col>
             </Row>
             <Row>

@@ -16,4 +16,9 @@ class CostCode < ApplicationRecord
         sum
     end
 
+    def total_cost
+        sum = self.activities.sum {|activity| activity.total_cost}
+        sum
+    end
+
 end

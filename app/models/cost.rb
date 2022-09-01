@@ -6,7 +6,7 @@ class Cost < ApplicationRecord
     belongs_to :activity
 
     def labor_cost
-        result = self.employee.labor_rate * self.hours
-        result
+        product = self.employee.labor_rate * self.hours
+        product
     end
 end
