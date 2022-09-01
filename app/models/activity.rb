@@ -8,10 +8,14 @@ class Activity < ApplicationRecord
     belongs_to :cost_code 
 
 
-    def hours
-        incr = 0
-        self.costs.each {|cost| incr += cost.hours }
-        incr
+    def total_hours
+        sum = self.costs.sum {|cost| cost.hours }
+        sum
+    end
+
+    def total_cost
+        sum = self.costs.sum {|cost| cost.labor_cost}
+        sum
     end
 
 end

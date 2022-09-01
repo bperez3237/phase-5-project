@@ -7,15 +7,13 @@ class CostCode < ApplicationRecord
     validates :code, uniqueness: true
 
     def hours
-        incr = 0
-        self.costs.each {|cost| incr += cost.hours }
-        incr
+        sum = self.costs.sum {|cost| cost.hours }
+        sum
     end
 
     def quantity
-        incr = 0
-        self.units.each {|unit| incr += unit.quantity }
-        incr
+        sum = self.units.sum {|unit| unit.quantity }
+        sum
     end
 
 end
