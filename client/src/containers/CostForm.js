@@ -85,11 +85,12 @@ function CostForm() {
     function dicToArray(dic) {
         const arr = []
         for (const activity in dic) {
+            console.log(dic[activity])
             arr.push({
                 "code": dic[activity]['cost_code'],
                 "description": activity,
                 'costs': dic[activity]['costs'],
-                "date": dic[activity]['date']
+                "date": dic[activity]['date'],
             })
         }
         return arr
@@ -108,6 +109,7 @@ function CostForm() {
                             if (!costDic[key]) {
                                 costDic[key] = {
                                     "date": (date === 'Monday' ? "07-22-2022" : (date === 'Tuesday' ? "07-23-2022" : "07-24-2022")),
+                                    // "date": (date === 'Monday' ? "2022-07-22" : (date === 'Tuesday' ? "2022-07-23" : "2022-07-24")),
                                     "cost_code": excelData[date][0][key],
                                     "costs": [{'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]}]
                                 }
@@ -121,6 +123,8 @@ function CostForm() {
         }
         setActivityObj(dicToArray(costDic))
     }
+
+    console.log(activityObj)
 
     return (
         <div>

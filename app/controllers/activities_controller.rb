@@ -3,7 +3,8 @@ class ActivitiesController < ApplicationController
 
     def create
         cost_code = CostCode.find_by(code: params[:code])
-        activity = Activity.create(cost_code_id: cost_code.id, description: params[:description], date: params[:date], approved: false)
+        activity = Activity.create(cost_code_id: cost_code.id, description: params[:description], date: params[:date], approved: false, work_week_id: 1)
+    
         if activity.valid? & cost_code
             render json: activity,  status: :created
         else 
@@ -43,6 +44,6 @@ class ActivitiesController < ApplicationController
     private
 
     def activity_params
-        params.permit(:costs,:cost_code,:description,:cost_code_id,:date,:approved)
+        params.permit(:costs,:cost_code,:description,:cost_code_id,:date,:approved, :work_week_id)
     end
 end
