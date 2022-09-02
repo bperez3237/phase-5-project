@@ -15,6 +15,7 @@ class CostsController < ApplicationController
         render json: costs
     end
 
+
     private
 
     def cost_params

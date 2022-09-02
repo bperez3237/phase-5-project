@@ -9,15 +9,16 @@ function CostForm() {
     const [excelData,setExcelData] = useState('')
     // const {activities, setActivities} = useContext(ActivitiesContext)
     const [costs, setCosts] = useState([])
-    const [week, setWeek] = useState("09/04/22")
+    const [week, setWeek] = useState("2022-09-04")
+    const [activities, setActivities] = useState([])
 
     useEffect(()=>{
         formatActivityObj()
     },[excelData])
 
     useEffect(()=>{
-        fetch('/costs').then(r=>r.json()).then(data=>setCosts(data))
-    },[])
+        fetch(`/activity_week/${week}`).then(r=>r.json()).then(data=>setActivities(data))
+    },[week])
 
     const readUploadFile = (e) => {
         console.log('here')
@@ -60,7 +61,7 @@ function CostForm() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(obj)
+            }, body: JSON.stringify({...obj,"end_date": week})
         })
             .then(r=>r.json())
             .then((newActivity)=>{
@@ -124,7 +125,9 @@ function CostForm() {
         setActivityObj(dicToArray(costDic))
     }
 
-    console.log(activityObj)
+    // console.log(activityObj)
+    console.log(activities)
+
 
     return (
         <div>
@@ -138,11 +141,12 @@ function CostForm() {
                 </Form.Group>
             </Form>
             <select onChange={(e)=>setWeek(e.target.value)}>
-                <option value="09/04/22">09/04/22</option>
-                <option value="09/11/22">09/11/22</option>
-                <option value="09/18/22">09/18/22</option>
-                <option value="09/25/22">09/25/22</option>
-                <option value="10/02/22">10/02/22</option>
+                <option value="2022-07-24">07/24/22</option>
+                <option value="2022-09-04">09/04/22</option>
+                <option value="2022-09-11">09/11/22</option>
+                <option value="2022-09-18">09/18/22</option>
+                <option value="2022-09-25">09/25/22</option>
+                <option value="2022-10-02">10/02/22</option>
             </select>
         </div>
         

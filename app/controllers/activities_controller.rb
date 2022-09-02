@@ -40,6 +40,10 @@ class ActivitiesController < ApplicationController
         render json: activity, include: :costs
     end
 
+    def activity_week
+        activities = Activity.joins(:work_week).where(work_week: {end_date: params[:end_date]}).distinct
+        render json: activities
+    end
 
     private
 

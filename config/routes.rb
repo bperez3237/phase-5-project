@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :show]
   end
 
+  get '/activity_week/:end_date', to: 'activities#activity_week'
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

@@ -19,4 +19,6 @@ class Activity < ApplicationRecord
         sum
     end
 
+
+
 end
