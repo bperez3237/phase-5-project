@@ -21,19 +21,14 @@ class CostCodesController < ApplicationController
     end
 
     def report
-        # cost_codes = CostCode.joins(:units)
-        cost_codes = CostCode.joins(:activities).distinct
-        # res = []
-        # cost_codes.each do |cost_code|
-        #     activities = cost_code.activities
-        #     if activities != []
-        #         res << cost_code
-        #     end
-        # end
-        
-        render json: cost_codes, include: [:units, :activities]
-        # render json: cost_codes
+        if params[:work_week_id]
+            cost_codes = CostCode.joins(:activities).where(activities: {work_week_id: params[:work_week_id]}).distinct
+        else
+            cost_codes = CostCode.joins(:activities).distinct
+        end
+        render json: cost_codes
     end
+
 
     private
 

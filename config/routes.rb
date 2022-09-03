@@ -16,16 +16,21 @@ Rails.application.routes.draw do
   end
 
   resources :work_weeks, only: [:show] do 
-    resources :activities, only: [:index, :show]
+    resources :activities, only: [:index, :show, :create]
   end
 
   get '/activity_week/:end_date', to: 'activities#activity_week'
+  get '/work_week/:end_date', to: 'work_weeks#get_id'
+
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get '/me', to: 'users#auto_login'
 
   get '/report', to: 'cost_codes#report'
+  get '/report/:work_week_id', to: 'cost_codes#report'
+
+  get '/report_activities/:cost_code_id/:work_week_id', to: 'activities#report_activities'
 
 
   # Routing logic: fallback requests for React Router.

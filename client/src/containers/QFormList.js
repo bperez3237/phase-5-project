@@ -2,15 +2,15 @@ import QuantityForm from '../components/QuantityForm'
 import { useState, useEffect } from 'react'
 // import {Button, Form} from 'react-bootstrap'
 
-function QFormList() {
+function QFormList({workWeekId}) {
     const [costCodes, setCostCodes] = useState([])
 
     useEffect(()=>{
-        fetch('/report')
+        fetch(`/report/${workWeekId}`)
             .then(r=>r.json()).then(data=>setCostCodes(data))
     },[])
 
-    const costCodeElems = costCodes.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} />)
+    const costCodeElems = costCodes.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} workWeekId={workWeekId}/>)
 
 
     return(

@@ -9,7 +9,7 @@ function CostForm() {
     const [excelData,setExcelData] = useState('')
     // const {activities, setActivities} = useContext(ActivitiesContext)
     const [costs, setCosts] = useState([])
-    const [week, setWeek] = useState("2022-09-04")
+    const [workWeekId,setWorkWeek] = useState(1)
     const [activities, setActivities] = useState([])
 
     useEffect(()=>{
@@ -17,8 +17,16 @@ function CostForm() {
     },[excelData])
 
     useEffect(()=>{
-        fetch(`/activity_week/${week}`).then(r=>r.json()).then(data=>setActivities(data))
-    },[week])
+        fetch(`/work_weeks/${workWeekId}/activities`).then((r)=>{
+            if (r.ok) {
+                r.json().then((data)=>setActivities(data))
+            } else {
+                r.json().then((err)=>console.log('error',err))
+            }
+        })
+    },[workWeekId])
+
+    console.log(activities)
 
     const readUploadFile = (e) => {
         console.log('here')
@@ -56,12 +64,13 @@ function CostForm() {
     }
 
     function handleSubmitActivity(obj) {
-
-        fetch('/activities', {
+        console.log(typeof workWeekId)
+        if (typeof workWeekId == 'number') {
+        fetch(`/work_weeks/${workWeekId}/activities`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify({...obj,"end_date": week})
+            }, body: JSON.stringify(obj)
         })
             .then(r=>r.json())
             .then((newActivity)=>{
@@ -69,13 +78,14 @@ function CostForm() {
                     handleSubmitCost(newActivity.id, cost)
                 })
             })
+        } else {console.log('no activ')}
 
     }
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
         
-        if (costs.length > 0) {
+        if (activities.length > 0) {
             console.log('data already exists')
         } else {
             activityObj.forEach((activity)=>handleSubmitActivity(activity))
@@ -125,9 +135,12 @@ function CostForm() {
         setActivityObj(dicToArray(costDic))
     }
 
-    // console.log(activityObj)
-    console.log(activities)
 
+    function handleWeekChange(e) {
+        fetch(`/work_week/${e.target.value}`).then(r=>r.json()).then(data=>{
+            console.log(data)
+        setWorkWeek(data.id)})
+    }
 
     return (
         <div>
@@ -140,7 +153,7 @@ function CostForm() {
                     <Button onClick={handleSubmitTimesheet}>Upload</Button>
                 </Form.Group>
             </Form>
-            <select onChange={(e)=>setWeek(e.target.value)}>
+            <select onChange={handleWeekChange}>
                 <option value="2022-07-24">07/24/22</option>
                 <option value="2022-09-04">09/04/22</option>
                 <option value="2022-09-11">09/11/22</option>

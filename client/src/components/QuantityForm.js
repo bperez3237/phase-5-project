@@ -1,14 +1,14 @@
 import {Button, Form } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 
-function QuantityForm({costCode}) {
+function QuantityForm({costCode, workWeekId}) {
     const [value, setValue] = useState(0)
     const [cc,setCc] = useState(costCode)
     const [activities, setActivities] = useState([])
     const [submittedStatus, setSubmittedStatus] = useState(false)
 
     useEffect(()=> {
-        fetch(`/cost_codes/${costCode.id}/activities`).then(r=>r.json()).then(data=>setActivities(data))
+        fetch(`/report_activities/${costCode.id}/${workWeekId}`).then(r=>r.json()).then(data=>setActivities(data))
         setSubmittedStatus(costCode.units.length>0 ? true : false)
     },[])
 

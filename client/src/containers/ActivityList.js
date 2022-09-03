@@ -7,6 +7,7 @@ function ActivityList() {
 
     useEffect(()=>{
         fetch('/activities')
+        // fetch(`/work_weeks/${}/activities`)
             .then(r=>r.json())
             .then((data)=>setActivities(data))
     },[])
