@@ -1,3 +1,4 @@
 class WorkWeekActivitySerializerSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :ids
+  
 end

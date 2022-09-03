@@ -8,7 +8,7 @@ function ReportPage() {
     function handleWeekChange(e) {
         fetch(`/work_week/${e.target.value}`).then(r=>r.json()).then(data=>{
             console.log(data)
-        setWorkWeek(data.id)})
+            setWorkWeek(data.id)})
     }
     return(
         <>

@@ -4,6 +4,7 @@ import {Col, Container, Row} from 'react-bootstrap'
 
 function CodeReport({costCode}) {
 
+    console.log(costCode)
     function handleClick(e) {
         console.log(e.target)
         console.log(e.target.value)
@@ -15,7 +16,7 @@ function CodeReport({costCode}) {
     const budgetprodrate = Math.round(100*(costCode.budget_quantity/costCode.budget_hours))/100
 
     // value = ((actual_quantity/budget_rate)-actual hours)*labor_rate
-    const estimatedValue = ((costCode.current_quantity/budgetprodrate) - costCode.current_hours)*(costCode.current_cost/costCode.current_hours)
+    const estimatedValue = ((costCode.last_week_quantity/budgetprodrate) - costCode.last_week_hours)*(costCode.last_week_cost/costCode.last_week_hours)
     const clr = estimatedValue >= 0 ? 'green' : 'red'
     return(
         <Container className='m-3' style={{border:'1px', borderStyle:'solid'}}>
@@ -29,9 +30,9 @@ function CodeReport({costCode}) {
             </Row>
             <Row>
             <Col>
-            <p>Last Week Hours: {costCode.current_hours}</p>
-            <p>Last Week Quantity: {costCode.current_quantity}</p>
-            <p>Last Week Production Rate: {Math.round(100*(costCode.current_quantity/costCode.current_hours))/100}</p>
+            <p>Last Week Hours: {costCode.last_week_hours}</p>
+            <p>Last Week Quantity: {costCode.last_week_quantity}</p>
+            <p>Last Week Production Rate: {Math.round(100*(costCode.last_week_quantity/costCode.last_week_hours))/100}</p>
             </Col>
             <Col>
             <p>Budget Hours: {costCode.budget_hours}</p>

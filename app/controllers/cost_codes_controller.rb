@@ -22,11 +22,12 @@ class CostCodesController < ApplicationController
 
     def report
         if params[:work_week_id]
-            cost_codes = CostCode.joins(:activities).where(activities: {work_week_id: params[:work_week_id]}).distinct
+            @cost_codes = CostCode.joins(:activities).where(activities: {work_week_id: params[:work_week_id]}).distinct
+            render json: @cost_codes, each_serializer: WorkWeekCostCodeSerializerSerializer, work_week_id: params[:work_week_id]
         else
-            cost_codes = CostCode.joins(:activities).distinct
+            @cost_codes = CostCode.joins(:activities).distinct
+            render json: @cost_codes
         end
-        render json: cost_codes
     end
 
 
