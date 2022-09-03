@@ -10,7 +10,7 @@ function QuantityForm({costCode, workWeekId}) {
     useEffect(()=> {
         fetch(`/report_activities/${costCode.id}/${workWeekId}`).then(r=>r.json()).then(data=>setActivities(data))
         fetch(`/report_units/${costCode.id}/${workWeekId}`).then(r=>r.json()).then(data=>setSubmittedStatus(data.length>0 ? true : false))
-    },[])
+    },[workWeekId])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -47,9 +47,9 @@ function QuantityForm({costCode, workWeekId}) {
         <Form className='m-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Label>{costCode.code}</Form.Label><br></br>
-                <Form.Label>Hours this week: {costCode.current_hours}</Form.Label>
+                <Form.Label>Hours this week: {costCode.last_week_hours}</Form.Label>
                 <Form.Control value={value} onChange={(e)=>setValue(e.target.value)}/>
-                <Form.Label>remaining quantity: {costCode.budget_quantity - costCode.current_quantity}</Form.Label>
+                <Form.Label>remaining quantity: {costCode.budget_quantity - costCode.last_week_quantity}</Form.Label>
                 <Button type='submit' >Submit</Button>
                 {activityElems}
             </Form.Group>
