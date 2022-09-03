@@ -4,12 +4,10 @@ import {Button, Form} from 'react-bootstrap'
 import { ActivitiesContext } from '../context/ActivitiesContext'
 var xlsx = require("xlsx")
 
-function CostForm() {
+function CostForm({workWeekId}) {
     const [activityObj,setActivityObj] = useState([])
     const [excelData,setExcelData] = useState('')
-    // const {activities, setActivities} = useContext(ActivitiesContext)
     const [costs, setCosts] = useState([])
-    const [workWeekId,setWorkWeek] = useState(1)
     const [activities, setActivities] = useState([])
 
     useEffect(()=>{
@@ -25,8 +23,6 @@ function CostForm() {
             }
         })
     },[workWeekId])
-
-    console.log(activities)
 
     const readUploadFile = (e) => {
         console.log('here')
@@ -85,6 +81,7 @@ function CostForm() {
     function handleSubmitTimesheet(e) {
         e.preventDefault()
         
+        console.log(activities)
         if (activities.length > 0) {
             console.log('data already exists')
         } else {
@@ -136,12 +133,6 @@ function CostForm() {
     }
 
 
-    function handleWeekChange(e) {
-        fetch(`/work_week/${e.target.value}`).then(r=>r.json()).then(data=>{
-            console.log(data)
-        setWorkWeek(data.id)})
-    }
-
     return (
         <div>
             <h1>Upload Timesheet</h1>
@@ -153,14 +144,6 @@ function CostForm() {
                     <Button onClick={handleSubmitTimesheet}>Upload</Button>
                 </Form.Group>
             </Form>
-            <select onChange={handleWeekChange}>
-                <option value="2022-07-24">07/24/22</option>
-                <option value="2022-09-04">09/04/22</option>
-                <option value="2022-09-11">09/11/22</option>
-                <option value="2022-09-18">09/18/22</option>
-                <option value="2022-09-25">09/25/22</option>
-                <option value="2022-10-02">10/02/22</option>
-            </select>
         </div>
         
     )
