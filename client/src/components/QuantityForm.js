@@ -3,14 +3,13 @@ import {useState, useEffect} from 'react'
 
 function QuantityForm({costCode, workWeekId}) {
     const [value, setValue] = useState(0)
-    const [cc,setCc] = useState(costCode)
     const [activities, setActivities] = useState([])
     const [submittedStatus, setSubmittedStatus] = useState(false)
 
     useEffect(()=> {
         fetch(`/report_activities/${costCode.id}/${workWeekId}`).then(r=>r.json()).then(data=>setActivities(data))
         fetch(`/report_units/${costCode.id}/${workWeekId}`).then(r=>r.json()).then(data=>setSubmittedStatus(data.length>0 ? true : false))
-    },[workWeekId])
+    },[workWeekId, costCode.id])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -42,7 +41,7 @@ function QuantityForm({costCode, workWeekId}) {
     })
     
 
-    if (submittedStatus) {return <h2>{cc.code} is submitted. </h2>}
+    if (submittedStatus) {return <h2>{costCode.code} is submitted. </h2>}
     else {return (
         <Form className='m-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
             <Form.Group>

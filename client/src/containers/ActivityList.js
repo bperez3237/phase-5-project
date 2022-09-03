@@ -18,7 +18,7 @@ function ActivityList({workWeekId}) {
 
     const activityElems = activities.map((activity)=>{
         if (activity.approved === false) {
-            return <Activity key={activity.id} activity={activity} setActivities={setActivities}/>
+            return <Activity key={activity.id} activity={activity}/>
         } else return null
     })
 

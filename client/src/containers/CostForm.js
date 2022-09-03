@@ -1,7 +1,6 @@
-import React, { createContext, useContext } from 'react'
+import React from 'react'
 import {useState, useEffect} from 'react'
 import {Button, Form} from 'react-bootstrap'
-import { ActivitiesContext } from '../context/ActivitiesContext'
 var xlsx = require("xlsx")
 
 function CostForm({workWeekId}) {
@@ -115,7 +114,6 @@ function CostForm({workWeekId}) {
                             if (!costDic[key]) {
                                 costDic[key] = {
                                     "date": (date === 'Monday' ? "07-22-2022" : (date === 'Tuesday' ? "07-23-2022" : "07-24-2022")),
-                                    // "date": (date === 'Monday' ? "2022-07-22" : (date === 'Tuesday' ? "2022-07-23" : "2022-07-24")),
                                     "cost_code": excelData[date][0][key],
                                     "costs": [{'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]}]
                                 }

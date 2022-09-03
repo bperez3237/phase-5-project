@@ -8,7 +8,7 @@ function QFormList({workWeekId}) {
     useEffect(()=>{
         fetch(`/report/${workWeekId}`)
             .then(r=>r.json()).then(data=>setCostCodes(data))
-    },[])
+    },[workWeekId])
 
     const costCodeElems = costCodes.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} workWeekId={workWeekId}/>)
 
