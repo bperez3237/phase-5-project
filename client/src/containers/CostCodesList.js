@@ -12,10 +12,8 @@ function CostCodesList() {
             .then((data)=>setCostCodes(data))
     },[])
     
-    const codeElems = costCodes.map((code)=><CostCode key={code.id} code={code} />)
+    const codeElems = costCodes.map((costCode)=><CostCode key={costCode.id} costCode={costCode} />)
 
-
-    console.log(costCodes)
     return(
         <Container style={{border:'1px', borderStyle:'solid'}}>
             {codeElems}
