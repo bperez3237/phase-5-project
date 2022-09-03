@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :cost_codes, only: [:show] do
     resources :activities, only: [:index]
+    resources :units, only: [:index]
   end
 
   resources :work_weeks, only: [:show] do 
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
   get '/report/:work_week_id', to: 'cost_codes#report'
 
   get '/report_activities/:cost_code_id/:work_week_id', to: 'activities#report_activities'
+  get '/report_units/:cost_code_id/:work_week_id', to: 'units#report_units'
 
 
   # Routing logic: fallback requests for React Router.

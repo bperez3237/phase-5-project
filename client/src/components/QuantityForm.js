@@ -9,13 +9,13 @@ function QuantityForm({costCode, workWeekId}) {
 
     useEffect(()=> {
         fetch(`/report_activities/${costCode.id}/${workWeekId}`).then(r=>r.json()).then(data=>setActivities(data))
-        setSubmittedStatus(costCode.units.length>0 ? true : false)
+        fetch(`/report_units/${costCode.id}/${workWeekId}`).then(r=>r.json()).then(data=>setSubmittedStatus(data.length>0 ? true : false))
     },[])
 
     function handleSubmit(e) {
         e.preventDefault()
 
-        const params = {cost_code_id: costCode.id, quantity: value}
+        const params = {cost_code_id: costCode.id, quantity: value, work_week_id: workWeekId}
         fetch(`/units`, {
             method: 'POST',
             headers: {
