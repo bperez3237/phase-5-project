@@ -1,11 +1,11 @@
 import CodeReport from "../components/CodeReport";
 import {useState, useEffect} from 'react'
 
-function WeeklyReport( ){
+function WeeklyReport({workWeekId}){
     const [costCodes, setCostCodes] = useState([])
 
     useEffect(()=>{
-        fetch('/report')
+        fetch(`/report/${workWeekId}`)
             .then(r=>r.json()).then(data=>setCostCodes(data))
     },[])
 
