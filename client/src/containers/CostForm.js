@@ -81,7 +81,6 @@ function CostForm({workWeekId}) {
     function handleSubmitTimesheet(e) {
         e.preventDefault()
         
-        console.log(activities)
         if (activities.length > 0) {
             console.log('data already exists')
         } else {
@@ -93,7 +92,6 @@ function CostForm({workWeekId}) {
     function dicToArray(dic) {
         const arr = []
         for (const activity in dic) {
-            console.log(dic[activity])
             arr.push({
                 "code": dic[activity]['cost_code'],
                 "description": activity,

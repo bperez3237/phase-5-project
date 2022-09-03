@@ -15,9 +15,9 @@ function Navigator({setUser}) {
           <Container>
             <Navbar.Brand href="/">Look Back</Navbar.Brand>
             <Nav className='me-auto'>
-              <Nav.Link href="/">View Codes</Nav.Link>
-              <Nav.Link href="/upload">Upload</Nav.Link>
-              <Nav.Link href="/review_activities">Review Activities</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/view">View Codes</Nav.Link>
+              <Nav.Link href="/upload_review_activities">Upload/Review Activities</Nav.Link>
               <Nav.Link href="/enter">Enter Quantities</Nav.Link>
               <Nav.Link href="/report">Weekly Report</Nav.Link>
               <Button className='justify-content-end' variant="light" onClick={handleLogoutClick}>Logout</Button>

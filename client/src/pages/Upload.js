@@ -1,6 +1,7 @@
 import React from "react";
 import CostForm from "../containers/CostForm";
 import {useState, useEffect} from 'react'
+import ActivityList from "../containers/ActivityList";
 
 
 function Upload() {
@@ -23,6 +24,7 @@ function Upload() {
                 <option value="2022-10-02">10/02/22</option>
             </select>
             <CostForm workWeekId={workWeekId}/>
+            <ActivityList workWeekId={workWeekId} />
         </>
     )
 }

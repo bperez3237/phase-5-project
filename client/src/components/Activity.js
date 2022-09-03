@@ -28,7 +28,7 @@ function Activity({activity}) {
     return(
         <div style={{border:'1px', borderStyle:'solid'}}>
             <h2>CC id: {activity.cost_code_id}</h2>
-            <p>{activity.description}</p>
+            <p>{activity.description} - {activity.total_hours}</p>
             <Button onClick={handleApprove}>Approve</Button>
             <Button onClick={handleReject}>Reject</Button>
         </div>

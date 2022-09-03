@@ -4,7 +4,7 @@ import { UserContext } from './context/UserContext';
 import Navigator from './containers/Navigator';
 import EnterQuantities from './pages/EnterQuantities';
 import LoginPage from './pages/LoginPage';
-import ReviewActivities from './pages/ReviewActivities';
+import Home from './pages/Home';
 import Upload from './pages/Upload';
 import ViewCodes from './pages/ViewCodes';
 import ReportPage from './pages/ReportPage'
@@ -36,11 +36,11 @@ function App() {
     <UserContext.Provider value={{user,setUser}}>
       <ActivitiesContext.Provider value={{activities, setActivities}}>
       <Switch>
-        <Route path='/upload'><Upload /></Route>
-        <Route path='/review_activities'><ReviewActivities /></Route>
+        <Route path='/upload_review_activities'><Upload /></Route>
         <Route path='/enter'><EnterQuantities /></Route>
         <Route path='/report'><ReportPage /></Route>
-        <Route path='/'><ViewCodes /></Route>
+        <Route path='/view'><ViewCodes /></Route>
+        <Route path='/'><Home/></Route>
       </Switch>
       </ActivitiesContext.Provider>
     </UserContext.Provider>
