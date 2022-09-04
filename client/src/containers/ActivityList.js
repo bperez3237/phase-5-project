@@ -1,21 +1,12 @@
 import Activity from "../components/Activity";
 import { useEffect, useState,  useContext} from 'react'
+import useFetch from '../hooks/useFetch'
 import {Container} from 'react-bootstrap'
 
 function ActivityList({workWeekId}) {
-    const [activities, setActivities] = useState([])
-
-    useEffect(()=>{
-        fetch(`/work_weeks/${workWeekId}/activities`).then((r)=>{
-            if (r.ok) {
-                r.json().then((data)=>setActivities(data))
-            } else {
-                r.json().then((err)=>console.log('error',err))
-            }
-        })
-    },[workWeekId])
-
-    const activityElems = activities.map((activity)=>{
+    const {data,loading,error} = useFetch(`/work_weeks/${workWeekId}/activities`)
+    
+    const activityElems = loading ? <h1>loading...</h1> : data.map((activity)=>{
         if (activity.approved === false) {
             return <Activity key={activity.id} activity={activity}/>
         } else return null
@@ -23,7 +14,7 @@ function ActivityList({workWeekId}) {
 
 
     return( 
-        <Container>{activityElems}</Container>
+        <>{activityElems}</>
     )
 }
 

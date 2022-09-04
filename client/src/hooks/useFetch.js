@@ -5,8 +5,6 @@ function useFetch(url) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
-
-
     useEffect(()=> {
         setLoading(true)
         fetch(url).then((r)=>{

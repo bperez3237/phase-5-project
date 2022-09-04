@@ -2,6 +2,7 @@ import React from "react";
 import CostForm from "../containers/CostForm";
 import {useState} from 'react'
 import ActivityList from "../containers/ActivityList";
+import {Container} from 'react-bootstrap'
 
 
 function Upload() {
@@ -14,7 +15,7 @@ function Upload() {
     }
 
     return (
-        <>
+        <Container>
             <select onChange={handleWeekChange}>
                 <option value="2022-07-24">07/24/22</option>
                 <option value="2022-09-04">09/04/22</option>
@@ -25,7 +26,7 @@ function Upload() {
             </select>
             <CostForm workWeekId={workWeekId}/>
             <ActivityList workWeekId={workWeekId} />
-        </>
+        </Container>
     )
 }
 

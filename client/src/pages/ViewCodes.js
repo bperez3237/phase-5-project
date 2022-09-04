@@ -1,17 +1,19 @@
 import CostCodesList from "../containers/CostCodesList";
+import ViewSearch from "../components/ViewSearch";
 // import {UserContext} from '../context/UserContext'
-// import { useContext } from "react";
+import { useState } from "react";
+import {Container} from 'react-bootstrap'
+
 
 
 function ViewCodes() {
-    // const msg = useContext(UserContext)
-    // const {user,setUser} = useContext(UserContext)
-
+    const [value, setValue] = useState("")
+    
     return(
-        <>
-            <CostCodesList />
-            {/* <p>{msg}</p> */}
-        </>
+        <Container>
+            <ViewSearch setValue={setValue} value={value}/>
+            <CostCodesList value={value}/>
+        </Container>
     )
 }
 

@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import CostCode from '../components/CostCode'
 import {Container} from 'react-bootstrap'
 
-function CostCodesList() {
+function CostCodesList({value}) {
     const [costCodes, setCostCodes] = useState([])
 
     useEffect(()=> {
@@ -12,7 +12,9 @@ function CostCodesList() {
             .then((data)=>setCostCodes(data))
     },[])
     
-    const codeElems = costCodes.map((costCode)=><CostCode key={costCode.id} costCode={costCode} />)
+    const codeElems = costCodes.filter((costCode)=>{
+        if (costCode.name.includes(value) || costCode.code.includes(value)) return true
+    }).map((costCode)=><CostCode key={costCode.id} costCode={costCode} />)
 
     return(
         <Container style={{border:'1px', borderStyle:'solid'}}>
