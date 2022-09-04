@@ -34,4 +34,19 @@ class CostCode < ApplicationRecord
         sum
     end
 
+    def self.total_cost
+        sum = CostCode.all.sum {|cost_code| cost_code.total_cost}
+        sum
+    end
+
+    def self.total_hours
+        sum = CostCode.all.sum {|cost_code| cost_code.hours}
+        sum
+    end
+
+    def self.project_budget_hours
+        sum = CostCode.all.sum {|cost_code| cost_code.budget_hours}
+        sum
+    end
+
 end

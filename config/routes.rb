@@ -24,11 +24,13 @@ Rails.application.routes.draw do
   get '/work_week/:end_date', to: 'work_weeks#get_id'
 
 
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get '/me', to: 'users#auto_login'
 
   get '/report', to: 'cost_codes#report'
+  get '/project_summary', to: 'cost_codes#project_summary'
   get '/report/:work_week_id', to: 'cost_codes#report'
 
   get '/report_activities/:cost_code_id/:work_week_id', to: 'activities#report_activities'

@@ -33,7 +33,6 @@ class ActivitiesController < ApplicationController
     
 
     def index
-        activities = Activity.all 
         if params[:cost_code_id]
             cost_code = CostCode.find(params[:cost_code_id])
             render json: cost_code.activities
@@ -41,7 +40,8 @@ class ActivitiesController < ApplicationController
             work_week = WorkWeek.find(params[:work_week_id])
             render json: work_week.activities
         else
-            render json: activities, include: [:costs, :cost_code]
+            activities = Activity.all 
+            render json: activities
         end
     end
 

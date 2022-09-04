@@ -24,6 +24,7 @@ function QuantityForm({costCode, workWeekId}) {
             if (r.ok) {
                 r.json().then((unit)=>{
                     setSubmittedStatus(true)
+                    setValue(0)
                     console.log(unit)
                 })
             } else {

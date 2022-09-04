@@ -25,7 +25,7 @@ function CodeReport({costCode}) {
                     <h1>{costCode.code} - {costCode.name}</h1>
                 </Col>
                 <Col>
-                    <h3 style={{color:clr}}>Estimated Value: {estimatedValue} </h3>
+                    <h3 style={{color:clr}}>Estimated Value: {Math.round(estimatedValue*100)/100} </h3>
                 </Col>
             </Row>
             <Row>

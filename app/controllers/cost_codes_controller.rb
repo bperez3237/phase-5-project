@@ -30,6 +30,12 @@ class CostCodesController < ApplicationController
         end
     end
 
+    def project_summary
+        total_cost = CostCode.total_cost
+        total_hours = CostCode.total_hours
+        project_budget_hours = CostCode.project_budget_hours
+        render json: {total_cost: total_cost, total_hours: total_hours, project_budget_hours: project_budget_hours}
+    end
 
     private
 
