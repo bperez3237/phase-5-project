@@ -1,8 +1,13 @@
 class CostCodesController < ApplicationController
 
     def index
-        cost_codes = CostCode.all
-        render json: cost_codes
+        if params[:work_week_id]
+            @cost_codes = WorkWeek.find(params[:work_week_id]).cost_codes.distinct
+            render json: @cost_codes, each_serializer: WorkWeekCostCodeSerializerSerializer, work_week_id: params[:work_week_id]
+        else
+            @cost_codes = CostCode.all
+            render json: @cost_codes
+        end
     end
 
     def show

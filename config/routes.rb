@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :work_weeks, only: [:show] do 
     resources :activities, only: [:index, :show, :create]
+    resources :cost_codes, only: [:index, :show]
   end
 
   get '/activity_week/:end_date', to: 'activities#activity_week'
