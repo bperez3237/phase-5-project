@@ -4,11 +4,11 @@ import useFetch from '../hooks/useFetch'
 import {Container} from 'react-bootstrap'
 
 function ActivityList({workWeekId}) {
-    const {data,loading,error} = useFetch(`/work_weeks/${workWeekId}/activities`)
+    const {data, setData, loading, error} = useFetch(`/work_weeks/${workWeekId}/activities`)
     
     const activityElems = loading ? <h1>loading...</h1> : data.map((activity)=>{
         if (activity.approved === false) {
-            return <Activity key={activity.id} activity={activity}/>
+            return <Activity key={activity.id} activity={activity} activities={data} setActivities={setData}/>
         } else return null
     })
 

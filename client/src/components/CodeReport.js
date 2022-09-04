@@ -3,16 +3,8 @@ import React from 'react'
 import {Col, Container, Row} from 'react-bootstrap'
 
 function CodeReport({costCode}) {
-
-    console.log(costCode)
-    // function handleClick(e) {
-    //     console.log(e.target)
-    //     console.log(e.target.value)
-    // }
     const activityElems = costCode.activities.map((activity)=><p key={activity.id}>{activity.description} - {activity.total_hours}</p>)
 
-
-    // const lbprodrate = Math.round(100*(costCode.current_quantity/costCode.current_hours))/100
     const budgetprodrate = Math.round(100*(costCode.budget_quantity/costCode.budget_hours))/100
 
     // value = ((actual_quantity/budget_rate)-actual hours)*labor_rate

@@ -18,7 +18,4 @@ class Activity < ApplicationRecord
         sum = self.costs.sum {|cost| cost.labor_cost}
         sum
     end
-
-
-
 end
