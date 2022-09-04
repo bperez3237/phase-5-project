@@ -11,6 +11,8 @@ function QuantityForm({costCode, workWeekId}) {
         fetch(`/report_units/${costCode.id}/${workWeekId}`).then(r=>r.json()).then(data=>setSubmittedStatus(data.length>0 ? true : false))
     },[workWeekId, costCode.id])
 
+
+    console.log(costCode)
     function handleSubmit(e) {
         e.preventDefault()
 
