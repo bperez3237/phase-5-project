@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         session[:user_id] = user.id
  
-        render json: user
+        render json: user, status: :created
         # if user&.authenticate(params[:password])
         #     session[:user_id] = user.id
         #     render json: user, status: :created
@@ -13,6 +13,12 @@ class SessionsController < ApplicationController
         #     render json: { errors: "Invalid username or password" }, status: :unauthorized
         # end
     end
+
+    def select_week
+        work_week = WorkWeek.find(params[:work_week_id])
+        session[:work_week_id] = work_week.id
+        render json: work_week, status: :created
+    end 
 
     def destroy
         user = User.find_by(id: session[:user_id])

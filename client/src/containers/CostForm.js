@@ -1,27 +1,20 @@
 import React from 'react'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import {Button, Form} from 'react-bootstrap'
+import { WorkWeekContext } from '../context/WorkWeekContext'
+
 var xlsx = require("xlsx")
 
-function CostForm({workWeekId}) {
+function CostForm() {
+    const {workWeek} = useContext(WorkWeekContext)
     const [activityObj,setActivityObj] = useState([])
     const [excelData,setExcelData] = useState('')
     const [costs, setCosts] = useState([])
-    const [activities, setActivities] = useState([])
+    // const [activities, setActivities] = useState([])
 
     useEffect(()=>{
         formatActivityObj()
     },[excelData])
-
-    useEffect(()=>{
-        fetch(`/work_weeks/${workWeekId}/activities`).then((r)=>{
-            if (r.ok) {
-                r.json().then((data)=>setActivities(data))
-            } else {
-                r.json().then((err)=>console.log('error',err))
-            }
-        })
-    },[workWeekId])
 
     const readUploadFile = (e) => {
         console.log('here')
@@ -59,28 +52,28 @@ function CostForm({workWeekId}) {
     }
 
     function handleSubmitActivity(obj) {
-        console.log(typeof workWeekId)
-        if (typeof workWeekId == 'number') {
-        fetch(`/work_weeks/${workWeekId}/activities`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }, body: JSON.stringify(obj)
-        })
-            .then(r=>r.json())
-            .then((newActivity)=>{
-                obj.costs.forEach((cost)=>{
-                    handleSubmitCost(newActivity.id, cost)
-                })
+        // console.log(typeof workWeekId)
+        if (workWeek) {
+            fetch(`/work_weeks/${workWeek.id}/activities`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify(obj)
             })
-        } else {console.log('no activ')}
+                .then(r=>r.json())
+                .then((newActivity)=>{
+                    obj.costs.forEach((cost)=>{
+                        handleSubmitCost(newActivity.id, cost)
+                    })
+                })
+        } else {console.log('not a valid workweek')}
 
     }
 
     function handleSubmitTimesheet(e) {
         e.preventDefault()
         
-        if (activities.length > 0) {
+        if (workWeek.activities.length > 0) {
             console.log('data already exists')
         } else {
             activityObj.forEach((activity)=>handleSubmitActivity(activity))

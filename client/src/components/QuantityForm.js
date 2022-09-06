@@ -7,7 +7,7 @@ function QuantityForm({costCode, workWeek}) {
     const [activities, setActivities] = useState([])
     const [submittedStatus, setSubmittedStatus] = useState(false)
 
-    console.log(workWeek)
+    // console.log(workWeek)
     useEffect(()=> {
         setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id==costCode.id).length>0 ? true : false)
     },[workWeek])
@@ -48,9 +48,10 @@ function QuantityForm({costCode, workWeek}) {
         <Form className='m-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Label>{costCode.code}</Form.Label><br></br>
-                <Form.Label>Hours this week: {costCode.last_week_hours}</Form.Label>
+                {/* <Form.Label>Hours this week: {costCode.last_week_hours}</Form.Label> */}
                 <Form.Control value={value} onChange={(e)=>setValue(e.target.value)}/>
-                <Form.Label>remaining quantity: {costCode.budget_quantity - costCode.last_week_quantity}</Form.Label>
+                {/* <Form.Label>remaining quantity: {costCode.budget_quantity - costCode.last_week_quantity}</Form.Label> */}
+                {/* add custom cost code serializer  WorkWeekSerializer to has_many :costs to get custom params*/}
                 <Button type='submit' >Submit</Button>
                 {activityElems}
             </Form.Group>

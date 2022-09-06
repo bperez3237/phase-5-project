@@ -27,7 +27,6 @@ class UsersController < ApplicationController
 
     def auto_login
         user = User.find(session[:user_id])
-        # byebug
         if user
             render json: user
         else

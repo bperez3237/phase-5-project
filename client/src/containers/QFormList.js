@@ -1,15 +1,16 @@
 import QuantityForm from '../components/QuantityForm'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 // import {Button, Form} from 'react-bootstrap'
 import useFetch from '../hooks/useFetch'
+import {WorkWeekContext} from '../context/WorkWeekContext'
 
 function QFormList({workWeekId}) {
+    const {workWeek} = useContext(WorkWeekContext)
+    // const {data, loading, error} = useFetch(`/work_weeks/${workWeek?.id}`)
 
-    // const {data, loading, error} = useFetch(`/report/${workWeekId}`)
-    const {data, loading, error} = useFetch(`/work_weeks/${workWeekId}`)
+    // console.log(workWeek, data)
 
-
-    const costCodeElems = loading ? <h1>loading...</h1> : data.cost_codes?.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} workWeek={data}/>)
+    const costCodeElems = workWeek.cost_codes?.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} workWeek={workWeek}/>)
 
     
 

@@ -1,20 +1,23 @@
 
 import React from 'react'
+import useFetch from '../hooks/useFetch'
 import {Col, Container, Row} from 'react-bootstrap'
 
-function CodeReport({costCode}) {
-    const activityElems = costCode.activities.map((activity)=><p key={activity.id}>{activity.description} - {activity.total_hours}</p>)
+function CodeReport({costCodeId, workWeekId}) {
+    const {data, loading, error} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
+    // console.log(data)
+    const activityElems = data?.activities?.map((activity)=><p key={activity.id}>{activity.description} - {activity.total_hours}</p>)
 
-    const budgetprodrate = Math.round(100*(costCode.budget_quantity/costCode.budget_hours))/100
+    const budgetprodrate = Math.round(100*(data?.budget_quantity/data?.budget_hours))/100
 
     // value = ((actual_quantity/budget_rate)-actual hours)*labor_rate
-    const estimatedValue = ((costCode.last_week_quantity/budgetprodrate) - costCode.last_week_hours)*(costCode.last_week_cost/costCode.last_week_hours)
+    const estimatedValue = ((data?.last_week_quantity/budgetprodrate) - data?.last_week_hours)*(data?.last_week_cost/data?.last_week_hours)
     const clr = estimatedValue >= 0 ? 'green' : 'red'
     return(
         <Container className='m-3' style={{border:'1px', borderStyle:'solid'}}>
             <Row>
                 <Col>
-                    <h1>{costCode.code} - {costCode.name}</h1>
+                    <h1>{data?.code} - {data?.name}</h1>
                 </Col>
                 <Col>
                     <h3 style={{color:clr}}>Estimated Value: {Math.round(estimatedValue*100)/100} </h3>
@@ -22,14 +25,14 @@ function CodeReport({costCode}) {
             </Row>
             <Row>
             <Col>
-            <p>Last Week Hours: {costCode.last_week_hours}</p>
-            <p>Last Week Quantity: {costCode.last_week_quantity}</p>
-            <p>Last Week Production Rate: {Math.round(100*(costCode.last_week_quantity/costCode.last_week_hours))/100}</p>
+            <p>Last Week Hours: {data?.last_week_hours}</p>
+            <p>Last Week Quantity: {data?.last_week_quantity}</p>
+            <p>Last Week Production Rate: {Math.round(100*(data?.last_week_quantity/data?.last_week_hours))/100}</p>
             </Col>
             <Col>
-            <p>Budget Hours: {costCode.budget_hours}</p>
-            <p>Budget Quantity: {costCode.budget_quantity}</p>
-            <p>Budget Production Rate: {Math.round(100*(costCode.budget_quantity/costCode.budget_hours))/100}</p>
+            <p>Budget Hours: {data?.budget_hours}</p>
+            <p>Budget Quantity: {data?.budget_quantity}</p>
+            <p>Budget Production Rate: {Math.round(100*(data?.budget_quantity/data?.budget_hours))/100}</p>
             </Col>
             
             

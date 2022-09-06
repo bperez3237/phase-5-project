@@ -3,7 +3,6 @@ import {Card} from 'react-bootstrap'
 
 function ProjectInfo() {
     const {data, loading} = useFetch('/project_summary')
-    console.log(data)
 
     return(
         <Card>

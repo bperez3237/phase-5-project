@@ -6,8 +6,8 @@ class WorkWeeksController < ApplicationController
     end
     
     def show
-        work_week = WorkWeek.find(params[:id])
-        render json: work_week
+        @work_week = WorkWeek.find(params[:id])
+        render json: @work_week
     end
 
     def get_id
@@ -16,6 +16,15 @@ class WorkWeeksController < ApplicationController
             render json: work_week
         else
             render json: {error: work_week.errors}, status: :not_found
+        end
+    end
+
+    def auto_select
+        work_week = WorkWeek.find(session[:work_week_id])
+        if work_week
+            render json: work_week
+        else
+            render json: { error: 'Week not found'}, status: :unauthorized
         end
     end
 end

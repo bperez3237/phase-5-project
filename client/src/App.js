@@ -8,12 +8,13 @@ import Home from './pages/Home';
 import Upload from './pages/Upload';
 import ViewCodes from './pages/ViewCodes';
 import ReportPage from './pages/ReportPage'
-import { ActivitiesContext } from './context/ActivitiesContext';
+// import { ActivitiesContext } from './context/ActivitiesContext';
+import { WorkWeekContext } from './context/WorkWeekContext'
 
 
 function App() {
   const [user,setUser] = useState(null)
-  const [activities, setActivities] = useState([])
+  const [workWeek, setWorkWeek] = useState([])
 
   useEffect(() => {
     // auto-login
@@ -24,25 +25,34 @@ function App() {
         r.json().then((err) => console.log('error',err));
       }
     });
+    
+    fetch("/week").then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setWorkWeek(data));
+      } else {
+        r.json().then((err) => console.log('error',err));
+      }
+    });
   }, []);
 
+  console.log(workWeek)
   if (!user) {
     return (
       <LoginPage setUser={setUser}/>
     )
   } else {return (
     <BrowserRouter>
-    <Navigator setUser={setUser} />
     <UserContext.Provider value={{user,setUser}}>
-      <ActivitiesContext.Provider value={{activities, setActivities}}>
+      <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
+      <Navigator />
       <Switch>
-        <Route path='/upload_review_activities'><Upload /></Route>
-        <Route path='/enter'><EnterQuantities /></Route>
-        <Route path='/report'><ReportPage /></Route>
+        <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
+        <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>
+        <Route path='/report'><ReportPage workWeek={workWeek} /></Route>
         <Route path='/view'><ViewCodes /></Route>
-        <Route path='/'><Home/></Route>
+        <Route path='/'><Home workWeek={workWeek} setWorkWeek={setWorkWeek}/></Route>
       </Switch>
-      </ActivitiesContext.Provider>
+      </WorkWeekContext.Provider>
     </UserContext.Provider>
     </BrowserRouter>
   );

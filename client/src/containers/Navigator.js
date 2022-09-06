@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Button, Container, Nav,  Navbar} from 'react-bootstrap'
+import {UserContext} from '../context/UserContext'
 
-function Navigator({setUser}) {
+function Navigator() {
+  const {setUser} = useContext(UserContext)
+
     function handleLogoutClick() {
         fetch("/logout", { method: "DELETE" }).then((r) => {
           if (r.ok) {

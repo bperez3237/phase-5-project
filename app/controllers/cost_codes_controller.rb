@@ -11,8 +11,12 @@ class CostCodesController < ApplicationController
     end
 
     def show
-        cost_code = CostCode.find(params[:id])
-        render json: cost_code
+        @cost_code = CostCode.find(params[:id])
+        if params[:work_week_id]
+            render json: @cost_code, serializer: WorkWeekCostCodeSerializerSerializer, work_week_id: params[:work_week_id]
+        else
+            render json: @cost_code
+        end
     end
 
     def update
