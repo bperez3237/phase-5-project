@@ -17,7 +17,11 @@ class UnitsController < ApplicationController
 
     def create
         unit = Unit.create(quantity: params[:quantity], cost_code_id: params[:cost_code_id],work_week_id: params[:work_week_id])
-        render json: unit, status: :created
+        if unit.valid?
+            render json: unit, status: :created
+        else
+            render json: {error: unit.errors}, status: :unprocessable_entity
+        end
     end
 
     def report_units
