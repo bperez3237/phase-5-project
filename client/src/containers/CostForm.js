@@ -15,7 +15,6 @@ function CostForm({activities, setActivities}) {
     },[excelData])
 
     const readUploadFile = (e) => {
-        console.log('here')
         e.preventDefault();
         if (e.target.files) {
             const reader = new FileReader();
@@ -28,6 +27,7 @@ function CostForm({activities, setActivities}) {
                     const worksheet = workbook.Sheets[sheet]
                     allActivities[sheet] = xlsx.utils.sheet_to_json(worksheet)
                 })
+                
                 setExcelData(allActivities)
             };
             reader.readAsArrayBuffer(e.target.files[0]);
