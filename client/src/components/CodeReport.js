@@ -1,11 +1,10 @@
-
 import React from 'react'
 import useFetch from '../hooks/useFetch'
 import {Col, Container, Row} from 'react-bootstrap'
 
 function CodeReport({costCodeId, workWeekId}) {
     const {data, loading, error} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
-    // console.log(data)
+  
     const activityElems = data?.activities?.map((activity)=><p key={activity.id}>{activity.description} - {activity.total_hours}</p>)
 
     const budgetprodrate = Math.round(100*(data?.budget_quantity/data?.budget_hours))/100
@@ -34,8 +33,6 @@ function CodeReport({costCodeId, workWeekId}) {
             <p>Budget Quantity: {data?.budget_quantity}</p>
             <p>Budget Production Rate: {Math.round(100*(data?.budget_quantity/data?.budget_hours))/100}</p>
             </Col>
-            
-            
             </Row>
             <Row>
                 <Col>

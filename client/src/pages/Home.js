@@ -7,15 +7,12 @@ function Home() {
     const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
     const [value, setValue] = useState(workWeek.id)
     const {data, loading} = useFetch('/work_weeks')
-    // handleWeekChange()
-    // setWorkWeek(data?.find((workWeek)=>workWeek.id==value))
-    
+
     const optionsElements = data?.map((workWeek)=><option key={workWeek.id} value={workWeek.id}>{workWeek.end_date}</option>)
 
     function handleWeekChange(e) {
         setValue(e.target.value)
         console.log('here')
-        // setWorkWeek(data.find((workWeek)=>workWeek.id==value))
         fetch(`/select_week`,{
             method: "POST",
             headers: {
@@ -29,10 +26,7 @@ function Home() {
             }
         })
     }
-    // console.log(thisWorkWeek)
-    console.log(workWeek)
-    if (loading) return <h1>loading...</h1>
-    else {
+
     
     return(
         <>
@@ -57,7 +51,7 @@ function Home() {
             </h2>
         </>
         
-    )}
+    )
 }
 
 export default Home;

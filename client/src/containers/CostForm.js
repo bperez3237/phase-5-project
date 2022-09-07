@@ -10,7 +10,6 @@ function CostForm() {
     const [activityObj,setActivityObj] = useState([])
     const [excelData,setExcelData] = useState('')
     const [costs, setCosts] = useState([])
-    // const [activities, setActivities] = useState([])
 
     useEffect(()=>{
         formatActivityObj()

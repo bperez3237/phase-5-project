@@ -28,8 +28,7 @@ function LoginForm({setUser}) {
                 }
             })
     }
-    // console.log('user',JSON.stringify(user))
-
+ 
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group>

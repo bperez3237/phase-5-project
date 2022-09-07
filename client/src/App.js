@@ -35,7 +35,6 @@ function App() {
     });
   }, []);
 
-  console.log(workWeek)
   if (!user) {
     return (
       <LoginPage setUser={setUser}/>

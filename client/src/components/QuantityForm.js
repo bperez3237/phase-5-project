@@ -4,10 +4,8 @@ import useFetch from '../hooks/useFetch'
 
 function QuantityForm({costCode, workWeek}) {
     const [value, setValue] = useState(0)
-    const [activities, setActivities] = useState([])
     const [submittedStatus, setSubmittedStatus] = useState(false)
 
-    // console.log(workWeek)
     useEffect(()=> {
         setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id==costCode.id).length>0 ? true : false)
     },[workWeek])
@@ -33,8 +31,6 @@ function QuantityForm({costCode, workWeek}) {
             }
         })
     }
-
-
 
     const activityElems = workWeek.activities?.filter((activity)=>activity.cost_code_id==costCode.id).map((activity)=>{
         return (<div key={activity.id}>
