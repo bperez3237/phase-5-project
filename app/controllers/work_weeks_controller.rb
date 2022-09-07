@@ -1,7 +1,7 @@
 class WorkWeeksController < ApplicationController
 
     def index
-        work_weeks = WorkWeek.all 
+        work_weeks = WorkWeek.all.sort_by(&:end_date)
         render json: work_weeks
     end
     
