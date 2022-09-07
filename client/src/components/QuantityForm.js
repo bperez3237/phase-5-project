@@ -1,14 +1,13 @@
 import {Button, Form } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
-import useFetch from '../hooks/useFetch'
 
 function QuantityForm({costCode, workWeek}) {
     const [value, setValue] = useState(0)
     const [submittedStatus, setSubmittedStatus] = useState(false)
 
     useEffect(()=> {
-        setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id==costCode.id).length>0 ? true : false)
-    },[workWeek])
+        setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id===costCode.id).length>0 ? true : false)
+    },[workWeek, costCode])
     
     function handleSubmit(e) {
         e.preventDefault()
@@ -32,7 +31,7 @@ function QuantityForm({costCode, workWeek}) {
         })
     }
 
-    const activityElems = workWeek.activities?.filter((activity)=>activity.cost_code_id==costCode.id).map((activity)=>{
+    const activityElems = workWeek.activities?.filter((activity)=>activity.cost_code_id===costCode.id).map((activity)=>{
         return (<div key={activity.id}>
             <p>{activity.description} - {activity.total_hours} hours</p>
         </div>)

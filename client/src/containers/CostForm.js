@@ -51,7 +51,6 @@ function CostForm() {
     }
 
     function handleSubmitActivity(obj) {
-        // console.log(typeof workWeekId)
         if (workWeek) {
             fetch(`/work_weeks/${workWeek.id}/activities`, {
                 method: 'POST',

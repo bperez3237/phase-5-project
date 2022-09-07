@@ -6,7 +6,7 @@ import { WorkWeekContext} from '../context/WorkWeekContext'
 function Home() {
     const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
     const [value, setValue] = useState(workWeek.id)
-    const {data, loading} = useFetch('/work_weeks')
+    const {data} = useFetch('/work_weeks')
 
     const optionsElements = data?.map((workWeek)=><option key={workWeek.id} value={workWeek.id}>{workWeek.end_date}</option>)
 

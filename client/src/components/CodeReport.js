@@ -3,7 +3,7 @@ import useFetch from '../hooks/useFetch'
 import {Col, Container, Row} from 'react-bootstrap'
 
 function CodeReport({costCodeId, workWeekId}) {
-    const {data, loading, error} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
+    const {data} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
   
     const activityElems = data?.activities?.map((activity)=><p key={activity.id}>{activity.description} - {activity.total_hours}</p>)
 

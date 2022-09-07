@@ -13,7 +13,8 @@ function CostCodesList({value}) {
     },[])
     
     const codeElems = costCodes.filter((costCode)=>{
-        if (costCode.name.includes(value) || costCode.code.includes(value)) return true
+        if (costCode.name.includes(value) || costCode.code.includes(value)) {return true} 
+        else { return false}
     }).map((costCode)=><CostCode key={costCode.id} costCode={costCode} />)
 
     return(

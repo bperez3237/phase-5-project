@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import {Form, Container} from 'react-bootstrap'
 
 function ViewSearch({ value, setValue}) {

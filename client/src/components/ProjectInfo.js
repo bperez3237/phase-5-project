@@ -3,7 +3,7 @@ import React from "react";
 import {Card} from 'react-bootstrap'
 
 function ProjectInfo() {
-    const {data, loading} = useFetch('/project_summary')
+    const {data} = useFetch('/project_summary')
 
     return(
         <Card>

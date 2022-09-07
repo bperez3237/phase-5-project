@@ -1,6 +1,4 @@
-import { useContext } from 'react'
 import {Button} from 'react-bootstrap'
-import {ActivitiesContext} from '../context/ActivitiesContext'
 
 function Activity({activity, activities, setActivities}) {
 

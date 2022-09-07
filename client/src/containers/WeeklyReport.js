@@ -1,6 +1,5 @@
 import CodeReport from "../components/CodeReport";
-import {useState, useEffect, useContext} from 'react'
-import useFetch from "../hooks/useFetch";
+import { useContext} from 'react'
 import { WorkWeekContext } from "../context/WorkWeekContext";
 
 function WeeklyReport(){

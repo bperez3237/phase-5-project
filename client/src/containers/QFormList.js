@@ -1,7 +1,6 @@
 import QuantityForm from '../components/QuantityForm'
-import { useState, useEffect, useContext } from 'react'
-// import {Button, Form} from 'react-bootstrap'
-import useFetch from '../hooks/useFetch'
+import {  useContext } from 'react'
+// import {Button, Form} from 'react-bootstrap'\
 import {WorkWeekContext} from '../context/WorkWeekContext'
 
 function QFormList() {
