@@ -120,7 +120,7 @@ function CostForm({activities, setActivities}) {
 
 
     return (
-        <div>
+        <>
             <h1>Upload Timesheet</h1>
             <Form>
                 <Form.Group >
@@ -130,7 +130,7 @@ function CostForm({activities, setActivities}) {
                     <Button onClick={handleSubmitTimesheet}>Upload</Button>
                 </Form.Group>
             </Form>
-        </div>
+        </>
         
     )
 }

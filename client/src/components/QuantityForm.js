@@ -1,4 +1,4 @@
-import {Button, Form } from 'react-bootstrap'
+import {Button, Form, ListGroup, Accordion } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 
 function QuantityForm({costCode, workWeek}) {
@@ -32,15 +32,13 @@ function QuantityForm({costCode, workWeek}) {
     }
 
     const activityElems = workWeek.activities?.filter((activity)=>activity.cost_code_id===costCode.id).map((activity)=>{
-        return (<div key={activity.id}>
-            <p>{activity.description} - {activity.total_hours} hours</p>
-        </div>)
+        return (<ListGroup.Item key={activity.id}>{activity.description} - {activity.total_hours} hours</ListGroup.Item>)
     })
     
 
     if (submittedStatus) {return <h2>{costCode.code} is submitted. </h2>}
     else {return (
-        <Form className='m-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
+        <Form className='m-3 p-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Label>{costCode.code}</Form.Label><br></br>
                 {/* <Form.Label>Hours this week: {costCode.last_week_hours}</Form.Label> */}
@@ -48,7 +46,12 @@ function QuantityForm({costCode, workWeek}) {
                 {/* <Form.Label>remaining quantity: {costCode.budget_quantity - costCode.last_week_quantity}</Form.Label> */}
                 {/* add custom cost code serializer  WorkWeekSerializer to has_many :costs to get custom params*/}
                 <Button type='submit' >Submit</Button>
-                {activityElems}
+                <Accordion defaultActiveKey={["0"]}>
+                    <Accordion.Item eventKey='1'>
+                        <Accordion.Header>Activities:</Accordion.Header>
+                        <Accordion.Body><ListGroup>{activityElems}</ListGroup></Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
             </Form.Group>
             
         </Form>
