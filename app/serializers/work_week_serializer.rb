@@ -9,5 +9,7 @@ class WorkWeekSerializer < ActiveModel::Serializer
   def cost_codes
     self.object.cost_codes.distinct
   end
+
+ 
 end
 

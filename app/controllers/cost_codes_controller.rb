@@ -2,10 +2,10 @@ class CostCodesController < ApplicationController
 
     def index
         if params[:work_week_id]
-            @cost_codes = WorkWeek.find(params[:work_week_id]).cost_codes.distinct
+            @cost_codes = WorkWeek.find(params[:work_week_id]).cost_codes.distinct.sort_by(&:code)
             render json: @cost_codes, each_serializer: WorkWeekCostCodeSerializerSerializer, work_week_id: params[:work_week_id]
         else
-            @cost_codes = CostCode.all
+            @cost_codes = CostCode.all.sort_by(&:code)
             render json: @cost_codes
         end
     end

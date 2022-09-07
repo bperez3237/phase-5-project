@@ -2,14 +2,13 @@ import React from 'react'
 import {useState, useEffect, useContext} from 'react'
 import {Button, Form} from 'react-bootstrap'
 import { WorkWeekContext } from '../context/WorkWeekContext'
-
 var xlsx = require("xlsx")
 
-function CostForm() {
+function CostForm({activities, setActivities}) {
     const {workWeek} = useContext(WorkWeekContext)
     const [activityObj,setActivityObj] = useState([])
     const [excelData,setExcelData] = useState('')
-    const [costs, setCosts] = useState([])
+    // const [costs, setCosts] = useState([])
 
     useEffect(()=>{
         formatActivityObj()
@@ -46,7 +45,7 @@ function CostForm() {
         })
             .then(r=>r.json())
             .then(data=>{
-                setCosts([...costs,data])
+                // setCosts([...costs,data])
                 console.log(data)})
     }
 

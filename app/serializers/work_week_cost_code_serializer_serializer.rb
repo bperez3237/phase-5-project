@@ -6,7 +6,6 @@ class WorkWeekCostCodeSerializerSerializer < ActiveModel::Serializer
   has_many :units
 
 
-
   def units
     self.object.units.where(work_week_id: @instance_options[:work_week_id])
   end
