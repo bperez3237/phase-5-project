@@ -20,7 +20,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
             }, body: JSON.stringify(params)
         }).then((r)=>{
             if (r.ok) {
-                r.json().then((unit)=>{
+                r.json().then(()=>{
                     setSubmittedStatus(true)
                     setValue(0)
                 })

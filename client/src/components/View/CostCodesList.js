@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import CostCode from '../components/CostCode'
+import CostCode from './CostCode'
 import {Container} from 'react-bootstrap'
 
 function CostCodesList({value}) {

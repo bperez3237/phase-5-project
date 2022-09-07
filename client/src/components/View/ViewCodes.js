@@ -1,5 +1,5 @@
-import CostCodesList from "../containers/CostCodesList";
-import ViewSearch from "../components/ViewSearch";
+import CostCodesList from "./CostCodesList";
+import ViewSearch from "./ViewSearch";
 import { useState } from "react";
 import {Container} from 'react-bootstrap'
 

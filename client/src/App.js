@@ -6,7 +6,7 @@ import EnterQuantities from './pages/EnterQuantities';
 import LoginPage from './pages/LoginPage';
 import Home from './pages/Home';
 import Upload from './pages/Upload';
-import ViewCodes from './pages/ViewCodes';
+import ViewCodes from './components/View/ViewCodes';
 import ReportPage from './pages/ReportPage'
 // import { ActivitiesContext } from './context/ActivitiesContext';
 import { WorkWeekContext } from './context/WorkWeekContext'
