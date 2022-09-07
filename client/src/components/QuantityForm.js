@@ -23,7 +23,6 @@ function QuantityForm({costCode, workWeek}) {
                 r.json().then((unit)=>{
                     setSubmittedStatus(true)
                     setValue(0)
-                    console.log(unit)
                 })
             } else {
                 r.json().then((err)=>console.log('error',err))

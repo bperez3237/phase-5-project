@@ -1,18 +1,18 @@
 import useFetch from "../hooks/useFetch"
 import {useState} from 'react'
-import {Dropdown} from 'react-bootstrap'
+import {DropdownButton, Dropdown} from 'react-bootstrap'
 
 function WeekSelect({workWeek, setWorkWeek}) {
     const [value, setValue] = useState(workWeek.id)    
     const {data} = useFetch('/work_weeks')
 
     function handleWeekChange(e) {
-        setValue(e.target.value)
+        setValue(e)
         fetch(`/select_week`,{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify({work_week_id: e.target.value})
+            }, body: JSON.stringify({work_week_id: e})
         }).then(r=>{
             if (r.ok) {
                 r.json().then((data)=>setWorkWeek(data))
@@ -22,13 +22,13 @@ function WeekSelect({workWeek, setWorkWeek}) {
         })
     }
 
-    const optionsElements = data?.map((workWeek)=><option key={workWeek.id} value={workWeek.id}>{workWeek.end_date}</option>)
+    const optionsElements = data?.map((workWeek)=><Dropdown.Item key={workWeek.id} eventKey={workWeek.id}>{workWeek.end_date}</Dropdown.Item>)
 
 
     return(
-        <select onChange={handleWeekChange} value={value}>
+        <DropdownButton onSelect={handleWeekChange} value={value} title="Select Work Week:">
             {optionsElements}
-        </select>
+        </DropdownButton>
     )
 }
 

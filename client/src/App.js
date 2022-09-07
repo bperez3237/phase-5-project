@@ -43,7 +43,7 @@ function App() {
     <BrowserRouter>
     <UserContext.Provider value={{user,setUser}}>
       <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
-      <Navigator />
+      <Navigator workWeek={workWeek?.end_date} />
       <Switch>
         <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
         <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>

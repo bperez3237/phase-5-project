@@ -36,10 +36,9 @@ function CodeReport({costCodeId, workWeekId}) {
             </Row>
             <Row>
                 <Col>
-                <p>Activities:</p>
-                {activityElems}
+                {/* <p>Activities:</p>
+                {activityElems} */}
                 </Col>
-                
             </Row>
         </Container>
     )

@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {Button, Container, Nav,  Navbar} from 'react-bootstrap'
 import {UserContext} from '../context/UserContext'
 
-function Navigator() {
+function Navigator({workWeek}) {
   const {setUser} = useContext(UserContext)
 
     function handleLogoutClick() {
@@ -16,7 +16,7 @@ function Navigator() {
     return (
         <Navbar bg='dark' variant='dark'>
           <Container>
-            <Navbar.Brand href="/">Look Back</Navbar.Brand>
+            <Navbar.Brand href="/">Work Week {workWeek}</Navbar.Brand>
             <Nav className='me-auto'>
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/view">View Codes</Nav.Link>

@@ -1,6 +1,5 @@
 import QuantityForm from '../components/QuantityForm'
 import {  useContext } from 'react'
-// import {Button, Form} from 'react-bootstrap'\
 import {WorkWeekContext} from '../context/WorkWeekContext'
 
 function QFormList() {
