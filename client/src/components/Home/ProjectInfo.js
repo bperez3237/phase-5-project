@@ -1,4 +1,4 @@
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 import React from "react";
 import {Card} from 'react-bootstrap'
 

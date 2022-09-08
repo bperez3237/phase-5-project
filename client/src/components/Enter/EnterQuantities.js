@@ -1,4 +1,4 @@
-import QFormList from '../containers/QFormList'
+import QFormList from './QFormList'
 import {Container, Row, Col} from 'react-bootstrap'
 
 function EnterQuantities() {

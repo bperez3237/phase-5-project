@@ -1,7 +1,7 @@
 import React from 'react'
-import useFetch from '../hooks/useFetch'
+import useFetch from '../../hooks/useFetch'
 import {Col, Container, Row} from 'react-bootstrap'
-import {formatCurrency} from '../services/Format/FormatNumber'
+import {formatCurrency} from '../../services/Format/FormatNumber'
 
 
 function CodeReport({costCodeId, workWeekId}) {

@@ -1,4 +1,4 @@
-import useFetch from "../hooks/useFetch"
+import useFetch from "../../hooks/useFetch"
 import {useState} from 'react'
 import {DropdownButton, Dropdown} from 'react-bootstrap'
 

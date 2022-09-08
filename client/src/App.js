@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { UserContext } from './context/UserContext';
-import Navigator from './containers/Navigator';
-import EnterQuantities from './pages/EnterQuantities';
-import LoginPage from './pages/LoginPage';
-import Home from './pages/Home';
-import Upload from './pages/Upload';
+import Navigator from './components/Navigator';
+import EnterQuantities from './components/Enter/EnterQuantities';
+import LoginPage from './components/Login/LoginPage';
+import Home from './components/Home/Home';
+import Upload from './components/Upload/Upload';
 import ViewCodes from './components/View/ViewCodes';
-import ReportPage from './pages/ReportPage'
+import ReportPage from './components/Report/ReportPage'
 // import { ActivitiesContext } from './context/ActivitiesContext';
 import { WorkWeekContext } from './context/WorkWeekContext'
 

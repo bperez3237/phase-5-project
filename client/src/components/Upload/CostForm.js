@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect, useContext} from 'react'
 import {Button, Form} from 'react-bootstrap'
-import { WorkWeekContext } from '../context/WorkWeekContext'
+import { WorkWeekContext } from '../../context/WorkWeekContext'
 var xlsx = require("xlsx")
 
 function CostForm({activities, setActivities}) {

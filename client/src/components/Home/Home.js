@@ -1,8 +1,8 @@
 import {useContext} from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
-import ProjectInfo from "../components/ProjectInfo";
-import { WorkWeekContext} from '../context/WorkWeekContext'
-import WeekSelect from "../components/WeekSelect";
+import ProjectInfo from "./ProjectInfo";
+import { WorkWeekContext} from '../../context/WorkWeekContext'
+import WeekSelect from "./WeekSelect";
 
 function Home() {
     const {workWeek, setWorkWeek} = useContext(WorkWeekContext)

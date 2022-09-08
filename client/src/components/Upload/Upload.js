@@ -1,9 +1,9 @@
 import React, {useState, useContext} from "react";
-import CostForm from "../containers/CostForm";
-import ActivityList from "../containers/ActivityList";
+import CostForm from "./CostForm";
+import ActivityList from "./ActivityList";
 import {Container} from 'react-bootstrap'
-import {WorkWeekContext} from '../context/WorkWeekContext'
-import useFetch from "../hooks/useFetch";
+import {WorkWeekContext} from '../../context/WorkWeekContext'
+import useFetch from "../../hooks/useFetch";
 
 
 

@@ -1,6 +1,6 @@
-import CodeReport from "../components/CodeReport";
+import CodeReport from "./CodeReport";
 import { useContext} from 'react'
-import { WorkWeekContext } from "../context/WorkWeekContext";
+import { WorkWeekContext } from "../../context/WorkWeekContext";
 
 function WeeklyReport(){
     const {workWeek} = useContext(WorkWeekContext)

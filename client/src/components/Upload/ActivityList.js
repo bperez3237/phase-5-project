@@ -1,7 +1,7 @@
-import Activity from "../components/Activity";
+import Activity from "./Activity";
 import { useContext} from 'react'
-import useFetch from '../hooks/useFetch'
-import {WorkWeekContext} from '../context/WorkWeekContext'
+import useFetch from '../../hooks/useFetch'
+import {WorkWeekContext} from '../../context/WorkWeekContext'
 
 function ActivityList({activities, setActivities}) {
     // const {workWeek} = useContext(WorkWeekContext)

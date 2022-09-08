@@ -1,6 +1,6 @@
-import QuantityForm from '../components/QuantityForm'
+import QuantityForm from './QuantityForm'
 import { useContext } from 'react'
-import {WorkWeekContext} from '../context/WorkWeekContext'
+import {WorkWeekContext} from '../../context/WorkWeekContext'
 
 function QFormList() {
     const {workWeek} = useContext(WorkWeekContext)
