@@ -20,7 +20,7 @@ function ViewCodes() {
             <SelectList path={path} setPath={setPath} />
             {path==='/cost_codes' ? (<CostCodesList value={value} costCodes={data} />) : 
             ( path==='/activities' ? (<ActivityList value={value} activities={data}/>) : 
-            (<WorkWeekList />))}
+            (<WorkWeekList value={value} workWeeks={data} />))}
         </Container>
     )
 }
