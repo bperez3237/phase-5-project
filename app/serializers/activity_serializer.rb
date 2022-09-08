@@ -1,8 +1,8 @@
 class ActivitySerializer < ActiveModel::Serializer
   attributes :id, :description, :cost_code_id, :work_week_id, :costs, :cost_code, :date, :approved, :total_hours, :total_cost
 
-  belongs_to :cost_code
-  belongs_to :work_week
+  belongs_to :cost_code, serializer: CostCodeShortSerializer
+  belongs_to :work_week, serializer: WorkWeekShortSerializer
   has_many :costs
 
 

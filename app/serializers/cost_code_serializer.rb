@@ -1,5 +1,5 @@
 class CostCodeSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :code, :budget_hours, :budget_quantity, :unit_of_measure, :name, :units, :activities, :current_hours, :current_quantity, :current_cost
+  attributes :id, :user_id, :code, :budget_hours, :budget_quantity, :unit_of_measure, :name, :units, :activities, :current_hours, :current_quantity, :current_cost, :production_rate
 
   belongs_to :user
   has_many :activities
@@ -16,4 +16,5 @@ class CostCodeSerializer < ActiveModel::Serializer
   def current_cost
     self.object.total_cost
   end
+
 end

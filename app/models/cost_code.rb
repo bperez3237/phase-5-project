@@ -25,6 +25,24 @@ class CostCode < ApplicationRecord
         sum
     end
 
+
+    def production_rate(work_week_id=nil)
+        if work_week_id != nil
+            self.quantity(work_week_id)/self.hours(work_week_id)
+        else
+            self.budget_quantity/self.budget_hours
+        end
+    end
+
+
+    def ave_labor_rate(work_week_id=nil)
+        if work_week_id != nil
+            self.total_cost(work_week_id)/self.hours(work_week_id)
+        else
+            self.total_cost/self.hours
+        end
+    end
+
     def total_cost(work_week_id=nil)
         if work_week_id != nil
             sum = self.activities.where(work_week_id: work_week_id).sum {|activity| activity.total_cost}
@@ -48,5 +66,6 @@ class CostCode < ApplicationRecord
         sum = CostCode.all.sum {|cost_code| cost_code.budget_hours}
         sum
     end
+
 
 end

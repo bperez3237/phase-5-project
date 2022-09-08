@@ -1,5 +1,5 @@
 class WorkWeekCostCodeSerializerSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :code, :budget_hours, :budget_quantity, :unit_of_measure, :name, :units, :activities, :last_week_hours, :last_week_quantity, :last_week_cost
+  attributes :id, :user_id, :code, :budget_hours, :budget_quantity, :unit_of_measure, :name, :units, :activities, :last_week_hours, :last_week_quantity, :last_week_cost, :ave_labor_rate, :production_rate
 
 
   has_many :activities
@@ -25,4 +25,14 @@ class WorkWeekCostCodeSerializerSerializer < ActiveModel::Serializer
   def last_week_cost
     self.object.total_cost(@instance_options[:work_week_id])
   end
+
+  def ave_labor_rate
+    if last_week_hours != 0
+      last_week_cost/last_week_hours
+    else 
+      0
+    end
+  end
+
+
 end
