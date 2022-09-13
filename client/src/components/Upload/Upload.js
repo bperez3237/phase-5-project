@@ -1,7 +1,7 @@
-import React, {useState, useContext} from "react";
+import React, {useContext} from "react";
 import CostForm from "./CostForm";
 import ActivityList from "./ActivityList";
-import {Container} from 'react-bootstrap'
+import {Container, Row, Col} from 'react-bootstrap'
 import {WorkWeekContext} from '../../context/WorkWeekContext'
 import useFetch from "../../hooks/useFetch";
 
@@ -15,7 +15,10 @@ function Upload() {
 
     return (
         <Container>
-            <CostForm activities={data} setActivities={setData}/>
+            <Row>
+                <Col><CostForm activities={data} setActivities={setData}/></Col>
+                <Col><ActivityList activities={data} setActivities={setData} /></Col>
+            </Row>
             <ActivityList activities={data} setActivities={setData} />
         </Container>
     )

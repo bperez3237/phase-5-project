@@ -1,8 +1,5 @@
 import React from 'react'
-import {useState, useEffect} from 'react'
 import Activity from './Activity'
-import {Container, ButtonGroup, ToggleButton, Button } from 'react-bootstrap'
-import useFetch from '../../hooks/useFetch'
 
 function ActivityList({value, activities}) {
    
