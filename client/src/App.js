@@ -6,10 +6,9 @@ import EnterQuantities from './components/Enter/EnterQuantities';
 import LoginPage from './components/Login/LoginPage';
 import Home from './components/Home/Home';
 import Upload from './components/Upload/Upload';
-import ViewCodes from './components/View/ViewCodes';
 import ReportPage from './components/Report/ReportPage'
-// import { ActivitiesContext } from './context/ActivitiesContext';
 import { WorkWeekContext } from './context/WorkWeekContext'
+import ViewPage from './components/View/ViewPage';
 
 
 function App() {
@@ -48,7 +47,7 @@ function App() {
         <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
         <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>
         <Route path='/report'><ReportPage workWeek={workWeek} /></Route>
-        <Route path='/view'><ViewCodes /></Route>
+        <Route path='/view'><ViewPage /></Route>
         <Route path='/'><Home workWeek={workWeek} setWorkWeek={setWorkWeek}/></Route>
       </Switch>
       </WorkWeekContext.Provider>
