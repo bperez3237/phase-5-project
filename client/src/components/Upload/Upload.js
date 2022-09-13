@@ -9,7 +9,6 @@ import useFetch from "../../hooks/useFetch";
 
 function Upload() {
     const {workWeek} = useContext(WorkWeekContext)
-    // const [activities, setActivities] = useState([])
     const {data, setData, loading} = useFetch(`/work_weeks/${workWeek.id}/activities`)
 
 
@@ -19,7 +18,6 @@ function Upload() {
                 <Col><CostForm activities={data} setActivities={setData}/></Col>
                 <Col><ActivityList activities={data} setActivities={setData} /></Col>
             </Row>
-            <ActivityList activities={data} setActivities={setData} />
         </Container>
     )
 }
