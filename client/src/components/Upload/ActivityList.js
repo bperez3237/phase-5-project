@@ -1,11 +1,10 @@
 import Activity from "./Activity";
 import { useContext} from 'react'
 import useFetch from '../../hooks/useFetch'
-import {WorkWeekContext} from '../../context/WorkWeekContext'
+import { ActivitiesContext } from "./context/ActivitiesContext";
 
-function ActivityList({activities, setActivities}) {
-    // const {workWeek} = useContext(WorkWeekContext)
-    // const {data, setData, loading} = useFetch(`/work_weeks/${workWeek.id}/activities`)
+function ActivityList() {
+    const {activities, setActivities} = useContext(ActivitiesContext)
     
     const activityElems = activities?.map((activity)=>{
         if (activity.approved === false) {

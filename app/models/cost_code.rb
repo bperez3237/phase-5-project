@@ -36,7 +36,7 @@ class CostCode < ApplicationRecord
 
 
     def ave_labor_rate(work_week_id=nil)
-        if work_week_id != nil
+        if work_week_id != nil && self.hours(work_week_id) != 0
             self.total_cost(work_week_id)/self.hours(work_week_id)
         else
             self.total_cost/self.hours

@@ -2,33 +2,30 @@ import React from 'react'
 import {useState, useEffect, useContext} from 'react'
 import {Button, Container, Form} from 'react-bootstrap'
 import { WorkWeekContext } from '../../context/WorkWeekContext'
+import {formatActivityObj} from './format/formatUpload'
 var xlsx = require("xlsx")
 
 function CostForm({activities, setActivities}) {
     const {workWeek} = useContext(WorkWeekContext)
     const [activityObj,setActivityObj] = useState([])
-    const [excelData,setExcelData] = useState('')
-    // const [costs, setCosts] = useState([])
-
-    useEffect(()=>{
-        formatActivityObj()
-    },[excelData])
 
     const readUploadFile = (e) => {
         e.preventDefault();
+        var allActivities = {}
+    
         if (e.target.files) {
             const reader = new FileReader();
+    
             reader.onload = (e) => {
                 const data = e.target.result;
                 const workbook = xlsx.read(data, { type: "array" });
-                var allActivities = {}
-
+    
                 workbook.SheetNames.forEach((sheet)=>{
                     const worksheet = workbook.Sheets[sheet]
+                    console.log(sheet)
                     allActivities[sheet] = xlsx.utils.sheet_to_json(worksheet)
                 })
-                
-                setExcelData(allActivities)
+                setActivityObj(formatActivityObj(allActivities))
             };
             reader.readAsArrayBuffer(e.target.files[0]);
         }
@@ -77,50 +74,8 @@ function CostForm({activities, setActivities}) {
         }
     }
 
-
-    function dicToArray(dic) {
-        const arr = []
-        for (const activity in dic) {
-            arr.push({
-                "code": dic[activity]['cost_code'],
-                "description": activity,
-                'costs': dic[activity]['costs'],
-                "date": dic[activity]['date'],
-            })
-        }
-        return arr
-    }
-
-
-    function formatActivityObj() {
-
-        const costDic = {}
-        for (const date in excelData) {
-            for (const row in excelData[date]) {
-                // conditional does work if !== is used instead of != because row is a string
-                if (row != 0) {
-                    Object.keys(excelData[date][row]).forEach((key)=>{
-                        if (key!=='Employee') {
-                            if (!costDic[key]) {
-                                costDic[key] = {
-                                    "date": (date === 'Monday' ? "07-22-2022" : (date === 'Tuesday' ? "07-23-2022" : "07-24-2022")),
-                                    "cost_code": excelData[date][0][key],
-                                    "costs": [{'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]}]
-                                }
-                            } else {
-                                costDic[key]['costs'].push({'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]})
-                            }
-                        }
-                    })
-                }
-            }
-        }
-        setActivityObj(dicToArray(costDic))
-    }
-
-
     return (
-        <Container>
+        <Container style={{border:'1px', borderStyle:'solid'}}>
             <h1>Upload Timesheet</h1>
             <Form>
                 <Form.Group >

@@ -1,6 +1,10 @@
 import {Button} from 'react-bootstrap'
+import { useContext } from 'react';
+import { ActivitiesContext } from "./context/ActivitiesContext";
 
-function Activity({activity, activities, setActivities}) {
+
+function Activity({activity}) {
+    const {activities, setActivities} = useContext(ActivitiesContext)
 
     function handleApprove() {
         console.log('approve')
