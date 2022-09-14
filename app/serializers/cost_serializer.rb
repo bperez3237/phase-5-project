@@ -1,5 +1,5 @@
 class CostSerializer < ActiveModel::Serializer
-  attributes :id, :hours, :employee_id, :activity_id, :labor_cost
+  attributes :id, :hours, :employee_id, :activity_id, :labor_cost, :employee
 
 
   belongs_to :activity
@@ -9,4 +9,6 @@ class CostSerializer < ActiveModel::Serializer
   def labor_cost
     self.object.labor_cost
   end
+
+
 end

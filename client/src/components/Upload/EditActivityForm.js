@@ -24,7 +24,6 @@ function EditActivityForm({activity, setToggleEdit}) {
             if (r.ok) {
                 r.json().then((updatedActivity)=>{
                     setActivities(replace(activities, updatedActivity))
-                    setToggleEdit(false)
                 })
             } else {
                 r.json().then((err)=>console.log('error',err))
@@ -37,6 +36,7 @@ function EditActivityForm({activity, setToggleEdit}) {
                 <Form.Label>Cost Code: </Form.Label>
                 <Form.Control value={value} onChange={(e)=>setValue(e.target.value)}></Form.Control>
                 <Button type='submit' onClick={editActivity}>Submit</Button>
+                <Button onClick={()=>setToggleEdit(false)}>Cancel</Button>
             </Form.Group>
         </Form>
     )
