@@ -5,7 +5,7 @@ function EnterQuantities() {
 
     return (
         <Container>
-            <QFormList />
+            <Row><Col><QFormList /></Col></Row>
         </Container>
     )
 }

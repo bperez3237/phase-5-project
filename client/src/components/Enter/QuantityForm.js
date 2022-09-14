@@ -1,5 +1,6 @@
 import {Button, Form, ListGroup, Accordion, Card, Container } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
+import SubmittedCode from './SubmittedCode'
 
 function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)
@@ -9,6 +10,8 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
         setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id===costCode.id).length>0 ? true : false)
     },[workWeek, costCode])
     
+
+    console.log(workWeek)
     function handleSubmit(e) {
         e.preventDefault()
 
@@ -35,19 +38,11 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
     })
     
     
-    function handleClick(e) {
-        console.log(e.target.value)
-        console.log('here')
-        setSubmittedStatus(false)
-    }
-
+    
     return (
         <>
             {submittedStatus ? (
-                <Container className='me-auto' style={{border:'1px',borderStyle:'solid'}}>
-                    <h2>{costCode.code} is submitted. </h2>
-                    <Button onClick={handleClick} className='justify-content-end' value={costCode.code}>Edit</Button>
-                </Container>
+                <SubmittedCode costCode={costCode} setSubmittedStatus={setSubmittedStatus} />
             ) : (
                 <Form className='m-3 p-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
                 <Form.Group>

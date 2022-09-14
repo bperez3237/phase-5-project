@@ -13,8 +13,6 @@ function Upload() {
     const {workWeek} = useContext(WorkWeekContext)
     const {data, setData, refetch} = useFetch(`/work_weeks/${workWeek.id}/activities`)
 
-    const listComponent = <ActivityList activities={data} setActivities={setData} />
-
     return (
         <Container>
             <ActivitiesContext.Provider value={{activities: data, setActivities:setData}}>
