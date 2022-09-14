@@ -2,11 +2,14 @@ import React from 'react'
 import {useState, useEffect, useContext} from 'react'
 import {Button, Container, Form} from 'react-bootstrap'
 import { WorkWeekContext } from '../../context/WorkWeekContext'
-import {formatActivityObj} from './format/formatUpload'
+import {formatUploadObj, addCostToArray} from './format/formatUpload'
+import { ActivitiesContext } from "./context/ActivitiesContext";
+
 var xlsx = require("xlsx")
 
-function CostForm({activities, setActivities}) {
+function CostForm({refetch}) {
     const {workWeek} = useContext(WorkWeekContext)
+    const {activities, setActivities} = useContext(ActivitiesContext)
     const [activityObj,setActivityObj] = useState([])
 
     const readUploadFile = (e) => {
@@ -22,10 +25,9 @@ function CostForm({activities, setActivities}) {
     
                 workbook.SheetNames.forEach((sheet)=>{
                     const worksheet = workbook.Sheets[sheet]
-                    console.log(sheet)
                     allActivities[sheet] = xlsx.utils.sheet_to_json(worksheet)
                 })
-                setActivityObj(formatActivityObj(allActivities))
+                setActivityObj(formatUploadObj(allActivities))
             };
             reader.readAsArrayBuffer(e.target.files[0]);
         }
@@ -42,7 +44,6 @@ function CostForm({activities, setActivities}) {
         })
             .then(r=>r.json())
             .then(data=>{
-                // setCosts([...costs,data])
                 console.log(data)})
     }
 
@@ -60,6 +61,7 @@ function CostForm({activities, setActivities}) {
                         handleSubmitCost(newActivity.id, cost)
                     })
                 })
+            
         } else {console.log('not a valid workweek')}
 
     }

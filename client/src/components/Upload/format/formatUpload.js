@@ -1,9 +1,6 @@
-
-// export const formatActivityObj = 
 import { useState } from "react";
 
 var xlsx = require("xlsx")
-// const [excelData,setExcelData] = useState('')
 
 const dicToArray = (dic) => {
     const arr = []
@@ -18,7 +15,7 @@ const dicToArray = (dic) => {
     return arr
 }
 
-export const formatActivityObj = (excelData) => {
+export const formatUploadObj = (excelData) => {
 
     const costDic = {}
     for (const date in excelData) {
@@ -44,31 +41,23 @@ export const formatActivityObj = (excelData) => {
     return (dicToArray(costDic))
 }
 
-
-export const readUploadFile = (e) => {
-    e.preventDefault();
-    var allActivities = {}
-
-    if (e.target.files) {
-
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-            const data = e.target.result;
-            const workbook = xlsx.read(data, { type: "array" });
-            // var allActivities = {}
-
-            workbook.SheetNames.forEach((sheet)=>{
-                const worksheet = workbook.Sheets[sheet]
-                allActivities[sheet] = xlsx.utils.sheet_to_json(worksheet)
-            })
-            console.log(formatActivityObj(allActivities))
-            return formatActivityObj(allActivities)
-
-            // setExcelData(allActivities)
-        };
-        reader.readAsArrayBuffer(e.target.files[0]);
+export const addCostToArray = (activities, cost) => {
+    const otherActivities = activities.filter((activity)=> activity.id!=cost.activity_id)
+    const thisActivity = activities.find((activity)=> activity.id==cost.activity_id)
+    
+    const newActivity = {
+        'approved': thisActivity.approved,
+        'cost_code': thisActivity.cost_code,
+        'cost_code_id': thisActivity.cost_code_id,
+        'date': thisActivity.date,
+        'description': thisActivity.description,
+        'id': thisActivity.id,
+        'work_week': thisActivity.work_week,
+        'work_week_id': thisActivity.work_week_id,
+        'costs': [...thisActivity.costs, cost],
+        'total_cost': thisActivity.total_cost + cost.labor_cost,
+        'total_hours': thisActivity.total_hours + cost.hours
     }
-    console.log(formatActivityObj(allActivities))
-    // return formatActivityObj(allActivities)
+
+    return [...otherActivities,newActivity]
 }

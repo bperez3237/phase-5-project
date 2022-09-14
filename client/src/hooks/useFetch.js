@@ -16,6 +16,7 @@ function useFetch(url) {
         }).finally(()=>setLoading(false))
     },[url])
 
+
     return {data, setData, loading, error}
 }
 

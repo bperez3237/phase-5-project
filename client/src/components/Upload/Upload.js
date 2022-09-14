@@ -11,7 +11,7 @@ import ActivitiesStatus from "./ActivityStatus";
 
 function Upload() {
     const {workWeek} = useContext(WorkWeekContext)
-    const {data, setData, loading} = useFetch(`/work_weeks/${workWeek.id}/activities`)
+    const {data, setData, refetch} = useFetch(`/work_weeks/${workWeek.id}/activities`)
 
     const listComponent = <ActivityList activities={data} setActivities={setData} />
 
@@ -19,7 +19,9 @@ function Upload() {
         <Container>
             <ActivitiesContext.Provider value={{activities: data, setActivities:setData}}>
             <Row>
-                <Col><CostForm activities={data} setActivities={setData}/></Col>
+                <Col>
+                    <CostForm refetch={refetch}/>
+                    </Col>
                 <Col>
                     <ActivitiesStatus />
                     <ActivityList />

@@ -1,6 +1,5 @@
 import Activity from "./Activity";
 import { useContext} from 'react'
-import useFetch from '../../hooks/useFetch'
 import { ActivitiesContext } from "./context/ActivitiesContext";
 
 function ActivityList() {
