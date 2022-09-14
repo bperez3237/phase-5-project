@@ -47,7 +47,7 @@ function Activity({activity}) {
                         <Card.Text>Total Cost: {activity.total_cost}</Card.Text>
                         <Button onClick={editActivity}>Edit</Button>
                     </>) : (
-                        <EditActivityForm setToggleEdit={setToggleEdit}/>)}
+                        <EditActivityForm setToggleEdit={setToggleEdit} activity={activity}/>)}
                 
             </Card.Body>
         </Card>

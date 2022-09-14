@@ -22,8 +22,11 @@ class ActivitiesController < ApplicationController
 
 
     def update
+        cost_code = CostCode.find_by(code: params[:code])
         activity = Activity.find(params[:id])
-        activity.update(activity_params)
+        # activity.update(activity_params)
+        activity.update(cost_code_id: cost_code.id, cost_code: cost_code)
+        # byebug
         if activity.valid?
             render json: activity, status: :created
         else 

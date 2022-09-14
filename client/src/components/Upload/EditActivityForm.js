@@ -1,24 +1,35 @@
 import {Form, Button} from 'react-bootstrap'
 import {useState, useContext} from 'react'
 import {ActivitiesContext} from './context/ActivitiesContext'
+import {replace} from '../../services/UpdateTable/updateObj'
 
-function EditActivityForm({setToggleEdit}) {
+function EditActivityForm({activity, setToggleEdit}) {
     const [value, setValue] = useState('')
     const {activities, setActivities} = useContext(ActivitiesContext)
 
 
     function editActivity(e) {
         e.preventDefault()
-        // console.log('approve')
-        // setToggleEdit(!toggleEdit)
-        console.log(value)
-        // fetch(`/activities/${activity.id}`, {
-        //     method: "PATCH",
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }, body: JSON.stringify({...activity, approved: true})
-        // }).then(r=>r.json()).then((data)=>setActivities([...activities.filter((activity)=>activity.id!==data.id),data]))
-        setToggleEdit(false)
+        // need to fetch and update cost code ID to process or do from backend
+        // const updatedActivity = {...activity, cost_code: {...activity.cost_code, code: value }}
+        // console.log(updatedActivity)
+
+        const params = {code: value}
+        fetch(`/activities/${activity.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify(params)
+        }).then(r=>{
+            if (r.ok) {
+                r.json().then((updatedActivity)=>{
+                    setActivities(replace(activities, updatedActivity))
+                    setToggleEdit(false)
+                })
+            } else {
+                r.json().then((err)=>console.log('error',err))
+            }
+        })
     }
     return(
         <Form>
