@@ -1,17 +1,19 @@
 import {Button, Form, ListGroup, Accordion, Card, Container } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 import SubmittedCode from './SubmittedCode'
+import useFetch from '../../hooks/useFetch'
 
 function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)
     const [submittedStatus, setSubmittedStatus] = useState(false)
+    const {data} = useFetch(`/work_weeks/${workWeek.id}/cost_codes/${costCode.id}`)
 
+
+    console.log(data)
     useEffect(()=> {
         setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id===costCode.id).length>0 ? true : false)
     },[workWeek, costCode])
     
-
-    console.log(workWeek)
     function handleSubmit(e) {
         e.preventDefault()
 

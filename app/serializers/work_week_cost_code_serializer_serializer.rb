@@ -1,5 +1,5 @@
 class WorkWeekCostCodeSerializerSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :code, :budget_hours, :budget_quantity, :unit_of_measure, :name, :units, :activities, :last_week_hours, :last_week_quantity, :last_week_cost, :ave_labor_rate, :production_rate
+  attributes :id, :user_id, :code, :budget_hours, :budget_quantity, :unit_of_measure, :name, :units, :activities, :last_week_hours, :last_week_quantity, :last_week_cost, :ave_labor_rate, :production_rate, :estimated_value
 
 
   has_many :activities
@@ -32,6 +32,11 @@ class WorkWeekCostCodeSerializerSerializer < ActiveModel::Serializer
     else 
       0
     end
+  end
+
+  def estimated_value
+    value_earned = Unit.where(work_week_id: @instance_options[:work_week_id], cost_code_id: self.object.id).sum {|unit| unit.value_earned}
+    value_earned
   end
 
 
