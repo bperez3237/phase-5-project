@@ -21,9 +21,7 @@ function CodeReport({costCodeId, workWeekId}) {
                     <h1>{data?.code} - {data?.name}</h1>
                 </Col>
                 <Col>
-                    {/* <h3 style={{color:clr}}>Estimated Value: {Math.round(estimatedValue*100)/100} </h3> */}
                     <h3 style={{color:clr}}>Estimated Value: {formatCurrency((estimatedValue*100)/100)} </h3>
-
                 </Col>
             </Row>
             <Row>

@@ -7,7 +7,6 @@ function DeleteTimesheet() {
     const {workWeek} = useContext(WorkWeekContext)
     const {setActivities} = useContext(ActivitiesContext)
 
-    // console.log(workWeek)
     function handleDelete() {
         fetch(`/work_weeks/${workWeek.id}/activities`, {
             method: "DELETE"
@@ -17,7 +16,7 @@ function DeleteTimesheet() {
     }
 
     return(
-        <Container style={{border:'1px', borderStyle:'solid'}}>
+        <Container className='m-3' style={{border:'1px', borderStyle:'solid'}}>
             <h1>Delete Timesheet</h1>
             <Button onClick={handleDelete}> Delete Activities</Button>
         </Container>

@@ -77,7 +77,7 @@ function CostForm({refetch}) {
     }
 
     return (
-        <Container style={{border:'1px', borderStyle:'solid'}}>
+        <Container className='m-3' style={{border:'1px', borderStyle:'solid'}}>
             <h1>Upload Timesheet</h1>
             <Form>
                 <Form.Group >
