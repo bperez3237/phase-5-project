@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/activity_week/:end_date', to: 'activities#activity_week'
   get '/work_week/:end_date', to: 'work_weeks#get_id'
 
+  delete '/work_weeks/:work_week_id/activities', to: 'activities#delete_week'
 
   post '/select_week', to: 'sessions#select_week'
   post "/login", to: "sessions#create"

@@ -61,6 +61,18 @@ class ActivitiesController < ApplicationController
         render json: activities
     end
 
+    def delete_week
+        if params[:work_week_id]
+            work_week = WorkWeek.find(params[:work_week_id])
+            activities = work_week.activities 
+            activities.each {|activity| activity.costs.destroy_all}
+            activities.destroy_all
+            head :no_content
+        else
+            render json: { error: 'no work week found' }, status: :not_found
+        end
+    end
+
     private
 
     def activity_params
