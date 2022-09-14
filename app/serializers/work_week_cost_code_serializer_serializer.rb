@@ -36,7 +36,7 @@ class WorkWeekCostCodeSerializerSerializer < ActiveModel::Serializer
 
   def estimated_value
     value_earned = Unit.where(work_week_id: @instance_options[:work_week_id], cost_code_id: self.object.id).sum {|unit| unit.value_earned}
-    value_earned
+    value_earned - last_week_cost
   end
 
 
