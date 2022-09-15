@@ -1,13 +1,10 @@
-import {Button, Card, ListGroup, Accordion} from 'react-bootstrap'
-import { useContext, useState } from 'react';
-import { ActivitiesContext } from "./context/ActivitiesContext";
+import {Button, Card} from 'react-bootstrap'
+import { useState } from 'react';
 import EditActivityForm from './EditActivityForm'
-import {formatCurrency} from '../../services/Format/FormatNumber'
 import CostList from './CostList';
 
 
 function Activity({activity}) {
-    // const {activities, setActivities} = useContext(ActivitiesContext)
     const [toggleEdit, setToggleEdit] = useState(false)
 
     return(

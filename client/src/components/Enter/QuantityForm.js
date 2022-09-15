@@ -1,7 +1,6 @@
 import {Button, Form, ListGroup, Accordion, InputGroup } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 import SubmittedCode from './SubmittedCode'
-import useFetch from '../../hooks/useFetch'
 
 function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)

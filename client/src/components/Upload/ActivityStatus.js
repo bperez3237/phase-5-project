@@ -1,6 +1,4 @@
-import { useContext } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { ActivitiesContext } from "./context/ActivitiesContext";
+import { Container } from "react-bootstrap";
 import useFetch from '../../hooks/useFetch'
 
 

@@ -1,6 +1,3 @@
-import { useState } from "react";
-
-var xlsx = require("xlsx")
 
 const dicToArray = (dic) => {
     const arr = []
@@ -42,8 +39,8 @@ export const formatUploadObj = (excelData) => {
 }
 
 export const addCostToArray = (activities, cost) => {
-    const otherActivities = activities.filter((activity)=> activity.id!=cost.activity_id)
-    const thisActivity = activities.find((activity)=> activity.id==cost.activity_id)
+    const otherActivities = activities.filter((activity)=> activity.id!==cost.activity_id)
+    const thisActivity = activities.find((activity)=> activity.id===cost.activity_id)
     
     const newActivity = {
         'approved': thisActivity.approved,

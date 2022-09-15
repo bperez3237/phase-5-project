@@ -6,12 +6,9 @@ import {formatCurrency} from '../../services/Format/FormatNumber'
 
 function CodeReport({costCodeId, workWeekId}) {
     const {data} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
-  
-    const activityElems = data?.activities?.map((activity)=><p key={activity.id}>{activity.description} - {activity.total_hours}</p>)
 
     const budgetprodrate = Math.round(100*(data?.budget_quantity/data?.budget_hours))/100
 
-    // value = ((actual_quantity/budget_rate)-actual hours)*labor_rate
     const estimatedValue = ((data?.last_week_quantity/budgetprodrate) - data?.last_week_hours)*(data?.last_week_cost/data?.last_week_hours)
     const clr = estimatedValue >= 0 ? 'green' : 'red'
     return(

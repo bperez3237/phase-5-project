@@ -1,15 +1,13 @@
 import React from 'react'
-import {useState, useEffect, useContext} from 'react'
+import {useState, useContext} from 'react'
 import {Button, Container, Form} from 'react-bootstrap'
 import { WorkWeekContext } from '../../context/WorkWeekContext'
-import {formatUploadObj, addCostToArray} from './format/formatUpload'
-import { ActivitiesContext } from "./context/ActivitiesContext";
+import {formatUploadObj} from './format/formatUpload'
 
 var xlsx = require("xlsx")
 
 function CostForm({refetch}) {
     const {workWeek} = useContext(WorkWeekContext)
-    const {activities, setActivities} = useContext(ActivitiesContext)
     const [activityObj,setActivityObj] = useState([])
 
     const readUploadFile = (e) => {
