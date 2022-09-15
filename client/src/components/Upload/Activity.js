@@ -7,17 +7,13 @@ import CostList from './CostList';
 
 
 function Activity({activity}) {
-    const {activities, setActivities} = useContext(ActivitiesContext)
+    // const {activities, setActivities} = useContext(ActivitiesContext)
     const [toggleEdit, setToggleEdit] = useState(false)
 
-    console.log(toggleEdit)
-    
-
     return(
-        <Card style={{border:'1px', borderStyle:'solid'}}>
+        <Card className='m-3' style={{border:'1px', borderStyle:'solid'}}>
             <Card.Title>{activity.description} - {activity.total_hours}</Card.Title>
             <Card.Body>
-                {/* <Button onClick={setToggleEdit}>Edit</Button> */}
                     {!toggleEdit ? (
                     <>
                         <Card.Text>Cost Code: {activity.cost_code.code} - {activity.cost_code.name}</Card.Text>

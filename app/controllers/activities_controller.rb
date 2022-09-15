@@ -62,6 +62,12 @@ class ActivitiesController < ApplicationController
         render json: activities
     end
 
+
+    def activity_status
+        return_obj = {all_hours: Activity.all_hours , all_costs: Activity.all_costs }
+        render json: return_obj
+    end
+
     def delete_week
         if params[:work_week_id]
             work_week = WorkWeek.find(params[:work_week_id])

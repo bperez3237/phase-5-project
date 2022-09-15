@@ -16,7 +16,7 @@ function DeleteTimesheet() {
     }
 
     return(
-        <Container className='m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <Container className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
             <h1>Delete Timesheet</h1>
             <Button onClick={handleDelete}> Delete Activities</Button>
         </Container>

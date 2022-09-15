@@ -18,4 +18,14 @@ class Activity < ApplicationRecord
         sum = self.costs.sum {|cost| cost.labor_cost}
         sum
     end
+
+    def self.all_hours
+        sum = Activity.all.sum {|activity| activity.total_hours}
+        sum
+    end
+
+    def self.all_costs
+        sum = Activity.all.sum {|activity| activity.total_cost}
+        sum
+    end
 end
