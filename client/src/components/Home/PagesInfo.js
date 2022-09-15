@@ -15,11 +15,11 @@ function PagesInfo() {
             </Row>
             <Row>
                 <Col><p><span style={{fontWeight:'bold'}}>Upload/Review Page: </span>Submit timesheets and review hours before submitting to the weekly report</p></Col>
-                <Col><Badge bg={activitiesExist ? 'success' : 'danger'}>Activities {(activitiesExist ? "" : "not ")+"submitted"}</Badge></Col>
+                {/* <Col></Col>  */}
             </Row>
             <Row>
                 <Col><p><span style={{fontWeight:'bold'}}>Enter Quantities Page: </span>Enter Quantities Page: Enter units for each cost code in this report</p></Col>
-                <Col><Badge bg={activitiesExist ? 'success' : 'danger'}>Units {(unitsExist ? "" : "not ")+"submitted"}</Badge></Col>
+                {/* <Col><Badge bg={activitiesExist ? 'success' : 'danger'}>Units {(unitsExist ? "" : "not ")+"submitted"}</Badge></Col> */}
             </Row>
             <Row>
                 <Col><p><span style={{fontWeight:'bold'}}>Weekly Report Page: </span>A Summarized report of completed hours and units</p></Col>

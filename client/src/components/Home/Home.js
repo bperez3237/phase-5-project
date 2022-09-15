@@ -6,13 +6,13 @@ import WeekSelect from "./WeekSelect";
 import PagesInfo from './PagesInfo';
 
 function Home() {
-    const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
+    const {workWeek} = useContext(WorkWeekContext)
 
     return(
         <Container>
             <Row>   
                 <h1>Home Week of {workWeek.end_date}</h1>         
-                <WeekSelect workWeek={workWeek} setWorkWeek={setWorkWeek} />
+                <WeekSelect />
                 <ProjectInfo />
             </Row>
             <PagesInfo />
