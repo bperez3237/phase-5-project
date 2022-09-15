@@ -29,7 +29,7 @@ function WeekSelect() {
     const optionsElements = data?.map((workWeek)=><Dropdown.Item key={workWeek.id} eventKey={workWeek.id}>{workWeek.end_date}</Dropdown.Item>)
 
     return(
-        <Container>
+        <Container className="d-flex">
             <Row>
                 <Col>
                     <DropdownButton onSelect={handleWeekChange} value={value} title="Select Work Week:">
