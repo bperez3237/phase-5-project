@@ -46,9 +46,6 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
                 <Form className='m-3 p-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label column='lg' >{costCode.code}</Form.Label><br></br>
-                    {/* <Form.Label>Hours this week: {costCode.last_week_hours}</Form.Label> */}
-                    {/* <Form.Label>remaining quantity: {costCode.budget_quantity - costCode.last_week_quantity}</Form.Label> */}
-                    {/* add custom cost code serializer  WorkWeekSerializer to has_many :costs to get custom params*/}
                     <InputGroup>
                     <Form.Control value={value} onChange={(e)=>setValue(e.target.value)}/>
                     <Button type='submit' >Submit</Button>
