@@ -5,10 +5,7 @@ import useFetch from '../../hooks/useFetch'
 
 
 function ActivitiesStatus() {
-    const {activities} = useContext(ActivitiesContext)
     const {data} = useFetch('/activity_status')
-
-    console.log(data)
 
     return(
         <Container>

@@ -8,7 +8,7 @@ function ProjectInfo() {
     const {data} = useFetch('/project_summary')
 
     return(
-        <Card>
+        <Card className='m-3'>
             <Card.Header>
                 <Card.Title>Project Summary:</Card.Title>
             </Card.Header>
