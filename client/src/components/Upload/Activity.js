@@ -2,6 +2,7 @@ import {Button, Card} from 'react-bootstrap'
 import { useState } from 'react';
 import EditActivityForm from './EditActivityForm'
 import CostList from './CostList';
+import {formatCurrency} from '../../services/Format/FormatNumber'
 
 
 function Activity({activity}) {
@@ -15,7 +16,7 @@ function Activity({activity}) {
                     <>
                         <Card.Text>Cost Code: {activity.cost_code.code} - {activity.cost_code.name}</Card.Text>
                         <Card.Text>Total Hours: {activity.total_hours}</Card.Text>
-                        <Card.Text>Total Cost: {activity.total_cost}</Card.Text>
+                        <Card.Text>Total Cost: {formatCurrency(activity.total_cost)}</Card.Text>
                         <Button onClick={()=>setToggleEdit(true)}>Edit</Button>
                     </>) : (
                         <EditActivityForm setToggleEdit={setToggleEdit} activity={activity}/>)}

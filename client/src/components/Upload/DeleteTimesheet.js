@@ -4,14 +4,17 @@ import {WorkWeekContext} from '../../context/WorkWeekContext'
 import {useContext} from 'react'
 
 function DeleteTimesheet() {
-    const {workWeek} = useContext(WorkWeekContext)
+    const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
     const {setActivities} = useContext(ActivitiesContext)
 
     function handleDelete() {
         fetch(`/work_weeks/${workWeek.id}/activities`, {
             method: "DELETE"
         }).then((r) => {
-            if (r.ok) {setActivities([])}
+            if (r.ok) {
+                setActivities([])
+                setWorkWeek({...workWeek,activities: []})
+            }
         })
     }
 

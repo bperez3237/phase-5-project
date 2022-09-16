@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import CostForm from "./CostForm";
+import UploadForm from "./UploadForm";
 import ActivityList from "./ActivityList";
 import {Container, Row, Col} from 'react-bootstrap'
 import {WorkWeekContext} from '../../context/WorkWeekContext'
@@ -19,7 +19,7 @@ function Upload() {
             <ActivitiesContext.Provider value={{activities: data, setActivities:setData}}>
             <Row>
                 <Col>
-                    <CostForm />
+                    <UploadForm />
                     <DeleteTimesheet />
                     </Col>
                 <Col>
