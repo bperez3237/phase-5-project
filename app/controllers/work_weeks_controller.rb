@@ -1,4 +1,5 @@
 class WorkWeeksController < ApplicationController
+    skip_before_action :authorized, only: [:index, :show]
 
     def index
         @work_weeks = WorkWeek.all.sort_by(&:end_date)
