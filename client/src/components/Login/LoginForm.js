@@ -30,7 +30,7 @@ function LoginForm({setUser, showLogin, setShowLogin}) {
     }
  
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} style={{"width":"300px"}}>
             <Form.Group>
                 <Form.Label>Username</Form.Label>
                 <Form.Control 
