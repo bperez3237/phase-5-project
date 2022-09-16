@@ -9,7 +9,7 @@ function Home() {
     const {workWeek} = useContext(WorkWeekContext)
 
     return(
-        <Container>
+        <Container >
             <Row>   
                 <h1>Home Week of {workWeek.end_date}</h1>         
                 <WeekSelect />

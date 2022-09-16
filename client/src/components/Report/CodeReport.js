@@ -1,7 +1,7 @@
 import React from 'react'
 import useFetch from '../../hooks/useFetch'
 import {Col, Container, Row} from 'react-bootstrap'
-import {formatCurrency} from '../../services/Format/FormatNumber'
+import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
 
 
 function CodeReport({costCodeId, workWeekId}) {
@@ -18,26 +18,20 @@ function CodeReport({costCodeId, workWeekId}) {
                     <h1>{data?.code} - {data?.name}</h1>
                 </Col>
                 <Col>
-                    <h3 style={{color:clr}}>Estimated Value: {formatCurrency((estimatedValue*100)/100)} </h3>
+                    <h3 style={{color:clr}}>Estimated Value: {formatCurrency(estimatedValue)} </h3>
                 </Col>
             </Row>
             <Row>
             <Col>
-            <p>Last Week Hours: {data?.last_week_hours}</p>
-            <p>Last Week Quantity: {data?.last_week_quantity}</p>
-            <p>Last Week Production Rate: {Math.round(100*(data?.last_week_quantity/data?.last_week_hours))/100}</p>
+            <p>Last Week Hours: {formatNumber(data?.last_week_hours)}</p>
+            <p>Last Week Quantity: {formatNumber(data?.last_week_quantity)}</p>
+            <p>Last Week Production Rate: {formatNumber(data?.last_week_quantity/data?.last_week_hours)}</p>
             </Col>
             <Col>
-            <p>Budget Hours: {data?.budget_hours}</p>
-            <p>Budget Quantity: {data?.budget_quantity}</p>
-            <p>Budget Production Rate: {Math.round(100*(data?.budget_quantity/data?.budget_hours))/100}</p>
+            <p>Budget Hours: {formatNumber(data?.budget_hours)}</p>
+            <p>Budget Quantity: {formatNumber(data?.budget_quantity)}</p>
+            <p>Budget Production Rate: {formatNumber(data?.budget_quantity/data?.budget_hours)}</p>
             </Col>
-            </Row>
-            <Row>
-                <Col>
-                {/* <p>Activities:</p>
-                {activityElems} */}
-                </Col>
             </Row>
         </Container>
     )
