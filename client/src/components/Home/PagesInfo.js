@@ -1,12 +1,6 @@
-import {Container, Row, Col, Badge} from 'react-bootstrap'
-import {useContext} from 'react'
-import {WorkWeekContext} from '../../context/WorkWeekContext'
+import {Container, Row, Col} from 'react-bootstrap'
 
 function PagesInfo() {
-    const {workWeek} = useContext(WorkWeekContext)
-    const activitiesExist = workWeek?.activities?.length > 0
-    const unitsExist = workWeek?.units?.length > 0
-
 
     return (
         <Container className='m-3' style={{border:'1px', borderStyle:'solid'}}>

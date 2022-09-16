@@ -1,7 +1,7 @@
 import {Button, Form} from 'react-bootstrap'
 import {useState} from 'react'
 
-function LoginForm({setUser}) {
+function LoginForm({setUser, showLogin, setShowLogin}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -42,6 +42,7 @@ function LoginForm({setUser}) {
                 onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
             <Button type='submit'>Login</Button>
+            <Button onClick={()=>setShowLogin(false)}>Sign Up</Button>
         </Form>
     )
 }

@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   post '/select_week', to: 'sessions#select_week'
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  post '/signup', to: 'users#create'
+
   get '/me', to: 'users#auto_login'
   get '/week', to: 'work_weeks#auto_select'
 

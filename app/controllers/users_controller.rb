@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    # skip_before_action :authorized, only: [:create, :auto_login]
+    skip_before_action :authorized, only: [:create, :auto_login]
 
     def index
         users = User.all 
@@ -33,5 +33,10 @@ class UsersController < ApplicationController
             render json: { error: 'User not found'}, status: :unauthorized
         end
     end
+    
+    private
 
+    def user_params
+        params.permit(:username, :password, :password_confirmation, :name)
+    end
 end

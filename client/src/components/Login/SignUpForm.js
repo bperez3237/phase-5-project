@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Button, Form} from 'react-bootstrap'
 
-function SignUpForm({onLogin}) {
+function SignUpForm({ setUser, setShowLogin}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -27,7 +27,7 @@ function SignUpForm({onLogin}) {
       }).then((r) => {
         setIsLoading(false);
         if (r.ok) {
-          r.json().then((user) => onLogin(user));
+          r.json().then((user) => setUser(user));
         } else {
           r.json().then((err) => setErrors(err.errors));
         }
@@ -77,6 +77,7 @@ function SignUpForm({onLogin}) {
         </Form.Group>
         <Form.Group>
           <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
+          <Button onClick={()=>setShowLogin(true)}>Cancel</Button>
         </Form.Group>
       </Form>
     )
