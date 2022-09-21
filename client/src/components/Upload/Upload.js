@@ -7,15 +7,17 @@ import useFetch from "../../hooks/useFetch";
 import {ActivitiesContext} from './context/ActivitiesContext'
 import ActivitiesStatus from "./ActivityStatus";
 import DeleteTimesheet from './DeleteTimesheet'
+import DismissableError from "../DismissableError";
 
 
 
 function Upload() {
     const {workWeek} = useContext(WorkWeekContext)
-    const {data, setData} = useFetch(`/work_weeks/${workWeek.id}/activities`)
+    const {data, setData, error} = useFetch(`/work_weeks/${workWeek.id}/activities`)
 
     return (
         <Container >
+            {error && <DismissableError error={error} />}
             <ActivitiesContext.Provider value={{activities: data, setActivities:setData}}>
             <Row>
                 <Col>

@@ -6,6 +6,7 @@ import {useContext} from 'react'
 function DeleteTimesheet() {
     const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
     const {setActivities} = useContext(ActivitiesContext)
+    const [error,setError] = useState('')
 
     function handleDelete() {
         fetch(`/work_weeks/${workWeek.id}/activities`, {
@@ -14,6 +15,8 @@ function DeleteTimesheet() {
             if (r.ok) {
                 setActivities([])
                 setWorkWeek({...workWeek,activities: []})
+            } else {
+                r.json().then((error)=> setError(error))
             }
         })
     }

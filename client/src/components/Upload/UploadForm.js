@@ -4,12 +4,14 @@ import {Button, Container, Form} from 'react-bootstrap'
 import { WorkWeekContext } from '../../context/WorkWeekContext'
 import { ActivitiesContext } from './context/ActivitiesContext'
 import {addCostToArray, formatUploadObj} from './format/formatUpload'
+import DismissableError from '../DismissableError'
 var xlsx = require("xlsx")
 
 function UploadForm() {
     const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
     const {setActivities} = useContext(ActivitiesContext)
     const [activityObj,setActivityObj] = useState([])
+    const [error,setError] = useState('')
 
 
     const readUploadFile = (e) => {
@@ -48,27 +50,35 @@ function UploadForm() {
                             'Content-Type': 'application/json'
                         }, body: JSON.stringify(activity)
                     })
-                        .then(r=>r.json())
-                        .then((newActivity)=>{
-                            newObjArray.push(newActivity)
-                            activity.costs.forEach((cost)=>{
-                                fetch('/costs', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    }, 
-                                        body: JSON.stringify({...cost, activity_id: newActivity.id})
+                        .then(r=>{
+                            if (r.ok) {
+                                r.json().then((newActivity)=>{
+                                    newObjArray.push(newActivity)
+                                    activity.costs.forEach((cost)=>{
+                                        fetch('/costs', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json'
+                                            }, 
+                                                body: JSON.stringify({...cost, activity_id: newActivity.id})
+                                        })
+                                            .then(r=>{
+                                                if (r.ok) {
+                                                    r.json().then(newCost=>{
+                                                    newObjArray = addCostToArray(newObjArray,newCost)
+                                                    }).finally(()=>{
+                                                        setActivities(newObjArray)
+                                                        setWorkWeek({...workWeek,activities: newObjArray})
+                                                })} else{
+                                                    r.json().then((error=>setError(error)))
+                                                }
+                                            })
+                                        }
+                                    )
                                 })
-                                    .then(r=>r.json())
-                                    .then(newCost=>{
-                                        newObjArray = addCostToArray(newObjArray,newCost)
-                                    }).finally(()=>{
-                                        setActivities(newObjArray)
-                                        setWorkWeek({...workWeek,activities: newObjArray})
-                                    })
-                            })
-                        })
-                    
+                            } else {
+                                        r.json().then((error)=>setError(error))
+                        }})
                 } else {console.log('not a valid workweek')}
             
             })
@@ -78,6 +88,7 @@ function UploadForm() {
     return (
         <Container className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
             <h1>Upload Timesheet</h1>
+            {error && <DismissableError error={error} />}
             <Form>
                 <Form.Group >
                     <Form.Label htmlFor="upload">Upload File</Form.Label>

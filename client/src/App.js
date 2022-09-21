@@ -8,7 +8,6 @@ import Upload from './components/Upload/Upload';
 import ReportPage from './components/Report/ReportPage'
 import { UserContext } from './context/UserContext';
 import { WorkWeekContext } from './context/WorkWeekContext'
-// import { ErrorContext } from './context/ErrorContext'
 import ViewPage from './components/View/ViewPage';
 import DismissableError from './components/DismissableError'
 
