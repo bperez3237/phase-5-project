@@ -25,7 +25,7 @@ function EditActivityForm({activity, setToggleEdit}) {
                     setActivities(replace(activities, updatedActivity))
                 })
             } else {
-                r.json().then((err)=>setError('error',err))
+                r.json().then((err)=>setError(err))
             }
         })
     }

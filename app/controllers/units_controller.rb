@@ -12,7 +12,11 @@ class UnitsController < ApplicationController
 
     def show
         unit = Unit.find(params[:id])
-        render json: unit
+        if unit
+            render json: unit
+        else
+            render json: {error: "Unit not found"}, status: :not_found
+        end
     end
 
     def create

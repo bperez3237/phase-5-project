@@ -3,18 +3,14 @@ import {useState} from 'react'
 
 function DismissableError({error}) {
     const [show, setShow] = useState(true)
+    console.log(error, show)
 
-    if (show && error!='') {return(
-        <Alert variant='danger' onClose={()=>setShow(false)}>
-            <Alert.Heading>Error status: {error?.status}</Alert.Heading>
-            <p>
-                This error says: {error?.error}
-            </p>
-            <p>
-                {error?.exception}
-            </p>
+
+    if (show) {return(
+        <Alert variant='danger' onClose={()=>setShow(false)} dismissible>
+            <Alert.Heading>Error: {JSON.stringify(error)}</Alert.Heading>
         </Alert>
-    )}
+    )} else return <></>
 }
 
 export default DismissableError;

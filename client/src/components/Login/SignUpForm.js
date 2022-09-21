@@ -6,12 +6,12 @@ function SignUpForm({ setUser, setShowLogin}) {
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [name,setName] = useState("")
-    const [errors, setErrors] = useState([]);
+    const [error, setError] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
   
     function handleSubmit(e) {
       e.preventDefault();
-      setErrors([]);
+      setError([]);
       setIsLoading(true);
       fetch("/signup", {
         method: "POST",
@@ -29,7 +29,7 @@ function SignUpForm({ setUser, setShowLogin}) {
         if (r.ok) {
           r.json().then((user) => setUser(user));
         } else {
-          r.json().then((err) => setErrors(err.errors));
+          r.json().then((err) => setError(err));
         }
       });
     }
@@ -40,8 +40,6 @@ function SignUpForm({ setUser, setShowLogin}) {
           <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control
             type="text"
-            id="username"
-            autoComplete="off"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -50,27 +48,22 @@ function SignUpForm({ setUser, setShowLogin}) {
           <Form.Label htmlFor="password">Password</Form.Label>
           <Form.Control
             type="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
           />
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor="password">Password Confirmation</Form.Label>
           <Form.Control
             type="password"
-            id="password_confirmation"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
-            autoComplete="current-password"
           />
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor="name">Name</Form.Label>
           <Form.Control
             type="name"
-            id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />

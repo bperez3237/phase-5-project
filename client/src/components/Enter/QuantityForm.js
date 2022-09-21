@@ -15,7 +15,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
     
     function handleSubmit(e) {
         e.preventDefault()
-
+        setError('')
         const params = {cost_code_id: costCode.id, quantity: value, work_week_id: workWeek.id}
         fetch(`/units`, {
             method: 'POST',
@@ -29,7 +29,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
                     setValue(0)
                 })
             } else {
-                r.json().then((err)=>setError(err))
+                r.json().then((err)=>setError(err.error))
             }
         })
     }

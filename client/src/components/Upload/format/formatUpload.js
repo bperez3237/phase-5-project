@@ -39,10 +39,8 @@ export const formatUploadObj = (excelData) => {
 }
 
 export const addCostToArray = (activities, cost) => {
-    console.log('here')
     const otherActivities = activities.filter((activity)=> activity.id!==cost.activity_id)
     const thisActivity = activities.find((activity)=> activity.id===cost.activity_id)
-    console.log(cost, activities)
     const newActivity = {
         'approved': thisActivity.approved,
         'cost_code': thisActivity.cost_code,

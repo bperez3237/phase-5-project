@@ -12,10 +12,14 @@ class CostCodesController < ApplicationController
 
     def show
         @cost_code = CostCode.find(params[:id])
-        if params[:work_week_id]
-            render json: @cost_code, serializer: WorkWeekCostCodeSerializerSerializer, work_week_id: params[:work_week_id]
+        if @cost_code
+            if params[:work_week_id]
+                render json: @cost_code, serializer: WorkWeekCostCodeSerializerSerializer, work_week_id: params[:work_week_id]
+            else
+                render json: @cost_code
+            end
         else
-            render json: @cost_code
+            render json: {error: @cost_code.errors}, status: :not_found
         end
     end
 

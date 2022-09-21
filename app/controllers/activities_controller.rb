@@ -22,13 +22,17 @@ class ActivitiesController < ApplicationController
 
 
     def update
-        cost_code = CostCode.find_by(code: params[:code])
         activity = Activity.find(params[:id])
-        activity.update(cost_code_id: cost_code.id, cost_code: cost_code)
-        if activity.valid?
-            render json: activity, status: :created
-        else 
-            render json: { error: activity.errors }, status: :unprocessable_entity
+        cost_code = CostCode.find_by(code: params[:code])
+        if cost_code
+            activity.update(cost_code_id: cost_code.id, cost_code: cost_code)
+            if activity.valid?
+                render json: activity, status: :created
+            else 
+                render json: { error: activity.errors }, status: :unprocessable_entity
+            end
+        else
+            render json: {error:"Cost code not found"}, status: :not_found
         end
     end
     
@@ -49,7 +53,11 @@ class ActivitiesController < ApplicationController
 
     def show 
         activity = Activity.find(params[:id])
-        render json: activity, include: :costs
+        if activity
+            render json: activity, include: :costs
+        else
+            render json: {error: activity.errors}, status: :not_found
+        end
     end
 
     def activity_week
