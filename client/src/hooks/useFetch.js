@@ -17,7 +17,7 @@ function useFetch(url) {
     },[url])
 
 
-    return {data, setData, loading, error}
+    return {data, setData, loading, error, setError}
 }
 
 export default useFetch;

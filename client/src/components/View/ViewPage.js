@@ -6,15 +6,17 @@ import useFetch from "../../hooks/useFetch";
 import SelectList from "./SelectList";
 import ActivityList from "./ActivityList";
 import WorkWeekList from "./WorkWeekList";
+import DismissableError from "../DismissableError";
+import Loading from '../Loading'
 
 function ViewPage() {
     const [value, setValue] = useState("")
     const [path, setPath] = useState('/cost_codes')
-    const {data} = useFetch(path)
-
+    const {data, loading, error, setError} = useFetch(path)
 
     return(
         <Container className="">
+            {error && <DismissableError error={error} />}
             <Row>
                 <Col>
                     <ViewSearch setValue={setValue} value={value}/>
@@ -27,6 +29,7 @@ function ViewPage() {
             </Row>
             <Row>
                 <Col>
+                    {loading && <Loading loading={loading}/>}
                     {path==='/cost_codes' ? (<CostCodesList value={value} costCodes={data} />) : 
                     ( path==='/activities' ? (<ActivityList value={value} activities={data}/>) : 
                     (<WorkWeekList value={value} workWeeks={data} />))}

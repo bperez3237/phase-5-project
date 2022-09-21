@@ -1,9 +1,10 @@
 import {Alert} from 'react-bootstrap'
+import {useState} from 'react'
 
 function DismissableError({error}) {
     const [show, setShow] = useState(true)
 
-    if (show) {return(
+    if (show && error!='') {return(
         <Alert variant='danger' onClose={()=>setShow(false)}>
             <Alert.Heading>Error status: {error?.status}</Alert.Heading>
             <p>
