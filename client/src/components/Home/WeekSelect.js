@@ -1,5 +1,7 @@
 import useFetch from "../../hooks/useFetch"
 import {useState, useContext} from 'react'
+import Loading from '../Loading'
+import DismissableError from '../DismissableError'
 import { WorkWeekContext } from "../../context/WorkWeekContext"
 import {DropdownButton, Dropdown, Container, Row, Col, Badge} from 'react-bootstrap'
 
@@ -8,7 +10,8 @@ function WeekSelect() {
     const [value, setValue] = useState(workWeek.id)
     const activitiesExist = workWeek?.activities?.length > 0
     const unitsExist = workWeek?.units?.length > 0  
-    const {data} = useFetch('/work_weeks')
+    const {data, loading} = useFetch('/work_weeks')
+    const [error,setError] = useState('')
 
     function handleWeekChange(e) {
         setValue(e)
@@ -21,7 +24,7 @@ function WeekSelect() {
             if (r.ok) {
                 r.json().then((data)=>setWorkWeek(data))
             } else {
-                r.json().then((error)=>console.log(error))
+                r.json().then((error)=>setError(error))
             }
         })
     }
@@ -30,6 +33,8 @@ function WeekSelect() {
 
     return(
         <Container className="d-flex">
+        {loading && <Loading />}
+        {error && <DismissableError error={error} />}
             <Row>
                 <Col>
                     <DropdownButton onSelect={handleWeekChange} value={value} title="Select Work Week:">

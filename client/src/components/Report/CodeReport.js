@@ -1,11 +1,13 @@
 import React from 'react'
 import useFetch from '../../hooks/useFetch'
+import Loading from '../Loading'
 import {Col, Container, Row} from 'react-bootstrap'
 import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
+import DismissableError from '../DismissableError'
 
 
 function CodeReport({costCodeId, workWeekId}) {
-    const {data} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
+    const {data, loading, error} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
 
     const budgetprodrate = Math.round(100*(data?.budget_quantity/data?.budget_hours))/100
 
@@ -13,6 +15,8 @@ function CodeReport({costCodeId, workWeekId}) {
     const clr = estimatedValue >= 0 ? 'green' : 'red'
     return(
         <Container className='m-3' style={{border:'1px', borderStyle:'solid'}}>
+            {loading && <Loading />}
+            {error && <DismissableError error={error} />}
             <Row>
                 <Col>
                     <h1>{data?.code} - {data?.name}</h1>

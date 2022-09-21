@@ -4,6 +4,7 @@ import {useState} from 'react'
 function LoginForm({setUser, showLogin, setShowLogin}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState('')
 
 
     function handleSubmit(e) {
@@ -24,7 +25,7 @@ function LoginForm({setUser, showLogin, setShowLogin}) {
                 if (r.ok) {
                     r.json().then((user)=>setUser(user))
                 } else {
-                    r.json().then((err)=>console.log('error',err))
+                    r.json().then((err)=>setError(err))
                 }
             })
     }

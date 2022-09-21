@@ -2,13 +2,16 @@ import useFetch from "../../hooks/useFetch";
 import React from "react";
 import {Card} from 'react-bootstrap'
 import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
-
+import Loading from '../Loading'
+import DismissableError from '../DismissableError'
 
 function ProjectInfo() {
-    const {data} = useFetch('/project_summary')
+    const {data, loading, error} = useFetch('/project_summary')
 
     return(
         <Card className='m-3'>
+        {loading && <Loading />}
+        {error && <DismissableError error={error} />}
             <Card.Header>
                 <Card.Title>Project Summary:</Card.Title>
             </Card.Header>
