@@ -3,8 +3,6 @@ import {useState} from 'react'
 
 function DismissableError({error}) {
     const [show, setShow] = useState(true)
-    console.log(error, show)
-
 
     if (show) {return(
         <Alert variant='danger' onClose={()=>setShow(false)} dismissible>

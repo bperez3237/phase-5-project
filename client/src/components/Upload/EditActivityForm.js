@@ -13,6 +13,7 @@ function EditActivityForm({activity, setToggleEdit}) {
     function editActivity(e) {
         e.preventDefault()
 
+        setError('')
         const params = {code: value}
         fetch(`/activities/${activity.id}`, {
             method: "PATCH",
