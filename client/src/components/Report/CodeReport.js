@@ -1,8 +1,8 @@
 import React from 'react'
 import useFetch from '../../hooks/useFetch'
-import Loading from '../Loading'
 import {Col, Container, Row} from 'react-bootstrap'
 import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
+import Loading from '../Loading'
 import DismissableError from '../DismissableError'
 
 
