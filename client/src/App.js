@@ -42,7 +42,7 @@ function App() {
     )
   } else {return (
     <BrowserRouter>
-    {error && <DismissableError error={error}/>}
+    {/* {error && <DismissableError error={error}/>} */}
       <UserContext.Provider value={{user,setUser}}>
       <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
         <Navigator workWeek={workWeek?.end_date} />
