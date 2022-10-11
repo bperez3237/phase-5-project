@@ -6,7 +6,7 @@ import useFetch from "../../hooks/useFetch";
 import SelectList from "./SelectList";
 import ActivityList from "./ActivityList";
 import WorkWeekList from "./WorkWeekList";
-import DismissableError from "../DismissableError";
+import DismissableError from "../Error/DismissableError";
 import Loading from '../Loading'
 
 function ViewPage() {

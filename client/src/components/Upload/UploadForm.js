@@ -4,7 +4,7 @@ import {Button, Container, Form} from 'react-bootstrap'
 import { WorkWeekContext } from '../../context/WorkWeekContext'
 import { ActivitiesContext } from './context/ActivitiesContext'
 import {addCostToArray, formatUploadObj} from './format/formatUpload'
-import DismissableError from '../DismissableError'
+import DismissableError from '../Error/DismissableError'
 var xlsx = require("xlsx")
 
 function UploadForm() {

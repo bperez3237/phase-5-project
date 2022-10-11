@@ -1,7 +1,7 @@
 import useFetch from "../../hooks/useFetch"
 import {useState, useContext} from 'react'
 import Loading from '../Loading'
-import DismissableError from '../DismissableError'
+import DismissableError from '../Error/DismissableError'
 import { WorkWeekContext } from "../../context/WorkWeekContext"
 import {DropdownButton, Dropdown, Container, Row, Col, Badge} from 'react-bootstrap'
 

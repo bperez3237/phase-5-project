@@ -3,7 +3,7 @@ import React from "react";
 import {Card} from 'react-bootstrap'
 import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
 import Loading from '../Loading'
-import DismissableError from '../DismissableError'
+import DismissableError from '../Error/DismissableError'
 
 function ProjectInfo() {
     const {data, loading, error} = useFetch('/project_summary')

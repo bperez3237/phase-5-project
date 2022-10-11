@@ -3,7 +3,7 @@ import useFetch from '../../hooks/useFetch'
 import {Col, Container, Row} from 'react-bootstrap'
 import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
 import Loading from '../Loading'
-import DismissableError from '../DismissableError'
+import DismissableError from '../Error/DismissableError'
 
 
 function CodeReport({costCodeId, workWeekId}) {

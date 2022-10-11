@@ -1,6 +1,6 @@
 import {Button, Form} from 'react-bootstrap'
 import {useState} from 'react'
-import DismissableError from '../DismissableError';
+import DismissableError from '../Error/DismissableError';
 
 function LoginForm({setUser, showLogin, setShowLogin}) {
     const [username, setUsername] = useState("");

@@ -2,7 +2,7 @@ import {Form, Button} from 'react-bootstrap'
 import {useState, useContext} from 'react'
 import {ActivitiesContext} from './context/ActivitiesContext'
 import {replace} from '../../services/UpdateTable/updateObj'
-import DismissableError from '../DismissableError'
+import DismissableError from '../Error/DismissableError'
 
 function EditActivityForm({activity, setToggleEdit}) {
     const [value, setValue] = useState('')

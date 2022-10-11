@@ -9,7 +9,7 @@ import ReportPage from './components/Report/ReportPage'
 import { UserContext } from './context/UserContext';
 import { WorkWeekContext } from './context/WorkWeekContext'
 import ViewPage from './components/View/ViewPage';
-import DismissableError from './components/DismissableError'
+import DismissableError from './components/Error/DismissableError'
 
 
 function App() {

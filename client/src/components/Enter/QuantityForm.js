@@ -1,17 +1,19 @@
 import {Button, Form, ListGroup, Accordion, InputGroup } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 import SubmittedCode from './SubmittedCode'
-import DismissableError from '../DismissableError'
+import DismissableError from '../Error/DismissableError'
 
 function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)
     const [submittedStatus, setSubmittedStatus] = useState(false)
-    const [error,setError] = useState('')
+    const [error, setError] = useState('')
 
 
     useEffect(()=> {
         setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id===costCode.id).length>0 ? true : false)
     },[workWeek, costCode])
+
+    useEffect(()=>setValue(0),[error])
     
     function handleSubmit(e) {
         e.preventDefault()
@@ -41,7 +43,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
 
     return (
         <>
-        {error && <DismissableError error={error} />}
+        {error && <DismissableError error={error}/>}
             {submittedStatus ? (
                 <SubmittedCode workWeek={workWeek} setSubmittedStatus={setSubmittedStatus} costCode={costCode} />
             ) : (

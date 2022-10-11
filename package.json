@@ -11,6 +11,7 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "react-popup-alert": "^2.0.0",
     "xlsx": "^0.18.5"
   }
 }
