@@ -9,20 +9,20 @@ function Activity({activity}) {
     const [toggleEdit, setToggleEdit] = useState(false)
 
     return(
-        <Card className='m-3' style={{border:'1px', borderStyle:'solid'}}>
-            <Card.Title>{activity.description} - {activity.total_hours}</Card.Title>
-            <Card.Body>
+        <div className='m-3' style={{border:'1px', borderStyle:'solid'}}>
+            <h2>{activity.description} - {activity.total_hours}</h2>
+            <div>
                     {!toggleEdit ? (
-                    <>
-                        <Card.Text>Cost Code: {activity.cost_code.code} - {activity.cost_code.name}</Card.Text>
-                        <Card.Text>Total Hours: {activity.total_hours}</Card.Text>
-                        <Card.Text>Total Cost: {formatCurrency(activity.total_cost)}</Card.Text>
-                        <Button onClick={()=>setToggleEdit(true)}>Edit</Button>
-                    </>) : (
+                    <div>
+                        <p>Cost Code: {activity.cost_code.code} - {activity.cost_code.name}</p>
+                        <p>Total Hours: {activity.total_hours}</p>
+                        <p>Total Cost: {formatCurrency(activity.total_cost)}</p>
+                        <button onClick={()=>setToggleEdit(true)}>Edit</button>
+                    </div>) : (
                         <EditActivityForm setToggleEdit={setToggleEdit} activity={activity}/>)}
                     <CostList costs={activity.costs} />
-            </Card.Body>
-        </Card>
+            </div>
+        </div>
     )
 }
 

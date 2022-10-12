@@ -23,7 +23,6 @@ function DismissableError({error}) {
         <div className='popup'>
             <div className='popup-inner'>
                 <h1>Error!</h1>
-                <h1>{JSON.stringify(error)}</h1>
                 <ErrorMessage messages={messages} />
                 <button className='close-btn' onClick={()=>setShow(false)}>close</button>
             </div>

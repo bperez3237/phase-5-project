@@ -40,6 +40,7 @@ function UploadForm() {
         
         if (workWeek.activities.length > 0) {
             console.log('data already exists')
+            setError({error:'Data Already Exists'})
         } else {
             setError('')
             var newObjArray = []

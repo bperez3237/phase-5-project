@@ -13,15 +13,14 @@
 
 .popup-inner {
     position: relative;
-    overflow: scroll;
-    border: 1px;
+    border: 2px;
     border-style: solid;
     border-color: black;
     padding: 32px;
     width: 100%;
     max-width: 640px;
-    background-color: rgb(194, 195, 255);
-    /* z-index: 1; */
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
 
 }
 
