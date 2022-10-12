@@ -6,7 +6,7 @@ class CostsController < ApplicationController
         if cost.valid? & employee
             render json: cost
         else
-            render json: { error: {costs: cost.errors , employee: employee.errors} }, status: :unprocessable_entity
+            render json: { error: {cost: cost.errors , employee: employee.errors} }, status: :unprocessable_entity
         end
     end
 

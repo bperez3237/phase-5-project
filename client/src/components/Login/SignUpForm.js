@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Button, Form} from 'react-bootstrap'
+import DismissableError from "../Error/DismissableError";
 
 function SignUpForm({ setUser, setShowLogin}) {
     const [username, setUsername] = useState("");
@@ -35,6 +36,8 @@ function SignUpForm({ setUser, setShowLogin}) {
     }
 
     return (
+      <div>
+        {error && <DismissableError error={error} />}
         <Form onSubmit={handleSubmit} style={{"width":"300px"}}>
         <Form.Group>
           <Form.Label htmlFor="username">Username</Form.Label>
@@ -73,6 +76,7 @@ function SignUpForm({ setUser, setShowLogin}) {
           <Button onClick={()=>setShowLogin(true)}>Cancel</Button>
         </Form.Group>
       </Form>
+      </div>
     )
 
 

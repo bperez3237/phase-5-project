@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
                 session[:user_id] = user.id
                 render json: user, status: :created
             else
-                render json: { errors: "Invalid username or password" }, status: :unauthorized
+                render json: { error: "Invalid username or password" }, status: :unauthorized
             end
         else
             render json: {error: "User not found"}, status: :not_found
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
             session.delete :user_id
             head :no_content
         else
-            render json: {errors: user.errors.full_messages}, status: :unauthorized
+            render json: {error: user.errors.full_messages}, status: :unauthorized
         end
     end
 

@@ -3,19 +3,23 @@ class ActivitiesController < ApplicationController
 
     def create
         cost_code = CostCode.find_by(code: params[:code])
-        if params[:work_week_id]
-            activity = Activity.create(cost_code_id: cost_code.id, description: params[:description], date: params[:date], approved: false, work_week_id: params[:work_week_id])
-            if activity.valid? & cost_code
-                render json: activity,  status: :created
-            else 
-                render json: { error: { activity: activity.errors, cost_code: cost_code.errors} }, status: :unprocessable_entity
-            end
+        if not cost_code
+            render json: { error: 'Cost Code not found'}, status: :not_found
         else
-            activity = Activity.create(cost_code_id: cost_code.id, description: params[:description], date: params[:date], approved: false, work_week_id: 1)
-            if activity.valid? & cost_code
-                render json: activity,  status: :created
-            else 
-                render json: { error: { activity: activity.errors, cost_code: cost_code.errors} }, status: :unprocessable_entity
+            if params[:work_week_id]
+                activity = Activity.create(cost_code_id: cost_code.id, description: params[:description], date: params[:date], approved: false, work_week_id: params[:work_week_id])
+                if activity.valid? & cost_code
+                    render json: activity,  status: :created
+                else 
+                    render json: { error: { activity: activity.errors, cost_code: cost_code.errors} }, status: :unprocessable_entity
+                end
+            else
+                activity = Activity.create(cost_code_id: cost_code.id, description: params[:description], date: params[:date], approved: false, work_week_id: 1)
+                if activity.valid? & cost_code
+                    render json: activity,  status: :created
+                else 
+                    render json: { error: { activity: activity.errors, cost_code: cost_code.errors} }, status: :unprocessable_entity
+                end
             end
         end
     end
