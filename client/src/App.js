@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Navigator from './components/Navigator';
+import Navigator from './components/Navigation/Navigator';
 import EnterQuantities from './components/Enter/EnterQuantities';
 import LoginPage from './components/Login/LoginPage';
 import Home from './components/Home/Home';
@@ -10,6 +10,7 @@ import { UserContext } from './context/UserContext';
 import { WorkWeekContext } from './context/WorkWeekContext'
 import ViewPage from './components/View/ViewPage';
 import DismissableError from './components/Error/DismissableError'
+import Sidebar from './components/Navigation/Sidebar';
 
 
 function App() {
@@ -42,10 +43,10 @@ function App() {
     )
   } else {return (
     <BrowserRouter>
-    {/* {error && <DismissableError error={error}/>} */}
       <UserContext.Provider value={{user,setUser}}>
       <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
         <Navigator workWeek={workWeek?.end_date} />
+        <Sidebar />
         <Switch>
           <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
           <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>

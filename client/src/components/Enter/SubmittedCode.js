@@ -11,7 +11,7 @@ function SubmittedCode({setSubmittedStatus, workWeek, costCode}) {
     return(
         <Container className='m-3' style={{border:'1px',borderStyle:'solid'}}>
             {loading && <Loading />}
-            <h2>{data?.code} is submitted. </h2>
+            <h2>Code is submitted. </h2>
             <h3> Hours: {data?.last_week_hours} Units: {data?.last_week_quantity} {data?.unit_of_measure}</h3>
             <h3 style={{color:clr}}>Estimated Money Earned last week: {formatCurrency(data?.estimated_value)}</h3>
             <Button onClick={()=>setSubmittedStatus(false)} className='justify-content-end' value={data?.code}>Edit</Button>

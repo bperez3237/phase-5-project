@@ -1,5 +1,4 @@
-
-import Modal from 'react-modal';
+import { Button } from 'react-bootstrap';
 import {useState} from 'react'
 import './Error.css'
 import { useEffect } from 'react';
@@ -24,7 +23,7 @@ function DismissableError({error}) {
             <div className='popup-inner'>
                 <h1>Error!</h1>
                 <ErrorMessage messages={messages} />
-                <button className='close-btn' onClick={()=>setShow(false)}>close</button>
+                <Button className='close-btn' onClick={close}>close</Button>
             </div>
         </div>
     ) : "";

@@ -7,6 +7,13 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)
     const [submittedStatus, setSubmittedStatus] = useState(false)
     const [error, setError] = useState('')
+    console.log(costCode)
+    const [toggle, setToggle] = useState(false)
+
+    function handleClick() {
+        setToggle(!toggle)
+    }
+
 
 
     useEffect(()=> {
@@ -42,28 +49,26 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
     
 
     return (
-        <>
-        {error && <DismissableError error={error}/>}
+        <div className='container m-3 p-3' style={{border:'1px',borderStyle:'solid'}}>
+            <header>
+                <h3>{costCode.code} - {costCode.name}</h3>
+            </header>
+            {error && <DismissableError error={error}/>}
             {submittedStatus ? (
                 <SubmittedCode workWeek={workWeek} setSubmittedStatus={setSubmittedStatus} costCode={costCode} />
             ) : (
-                <Form className='m-3 p-3' style={{border:'1px',borderStyle:'solid'}} onSubmit={handleSubmit}>
-                <Form.Group>
-                    <Form.Label column='lg' >{costCode.code}</Form.Label><br></br>
-                    <InputGroup>
-                    <Form.Control value={value} onChange={(e)=>setValue(e.target.value)}/>
+                <>
+                <form className=''  onSubmit={handleSubmit}>
+                    <input value={value} onChange={(e)=>setValue(e.target.value)}/>
                     <Button type='submit' >Submit</Button>
-                    </InputGroup>
-                    <Accordion defaultActiveKey={["0"]}>
-                        <Accordion.Item eventKey='1'>
-                            <Accordion.Header>Activities:</Accordion.Header>
-                            <Accordion.Body><ListGroup>{activityElems}</ListGroup></Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </Form.Group>
-            </Form>
+                </form>
+                <button className='accordion' onClick={handleClick}>Activities:</button>
+                <div className='panel' style={{display:toggle ? 'block' : 'none'}}>
+                    <ul>{activityElems}</ul>
+                </div>
+                </>
             )}
-        </>
+        </div>
     )
 }
 export default QuantityForm;

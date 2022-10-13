@@ -42,7 +42,7 @@ function WeekSelect() {
                     </DropdownButton>
                 </Col>
                 <Col>
-                    <Badge bg={activitiesExist ? 'success' : 'danger'}>Units {(unitsExist ? "" : "not ")+"submitted"}</Badge>
+                    <Badge bg={unitsExist ? 'success' : 'danger'}>Units {(unitsExist ? "" : "not ")+"submitted"}</Badge>
                 </Col>
                 <Col>
                     <Badge bg={activitiesExist ? 'success' : 'danger'}>Activities {(activitiesExist ? "" : "not ")+"submitted"}</Badge>

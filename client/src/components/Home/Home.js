@@ -15,7 +15,10 @@ function Home() {
                 <WeekSelect />
                 <ProjectInfo />
             </Row>
-            <PagesInfo />
+            <Row>
+                <PagesInfo />
+            </Row>
+            
         </Container>
         
     )

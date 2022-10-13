@@ -9,19 +9,19 @@ function ProjectInfo() {
     const {data, loading, error} = useFetch('/project_summary')
 
     return(
-        <Card className='m-3'>
+        <div className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
         {loading && <Loading />}
         {error && <DismissableError error={error} />}
-            <Card.Header>
-                <Card.Title>Project Summary:</Card.Title>
-            </Card.Header>
-            <Card.Body>
-                <Card.Text>Total Budgeted Hours: {formatNumber(data.project_budget_hours)}</Card.Text>
-                <Card.Text>Total Budgeted Cost: {formatCurrency(data.project_budget_hours*108)}</Card.Text>
-                <Card.Text>Hours to Date: {formatNumber(data.total_hours)}</Card.Text>
-                <Card.Text>Cost to Date: {formatCurrency(data.total_cost)}</Card.Text>
-            </Card.Body>
-        </Card>
+            <header>
+                <h1>Project Summary:</h1>
+            </header>
+            <body>
+                <p>Total Budgeted Hours: {formatNumber(data.project_budget_hours)}</p>
+                <p>Total Budgeted Cost: {formatCurrency(data.project_budget_hours*108)}</p>
+                <p>Hours to Date: {formatNumber(data.total_hours)}</p>
+                <p>Cost to Date: {formatCurrency(data.total_cost)}</p>
+            </body>
+        </div>
 
     )
 }

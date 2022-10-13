@@ -88,18 +88,16 @@ function UploadForm() {
     }
 
     return (
-        <Container className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <div className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
             <h1>Upload Timesheet</h1>
             {error && <DismissableError error={error} />}
-            <Form>
-                <Form.Group >
-                    <Form.Label htmlFor="upload">Upload File</Form.Label>
-                    <Form.Control type="file" onChange={readUploadFile} accept=".xlsx, .xls" />
-                    <br/>
-                    <Button onClick={handleSubmitTimesheet}>Upload</Button>
-                </Form.Group>
-            </Form>
-        </Container>
+            <form>
+                <label htmlFor="upload">Upload File</label>
+                <input type="file" onChange={readUploadFile} accept=".xlsx, .xls" />
+                <br/>
+                <Button onClick={handleSubmitTimesheet}>Upload</Button>
+            </form>
+        </div>
         
     )
 }

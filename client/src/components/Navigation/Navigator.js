@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {Button, Container, Nav,  Navbar} from 'react-bootstrap'
-import {UserContext} from '../context/UserContext'
+import {UserContext} from '../../context/UserContext'
 
 function Navigator({workWeek}) {
   const {setUser} = useContext(UserContext)
