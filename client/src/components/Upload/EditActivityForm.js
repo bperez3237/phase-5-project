@@ -33,7 +33,7 @@ function EditActivityForm({activity, setToggleEdit}) {
     }
     return(
         <>
-        {error && <DismissableError error={error}/>}
+        {error && <DismissableError error={error} setError={setError}/>}
             <Form>
                 <Form.Group>
                     <Form.Label>Cost Code: </Form.Label>

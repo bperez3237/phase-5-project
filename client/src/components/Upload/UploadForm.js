@@ -90,7 +90,7 @@ function UploadForm() {
     return (
         <div className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
             <h1>Upload Timesheet</h1>
-            {error && <DismissableError error={error} />}
+            {error && <DismissableError error={error}  setError={setError}/>}
             <form>
                 <label htmlFor="upload">Upload File</label>
                 <input type="file" onChange={readUploadFile} accept=".xlsx, .xls" />

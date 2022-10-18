@@ -4,7 +4,7 @@ import './Error.css'
 import { useEffect } from 'react';
 import ErrorMessage from './ErrorMessage';
 
-function DismissableError({error}) {
+function DismissableError({error, setError}) {
     const [show, setShow] = useState(true)
     const [messages, setMessages] = useState([])
 
@@ -16,6 +16,7 @@ function DismissableError({error}) {
     function close() {
         setShow(false)
         setMessages([])
+        setError('')
     }
 
     return(show) ? (

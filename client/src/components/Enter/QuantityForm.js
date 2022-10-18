@@ -7,14 +7,11 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)
     const [submittedStatus, setSubmittedStatus] = useState(false)
     const [error, setError] = useState('')
-    console.log(costCode)
     const [toggle, setToggle] = useState(false)
 
     function handleClick() {
         setToggle(!toggle)
     }
-
-
 
     useEffect(()=> {
         setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id===costCode.id).length>0 ? true : false)
@@ -53,7 +50,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
             <header>
                 <h3>{costCode.code} - {costCode.name}</h3>
             </header>
-            {error && <DismissableError error={error}/>}
+            {error && <DismissableError error={error} setError={setError}/>}
             {submittedStatus ? (
                 <SubmittedCode workWeek={workWeek} setSubmittedStatus={setSubmittedStatus} costCode={costCode} />
             ) : (

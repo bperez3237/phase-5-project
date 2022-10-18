@@ -2,17 +2,16 @@ import React, {useState} from "react";
 import {Button, Form} from 'react-bootstrap'
 import DismissableError from "../Error/DismissableError";
 
-function SignUpForm({ setUser, setShowLogin}) {
+function SignUpForm({ setUser, setShowLogin, error, setError}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [name,setName] = useState("")
-    const [error, setError] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
   
     function handleSubmit(e) {
       e.preventDefault();
-      setError([]);
+      // setError('');
       setIsLoading(true);
       fetch("/signup", {
         method: "POST",
@@ -30,6 +29,7 @@ function SignUpForm({ setUser, setShowLogin}) {
         if (r.ok) {
           r.json().then((user) => setUser(user));
         } else {
+          console.log('error')
           r.json().then((err) => setError(err));
         }
       });
@@ -37,8 +37,8 @@ function SignUpForm({ setUser, setShowLogin}) {
 
     return (
       <div>
-        {error && <DismissableError error={error} />}
-        <Form onSubmit={handleSubmit} style={{"width":"300px"}}>
+        {error && <DismissableError error={error} setError={setError} />}
+        <Form className="justify-content-center" onSubmit={handleSubmit} style={{"width":"300px"}}>
         <Form.Group>
           <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control

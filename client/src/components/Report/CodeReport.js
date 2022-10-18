@@ -7,7 +7,7 @@ import DismissableError from '../Error/DismissableError'
 
 
 function CodeReport({costCodeId, workWeekId}) {
-    const {data, loading, error} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
+    const {data, loading, error, setError} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
 
     const budgetprodrate = Math.round(100*(data?.budget_quantity/data?.budget_hours))/100
 
@@ -16,7 +16,7 @@ function CodeReport({costCodeId, workWeekId}) {
     return(
         <Container className='m-3' style={{border:'1px', borderStyle:'solid'}}>
             {loading && <Loading />}
-            {error && <DismissableError error={error} />}
+            {error && <DismissableError error={error}  setError={setError}/>}
             <Row>
                 <Col>
                     <h1>{data?.code} - {data?.name}</h1>

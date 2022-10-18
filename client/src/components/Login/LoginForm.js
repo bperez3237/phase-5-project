@@ -2,10 +2,9 @@ import {Button, Form} from 'react-bootstrap'
 import {useState} from 'react'
 import DismissableError from '../Error/DismissableError';
 
-function LoginForm({setUser, showLogin, setShowLogin}) {
+function LoginForm({setUser, showLogin, setShowLogin, error, setError}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState('')
 
 
     function handleSubmit(e) {
@@ -33,7 +32,7 @@ function LoginForm({setUser, showLogin, setShowLogin}) {
  
     return (
         <Form onSubmit={handleSubmit} style={{"width":"300px"}}>
-            {error && <DismissableError error={error} />}
+            {error && <DismissableError error={error}  setError={setError}/>}
             <Form.Group>
                 <Form.Label>Username</Form.Label>
                 <Form.Control 
