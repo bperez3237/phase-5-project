@@ -16,7 +16,7 @@ function ViewPage() {
 
     return(
         <Container className="">
-            {error && <DismissableError error={error} />}
+            {error && <DismissableError error={error} setError={setError}/>}
             <Row>
                 <Col>
                     <ViewSearch setValue={setValue} value={value}/>

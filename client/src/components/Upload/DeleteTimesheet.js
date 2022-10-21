@@ -2,6 +2,7 @@ import {Container, Button} from 'react-bootstrap'
 import { ActivitiesContext } from './context/ActivitiesContext'
 import {WorkWeekContext} from '../../context/WorkWeekContext'
 import {useContext, useState} from 'react'
+import DismissableError from '../Error/DismissableError'
 
 function DeleteTimesheet() {
     const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
@@ -22,7 +23,8 @@ function DeleteTimesheet() {
     }
 
     return(
-        <Container className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <Container className='p-3 m-3' style={{border:'1px', borderStyle:'solid', width:'500px'}}>
+            {error && <DismissableError error={error}  setError={setError}/>}
             <h1>Delete Timesheet</h1>
             <Button onClick={handleDelete}> Delete Activities</Button>
         </Container>

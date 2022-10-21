@@ -9,13 +9,13 @@ import ReportPage from './components/Report/ReportPage'
 import { UserContext } from './context/UserContext';
 import { WorkWeekContext } from './context/WorkWeekContext'
 import ViewPage from './components/View/ViewPage';
-import DismissableError from './components/Error/DismissableError'
+// import DismissableError from './components/Error/DismissableError'
 import Sidebar from './components/Navigation/Sidebar';
 
 
 function App() {
   const [user,setUser] = useState(null)
-  const [error, setError] = useState('')
+  // const [error, setError] = useState('')
   const [workWeek, setWorkWeek] = useState([])
 
   useEffect(() => {

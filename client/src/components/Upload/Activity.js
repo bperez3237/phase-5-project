@@ -1,4 +1,4 @@
-import {Button, Card} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import { useState } from 'react';
 import EditActivityForm from './EditActivityForm'
 import CostList from './CostList';

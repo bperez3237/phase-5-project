@@ -15,7 +15,7 @@ function Loading({loading}) {
     },[loading])
 
     return(
-        <p>Loading{counter%3==0 ? '.' : (counter%3==1 ? '..' : '...')}</p>
+        <p>Loading{counter%3===0 ? '.' : (counter%3===1 ? '..' : '...')}</p>
     )
 }
 

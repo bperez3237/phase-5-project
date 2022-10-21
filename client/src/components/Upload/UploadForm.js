@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState, useContext} from 'react'
-import {Button, Container, Form} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import { WorkWeekContext } from '../../context/WorkWeekContext'
 import { ActivitiesContext } from './context/ActivitiesContext'
 import {addCostToArray, formatUploadObj} from './format/formatUpload'
@@ -88,7 +88,7 @@ function UploadForm() {
     }
 
     return (
-        <div className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <div className='p-3 m-3' style={{border:'1px', borderStyle:'solid', width:'500px'}}>
             <h1>Upload Timesheet</h1>
             {error && <DismissableError error={error}  setError={setError}/>}
             <form>
