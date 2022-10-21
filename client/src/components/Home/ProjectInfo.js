@@ -15,12 +15,12 @@ function ProjectInfo() {
             <header>
                 <h1>Project Summary:</h1>
             </header>
-            <body>
+            <div>
                 <p>Total Budgeted Hours: {formatNumber(data.project_budget_hours)}</p>
                 <p>Total Budgeted Cost: {formatCurrency(data.project_budget_hours*108)}</p>
                 <p>Hours to Date: {formatNumber(data.total_hours)}</p>
                 <p>Cost to Date: {formatCurrency(data.total_cost)}</p>
-            </body>
+            </div>
         </div>
 
     )

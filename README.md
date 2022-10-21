@@ -11,7 +11,7 @@ The app is created used a rails server and react frontend.
 
 ## Getting Started
 
-After cloning, to setup the rails server run:
+After cloning, cd into the phase-5-project folder. Then, to setup the rails server run:
 
 ```bash
 rails s
