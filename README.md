@@ -11,23 +11,30 @@ The app is created used a rails server and react frontend.
 
 ## Getting Started
 
-After cloning, cd into the phase-5-project folder. Then, to setup the rails server run:
+After cloning, cd into the phase-5-project folder. 
+
+There is some code in db/seed.rb file to start. Run the migrations and seed files to set up database:
+
+```bash
+rails db:migrate db:seed
+```
+
+Install javascript dependencies
+
+```bash
+npm install --prefix client
+```
+Then, to setup the rails server run:
 
 ```bash
 rails s
 ```
-
 and to setup the react server run:
 
 ```bash
 npm start --prefix client
 ```
 
-There is some code in db/seed.rb file to start. Run the migrations and seed files:
-
-```bash
-rails db:migrate db:seed
-```
 ## Features:
 
 

@@ -2,6 +2,7 @@ import {Button, ListGroup } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 import SubmittedCode from './SubmittedCode'
 import DismissableError from '../Error/DismissableError'
+import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
 
 function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)
@@ -49,13 +50,15 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
         <div className='container m-3 p-3' style={{border:'1px',borderStyle:'solid'}}>
             <header>
                 <h3>{costCode.code} - {costCode.name}</h3>
+                <p><span style={{fontWeight:'bold'}}>Total Budget:</span> {formatCurrency(costCode.budget_hours*108)}</p>
+                <p><span style={{fontWeight:'bold'}}>Total Units:</span> {formatNumber(costCode.budget_quantity)}</p>
             </header>
             {error && <DismissableError error={error} setError={setError}/>}
             {submittedStatus ? (
                 <SubmittedCode workWeek={workWeek} setSubmittedStatus={setSubmittedStatus} costCode={costCode} />
             ) : (
                 <>
-                <form className=''  onSubmit={handleSubmit}>
+                <form className='d-flex'  onSubmit={handleSubmit} style={{width:'100%'}}>
                     <input value={value} onChange={(e)=>setValue(e.target.value)}/>
                     <Button type='submit' >Submit</Button>
                 </form>

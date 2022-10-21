@@ -11,7 +11,7 @@ function DismissableError({error, setError}) {
     useEffect(()=>{
         setShow(true)
         setMessages([...messages,error])
-    },[error, messages])
+    },[error])
 
     function close() {
         setShow(false)
