@@ -1,3 +1,12 @@
+.App {
+    background-color: #293b5d;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
 
 h1#app-title {
     font-family: Impact;

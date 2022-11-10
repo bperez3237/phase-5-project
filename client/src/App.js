@@ -40,24 +40,28 @@ function App() {
 
   if (!user) {
     return (
-      <LoginPage setUser={setUser}/>
+      <div className='App'>
+        <LoginPage setUser={setUser}/>
+      </div>
     )
   } else {return (
-    <BrowserRouter>
-      <UserContext.Provider value={{user,setUser}}>
-      <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
-        <Navigator workWeek={workWeek?.end_date} />
-        <Sidebar />
-        <Switch>
-          <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
-          <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>
-          <Route path='/report'><ReportPage workWeek={workWeek} /></Route>
-          <Route path='/view'><ViewPage /></Route>
-          <Route path='/'><Home workWeek={workWeek} setWorkWeek={setWorkWeek}/></Route>
-        </Switch>
-      </WorkWeekContext.Provider>
-      </UserContext.Provider>
-    </BrowserRouter>
+    <div className='App'>
+      <BrowserRouter>
+        <UserContext.Provider value={{user,setUser}}>
+        <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
+          <Navigator workWeek={workWeek?.end_date} />
+          <Sidebar />
+          <Switch>
+            <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
+            <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>
+            <Route path='/report'><ReportPage workWeek={workWeek} /></Route>
+            <Route path='/view'><ViewPage /></Route>
+            <Route path='/'><Home workWeek={workWeek} setWorkWeek={setWorkWeek}/></Route>
+          </Switch>
+        </WorkWeekContext.Provider>
+        </UserContext.Provider>
+      </BrowserRouter>
+    </div>
   );
 }
 }
