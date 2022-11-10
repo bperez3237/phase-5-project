@@ -19,9 +19,10 @@ There is some code in db/seed.rb file to start. Run the migrations and seed file
 rails db:migrate db:seed
 ```
 
-Install javascript dependencies
+Install ruby and javascript dependencies
 
 ```bash
+bundle install
 npm install --prefix client
 ```
 Then, to setup the rails server run:

@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navigator from './components/Navigation/Navigator';
 import EnterQuantities from './components/Enter/EnterQuantities';

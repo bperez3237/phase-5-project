@@ -29,7 +29,6 @@ function SignUpForm({ setUser, setShowLogin, error, setError}) {
         if (r.ok) {
           r.json().then((user) => setUser(user));
         } else {
-          console.log('error')
           r.json().then((err) => setError(err));
         }
       });
