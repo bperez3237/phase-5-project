@@ -3,7 +3,7 @@ import SignUpForm from './SignUpForm'
 import {useState} from 'react'
 import {Container} from 'react-bootstrap'
 import './Login.css'
-import logo from '../../images/Hard_hat_logo.jpg'
+import Logo from "../Logo";
 
 
 function LoginPage({setUser}) {
@@ -11,11 +11,8 @@ function LoginPage({setUser}) {
     const [error, setError] = useState('')
 
     return(
-        <Container className='p-3 m-3'>
-            <div className='logo-container'>
-                <h1 id='app-title'>Hard Hat Manager</h1>
-                <img id='logo' src={logo} alt='hard_hat_logo'/>
-            </div>
+        <Container>
+            <Logo />
             <div className='form'>
                 {showLogin ? 
                 (<LoginForm setUser={setUser} showLogin={showLogin} setShowLogin={setShowLogin} error={error} setError={setError}/>

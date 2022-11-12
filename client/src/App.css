@@ -10,4 +10,25 @@
 
 h1#app-title {
     font-family: Impact;
+    text-align: right;
+}
+
+.logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
+#app-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 10px;
+}
+
+#logo {
+    height: 100px;
+    width: auto;
 }
