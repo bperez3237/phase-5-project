@@ -9,7 +9,7 @@ function SelectList({path, setPath}) {
     ]
 
     return(
-        <Container className='d-flex justify-content-center'> 
+        <Container className='d-flex white justify-content-center'> 
             {tables.map((table,index) => (
                 <Button key={index} className="m-3" size="lg" variant={path===table.value ? 'danger' : 'primary'} value={table.value} onClick={(e)=>setPath(e.target.value)}>{table.name}</Button>
             ))}

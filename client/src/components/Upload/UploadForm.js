@@ -88,7 +88,7 @@ function UploadForm() {
     }
 
     return (
-        <div className='p-3 m-3' style={{border:'1px', borderStyle:'solid', width:'500px'}}>
+        <div className='white p-3 m-3' style={{border:'1px', borderStyle:'solid', width:'500px'}}>
             <h1>Upload Timesheet</h1>
             {error && <DismissableError error={error}  setError={setError}/>}
             <form>

@@ -32,7 +32,7 @@ function WeekSelect() {
     const optionsElements = data?.map((workWeek)=><Dropdown.Item key={workWeek.id} eventKey={workWeek.id}>{workWeek.end_date}</Dropdown.Item>)
 
     return(
-        <div className="week-select m-3 p-3">
+        <div className="white week-select m-3 p-3">
         {loading && <Loading />}
         {error && <DismissableError error={error} />}
             <Row>

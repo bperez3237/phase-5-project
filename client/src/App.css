@@ -32,3 +32,8 @@ h1#app-title {
     height: 100px;
     width: auto;
 }
+
+
+.white {
+    background-color: aliceblue;
+}

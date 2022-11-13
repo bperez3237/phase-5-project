@@ -3,7 +3,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 function PagesInfo() {
 
     return (
-        <div className='pages-info m-3 p-3' style={{border:'1px', borderStyle:'solid'}}>
+        <div className='white pages-info m-3 p-3' style={{border:'1px', borderStyle:'solid'}}>
             <Row>
                 <Col><p><span style={{fontWeight:'bold'}}>View Codes Page: </span>View and search data for all the data bases</p></Col>
             </Row>

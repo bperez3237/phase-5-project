@@ -22,7 +22,7 @@ function Upload() {
                 <Col>
                     <UploadForm />
                     <DeleteTimesheet />
-                    </Col>
+                </Col>
                 <Col>
                     <ActivitiesStatus />
                     <ActivityList />
