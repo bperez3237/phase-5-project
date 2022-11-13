@@ -32,7 +32,7 @@ function WeekSelect() {
     const optionsElements = data?.map((workWeek)=><Dropdown.Item key={workWeek.id} eventKey={workWeek.id}>{workWeek.end_date}</Dropdown.Item>)
 
     return(
-        <Container className="d-flex">
+        <div className="week-select m-3 p-3">
         {loading && <Loading />}
         {error && <DismissableError error={error} />}
             <Row>
@@ -48,7 +48,7 @@ function WeekSelect() {
                     <Badge bg={activitiesExist ? 'success' : 'danger'}>Activities {(activitiesExist ? "" : "not ")+"submitted"}</Badge>
                 </Col>
             </Row>
-        </Container>
+        </div>
     )
 }
 

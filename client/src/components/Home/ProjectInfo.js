@@ -8,7 +8,7 @@ function ProjectInfo() {
     const {data, loading, error} = useFetch('/project_summary')
 
     return(
-        <div className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <div className='project-info m-3' style={{border:'1px', borderStyle:'solid'}}>
         {loading && <Loading />}
         {error && <DismissableError error={error} />}
             <header>

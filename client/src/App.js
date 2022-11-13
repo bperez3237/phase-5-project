@@ -41,7 +41,7 @@ function App() {
   if (!user) {
     return (
       <div className='App'>
-        <LoginPage setUser={setUser}/>
+        <LoginPage setUser={setUser} />
       </div>
     )
   } else {return (

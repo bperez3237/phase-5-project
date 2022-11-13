@@ -11,7 +11,7 @@ function LoginPage({setUser}) {
     const [error, setError] = useState('')
 
     return(
-        <Container>
+        <div className='login-container'>
             <Logo />
             <div className='form'>
                 {showLogin ? 
@@ -20,7 +20,7 @@ function LoginPage({setUser}) {
                 <SignUpForm setUser={setUser} setShowLogin={setShowLogin}  error={error} setError={setError}/>
                 )}
             </div>
-        </Container>
+        </div>
     )
 }
 

@@ -3,7 +3,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 function PagesInfo() {
 
     return (
-        <Container className='p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <div className='pages-info m-3 p-3' style={{border:'1px', borderStyle:'solid'}}>
             <Row>
                 <Col><p><span style={{fontWeight:'bold'}}>View Codes Page: </span>View and search data for all the data bases</p></Col>
             </Row>
@@ -16,7 +16,7 @@ function PagesInfo() {
             <Row>
                 <Col><p><span style={{fontWeight:'bold'}}>Weekly Report Page: </span>A Summarized report of completed hours and units</p></Col>
             </Row>
-        </Container>
+        </div>
     )
 }
 
