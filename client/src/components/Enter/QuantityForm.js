@@ -47,7 +47,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
     
 
     return (
-        <div className='container m-3 p-3' style={{border:'1px',borderStyle:'solid'}}>
+        <div className='white container m-3 p-3' style={{border:'1px',borderStyle:'solid'}}>
             <header>
                 <h3>{costCode.code} - {costCode.name}</h3>
                 <p><span style={{fontWeight:'bold'}}>Total Budget:</span> {formatCurrency(costCode.budget_hours*108)}</p>
