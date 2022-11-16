@@ -1,13 +1,40 @@
 .login-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     background-color: white;
-    position: absolute;
-    min-height: 600px;
+    padding: 20px;
 
     border-style: solid;    
-    border-width: 1px;
-    border-color: blue;
+    border-width: 3px;
+    border-color: rgb(144, 144, 160);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.35);
 }
 
+.button-group {
+    display: flex;
+    justify-content: center;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#login-button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#signup-button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#form {
+    width: 300px;
+    padding: 10px;
+}

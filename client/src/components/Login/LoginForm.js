@@ -31,7 +31,7 @@ function LoginForm({setUser, showLogin, setShowLogin, error, setError}) {
     }
  
     return (
-        <Form onSubmit={handleSubmit} style={{"width":"300px"}}>
+        <Form id='form' onSubmit={handleSubmit} >
             {error && <DismissableError error={error}  setError={setError}/>}
             <Form.Group>
                 <Form.Label>Username</Form.Label>
@@ -45,8 +45,10 @@ function LoginForm({setUser, showLogin, setShowLogin, error, setError}) {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
-            <Button type='submit'>Login</Button>
-            <Button onClick={()=>setShowLogin(false)}>Sign Up</Button>
+            <div className='button-group'>
+                <Button id='login-button' type='submit'>Login</Button>
+                <Button id='signup-button' onClick={()=>setShowLogin(false)}>Sign Up</Button>
+            </div>
         </Form>
     )
 }
