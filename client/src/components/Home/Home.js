@@ -11,7 +11,9 @@ function Home() {
 
     return(
         <div className='home-container' >
-            <h1 className='white'>Home Week of {workWeek.end_date ? workWeek.end_date : ' - not yet selected -'}</h1>         
+            <div className='white heading'>
+                <h1 >Home Week of {workWeek.end_date ? workWeek.end_date : ' - not yet selected -'}</h1>   
+            </div> 
             <WeekSelect />
             <ProjectInfo />
             <PagesInfo />

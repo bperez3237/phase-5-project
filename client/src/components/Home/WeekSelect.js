@@ -35,19 +35,11 @@ function WeekSelect() {
         <div className="white week-select m-3 p-3">
         {loading && <Loading />}
         {error && <DismissableError error={error} />}
-            <Row>
-                <Col>
-                    <DropdownButton onSelect={handleWeekChange} value={value} title="Select Work Week:">
-                        {optionsElements}
-                    </DropdownButton>
-                </Col>
-                <Col>
-                    <Badge bg={unitsExist ? 'success' : 'danger'}>Units {(unitsExist ? "" : "not ")+"submitted"}</Badge>
-                </Col>
-                <Col>
-                    <Badge bg={activitiesExist ? 'success' : 'danger'}>Activities {(activitiesExist ? "" : "not ")+"submitted"}</Badge>
-                </Col>
-            </Row>
+            <DropdownButton onSelect={handleWeekChange} value={value} title="Select Work Week:">
+                {optionsElements}
+            </DropdownButton>
+            <Badge bg={unitsExist ? 'success' : 'danger'}>Units {(unitsExist ? "" : "not ")+"submitted"}</Badge>
+            <Badge bg={activitiesExist ? 'success' : 'danger'}>Activities {(activitiesExist ? "" : "not ")+"submitted"}</Badge>
         </div>
     )
 }

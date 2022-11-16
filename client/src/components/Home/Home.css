@@ -1,16 +1,22 @@
 .home-container {
-    padding: 20px;
+    /* width: 100%; */
+    /* flex: 70%; */
+    padding: 15px;
 }
 
-
 .week-select {
+    display: flex;
+    justify-content: space-between;
 }
 
 .project-info {
+    padding: 15px;
 }
 
 .pages-info {
+    padding: 15px;
 }
 
-h1 {
+.heading {
+    padding: 10px;
 }

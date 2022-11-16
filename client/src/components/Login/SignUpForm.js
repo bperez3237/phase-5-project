@@ -37,7 +37,7 @@ function SignUpForm({ setUser, setShowLogin, error, setError}) {
     return (
       <div>
         {error && <DismissableError error={error} setError={setError} />}
-        <Form className="justify-content-center" onSubmit={handleSubmit} style={{"width":"300px"}}>
+        <Form id="form" onSubmit={handleSubmit} style={{"width":"300px"}}>
         <Form.Group>
           <Form.Label htmlFor="username">Username</Form.Label>
           <Form.Control
@@ -71,8 +71,10 @@ function SignUpForm({ setUser, setShowLogin, error, setError}) {
           />
         </Form.Group>
         <Form.Group>
-          <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
-          <Button onClick={()=>setShowLogin(true)}>Cancel</Button>
+        <div className='button-group'>
+          <Button id='button' type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
+          <Button id='button' onClick={()=>setShowLogin(true)}>Cancel</Button>
+        </div>
         </Form.Group>
       </Form>
       </div>

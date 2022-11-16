@@ -4,11 +4,30 @@
     height: 100vh;
     margin: 0;
     padding: 0;
-    
+}
+
+.App-Body {
+    flex: 70%;
+    display: grid;
+}
+
+.App-Header {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(32, 32, 32);
+    color: white;
+}
+
+.Login {
+    background-color: #293b5d;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 

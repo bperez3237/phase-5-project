@@ -46,8 +46,8 @@ function LoginForm({setUser, showLogin, setShowLogin, error, setError}) {
                 onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
             <div className='button-group'>
-                <Button id='login-button' type='submit'>Login</Button>
-                <Button id='signup-button' onClick={()=>setShowLogin(false)}>Sign Up</Button>
+                <Button id='button' type='submit'>Login</Button>
+                <Button id='button' onClick={()=>setShowLogin(false)}>Sign Up</Button>
             </div>
         </Form>
     )

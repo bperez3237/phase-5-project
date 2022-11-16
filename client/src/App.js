@@ -12,6 +12,7 @@ import { WorkWeekContext } from './context/WorkWeekContext'
 import ViewPage from './components/View/ViewPage';
 // import DismissableError from './components/Error/DismissableError'
 import Sidebar from './components/Navigation/Sidebar';
+import Header from './components/Header';
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
 
   if (!user) {
     return (
-      <div className='App'>
+      <div className='Login'>
         <LoginPage setUser={setUser} />
       </div>
     )
@@ -49,15 +50,17 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider value={{user,setUser}}>
         <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
-          <Navigator workWeek={workWeek?.end_date} />
+          <Header workWeek={workWeek?.end_date} />
           <Sidebar />
-          <Switch>
-            <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
-            <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>
-            <Route path='/report'><ReportPage workWeek={workWeek} /></Route>
-            <Route path='/view'><ViewPage /></Route>
-            <Route path='/'><Home workWeek={workWeek} setWorkWeek={setWorkWeek}/></Route>
-          </Switch>
+          <div className='App-Body'>
+            <Switch>
+              <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
+              <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>
+              <Route path='/report'><ReportPage workWeek={workWeek} /></Route>
+              <Route path='/view'><ViewPage /></Route>
+              <Route path='/'><Home workWeek={workWeek} setWorkWeek={setWorkWeek}/></Route>
+            </Switch>
+          </div>
         </WorkWeekContext.Provider>
         </UserContext.Provider>
       </BrowserRouter>

@@ -29,10 +29,12 @@ function ViewPage() {
             </Row>
             <Row>
                 <Col>
-                    {loading && <Loading loading={loading}/>}
-                    {path==='/cost_codes' ? (<CostCodesList value={value} costCodes={data} />) : 
-                    ( path==='/activities' ? (<ActivityList value={value} activities={data}/>) : 
-                    (<WorkWeekList value={value} workWeeks={data} />))}
+                    <div className='View-List'>
+                        {loading && <Loading loading={loading}/>}
+                        {path==='/cost_codes' ? (<CostCodesList value={value} costCodes={data} />) : 
+                        ( path==='/activities' ? (<ActivityList value={value} activities={data}/>) : 
+                        (<WorkWeekList value={value} workWeeks={data} />))}
+                    </div>
                 </Col>
             </Row>
         </Container>
