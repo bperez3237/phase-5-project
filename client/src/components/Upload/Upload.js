@@ -16,20 +16,18 @@ function Upload() {
     const {data, setData} = useFetch(`/work_weeks/${workWeek.id}/activities`)
 
     return (
-        <Container >
+        <div className="m-4">
             <ActivitiesContext.Provider value={{activities: data, setActivities:setData}}>
-            <Row>
-                <Col>
+                <div className="edit-container">
                     <UploadForm />
                     <DeleteTimesheet />
-                </Col>
-                <Col>
+                </div>
+                <div className="activity-container">
                     <ActivitiesStatus />
                     <ActivityList />
-                </Col>
-            </Row>
+                </div>
             </ActivitiesContext.Provider>
-        </Container>
+        </div>
     )
 }
 

@@ -88,14 +88,13 @@ function UploadForm() {
     }
 
     return (
-        <div className='white p-3 m-3' style={{border:'1px', borderStyle:'solid', width:'500px'}}>
-            <h1>Upload Timesheet</h1>
+        <div className='white upload-container'>
+            <h4>Upload Timesheet</h4>
             {error && <DismissableError error={error}  setError={setError}/>}
-            <form>
-                <label htmlFor="upload">Upload File</label>
-                <input type="file" onChange={readUploadFile} accept=".xlsx, .xls" />
-                <br/>
-                <Button onClick={handleSubmitTimesheet}>Upload</Button>
+            <form id='upload-form'>
+                {/* <label htmlFor="upload">Upload File</label> */}
+                <input className='m-3' type="file" onChange={readUploadFile} accept=".xlsx, .xls" />
+                <Button className='m-3' onClick={handleSubmitTimesheet}>Upload</Button>
             </form>
         </div>
         

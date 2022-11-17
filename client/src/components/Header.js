@@ -16,8 +16,8 @@ function handleLogoutClick() {
   }
   return (
     <div className="App-Header">
-        <h2>Work Week {workWeek}</h2>
-        <Button className='justify-content-end' variant="light" onClick={handleLogoutClick}>Logout</Button>
+        <h2 className="p-3">Work Week {workWeek}</h2>
+        <Button className='m-3' variant="light" onClick={handleLogoutClick}>Logout</Button>
     </div>
   )
 }

@@ -2,6 +2,7 @@
     background-color: #293b5d;
     width: 100vw;
     height: 100vh;
+    /* overflow: scroll; */
     margin: 0;
     padding: 0;
 }
@@ -9,11 +10,15 @@
 .App-Body {
     flex: 70%;
     display: grid;
+    height: 100%;
+    overflow: scroll;
 }
 
 .App-Header {
     display: flex;
+    height: 80px;
     justify-content: space-between;
+    align-items: center;
     background-color: rgb(32, 32, 32);
     color: white;
 }

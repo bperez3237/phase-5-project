@@ -23,10 +23,10 @@ function DeleteTimesheet() {
     }
 
     return(
-        <Container className='white p-3 m-3' style={{border:'1px', borderStyle:'solid', width:'500px'}}>
+        <Container className='white delete-container'>
             {error && <DismissableError error={error}  setError={setError}/>}
-            <h1>Delete Timesheet</h1>
-            <Button onClick={handleDelete}> Delete Activities</Button>
+            <h4>Delete Timesheet</h4>
+            <Button className='m-3' onClick={handleDelete}> Delete Activities</Button>
         </Container>
     )
 }
