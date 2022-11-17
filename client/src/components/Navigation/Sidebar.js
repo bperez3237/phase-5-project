@@ -17,7 +17,7 @@ function Sidebar() {
   const iconSize = '1.3em'
 
   return (
-    <div className='Sidebar' style={{width:(showSidebar ? '5%' : '30%')}}>
+    <div className='Sidebar' style={{width:(showSidebar ? '8%' : '30%')}}>
             <ul className='Sidebar-list'>
                 <li id='Sidebar-heading' className='row'  onClick={()=>setShowSidebar(!showSidebar)}>
                     <div id='title' style={{display:(showSidebar ? 'none' : 'block')}}><h3>Menu</h3></div>
