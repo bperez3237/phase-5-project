@@ -8,6 +8,7 @@
 }
 
 .App-Header {
+    position: sticky-top;
     display: flex;
     height: 80px;
     justify-content: space-between;
@@ -18,11 +19,24 @@
 
 .App-Body {
     /* flex: 70%; */
+    margin: 0;
+    padding: 0;
     display: flex;
-    max-height: calc(100vh-80px);
+    min-height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
     /* height: 100vh; */
     /* overflow: scroll; */
     /* grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); */
+}
+
+
+.page-container {
+    width: 100%;
+    
+    padding: 15px;
+    display: grid;
+    position: relative;
+    overflow-y: scroll;
 }
 
 
@@ -70,12 +84,3 @@ h1#app-title {
     background-color: aliceblue;
 }
 
-.page-container {
-    width: 100%;
-    height: 100vh;
-    /* flex: 70%; */
-    padding: 15px;
-    display: grid;
-    position: relative;
-    overflow-y: scroll;
-}

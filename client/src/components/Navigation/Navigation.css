@@ -1,7 +1,6 @@
 
 .Sidebar {
-    display: grid;
-    height: calc(100vh-80px);
+
     width: 400px;
     background-color: #3d434e;
     color: azure;
