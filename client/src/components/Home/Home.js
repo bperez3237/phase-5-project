@@ -10,9 +10,9 @@ function Home() {
     const {workWeek} = useContext(WorkWeekContext)
 
     return(
-        <div className='home-container' >
+        <div className='page-container' >
             <div className='white heading'>
-                <h1 >Home Week of {workWeek.end_date ? workWeek.end_date : ' - not yet selected -'}</h1>   
+                <h2>Home Week of {workWeek.end_date ? workWeek.end_date : ' - not yet selected -'}</h2>   
             </div> 
             <WeekSelect />
             <ProjectInfo />

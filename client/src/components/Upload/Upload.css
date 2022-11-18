@@ -40,7 +40,7 @@
   height: 100%;
 }
 
-.upload-container {
+.file-upload {
   margin: 20px;
   padding: 15px;
   /* width: 0.2vw; */
@@ -62,7 +62,7 @@
 .delete-container {
   margin: 20px;
   padding: 15px;
-  max-width: 300px;
+  /* max-width: 300px; */
 
   /* display: flex;
   flex-direction: column; */
@@ -70,6 +70,6 @@
   text-align: center;
 }
 
-button {
+/* button {
   width: 200px;
-}
+} */

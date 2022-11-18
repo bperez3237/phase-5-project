@@ -1,13 +1,13 @@
 import React, {useContext} from "react";
 import UploadForm from "./UploadForm";
 import ActivityList from "./ActivityList";
-import {Container, Row, Col} from 'react-bootstrap'
 import {WorkWeekContext} from '../../context/WorkWeekContext'
 import useFetch from "../../hooks/useFetch";
 import {ActivitiesContext} from './context/ActivitiesContext'
 import ActivitiesStatus from "./ActivityStatus";
 import DeleteTimesheet from './DeleteTimesheet'
 // import DismissableError from "../Error/DismissableError";
+// import '../../App.css'
 
 
 
@@ -16,7 +16,7 @@ function Upload() {
     const {data, setData} = useFetch(`/work_weeks/${workWeek.id}/activities`)
 
     return (
-        <div className="m-4">
+        <div className="page-container">
             <ActivitiesContext.Provider value={{activities: data, setActivities:setData}}>
                 <div className="edit-container">
                     <UploadForm />

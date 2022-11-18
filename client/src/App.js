@@ -51,8 +51,8 @@ function App() {
         <UserContext.Provider value={{user,setUser}}>
         <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
           <Header workWeek={workWeek?.end_date} />
-          <Sidebar />
           <div className='App-Body'>
+            <Sidebar />
             <Switch>
               <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
               <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>

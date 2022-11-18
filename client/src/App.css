@@ -7,13 +7,6 @@
     padding: 0;
 }
 
-.App-Body {
-    flex: 70%;
-    display: grid;
-    height: 100%;
-    overflow: scroll;
-}
-
 .App-Header {
     display: flex;
     height: 80px;
@@ -22,6 +15,17 @@
     background-color: rgb(32, 32, 32);
     color: white;
 }
+
+.App-Body {
+    /* flex: 70%; */
+    display: flex;
+    max-height: calc(100vh-80px);
+    /* height: 100vh; */
+    /* overflow: scroll; */
+    /* grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); */
+}
+
+
 
 .Login {
     background-color: #293b5d;
@@ -64,4 +68,14 @@ h1#app-title {
 
 .white {
     background-color: aliceblue;
+}
+
+.page-container {
+    width: 100%;
+    height: 100vh;
+    /* flex: 70%; */
+    padding: 15px;
+    display: grid;
+    position: relative;
+    overflow-y: scroll;
 }

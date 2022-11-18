@@ -15,7 +15,7 @@ function ViewPage() {
     const {data, loading, error, setError} = useFetch(path)
 
     return(
-        <Container className="">
+        <div className="page-container">
             {error && <DismissableError error={error} setError={setError}/>}
             <Row>
                 <Col>
@@ -37,7 +37,7 @@ function ViewPage() {
                     </div>
                 </Col>
             </Row>
-        </Container>
+        </div>
     )
 }
 

@@ -88,7 +88,7 @@ function UploadForm() {
     }
 
     return (
-        <div className='white upload-container'>
+        <div className='white file-upload'>
             <h4>Upload Timesheet</h4>
             {error && <DismissableError error={error}  setError={setError}/>}
             <form id='upload-form'>

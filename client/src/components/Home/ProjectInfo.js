@@ -12,7 +12,7 @@ function ProjectInfo() {
         {loading && <Loading />}
         {error && <DismissableError error={error} />}
             <header>
-                <h1>Project Summary:</h1>
+                <h2>Project Summary:</h2>
             </header>
             <div>
                 <p>Total Budgeted Hours: {formatNumber(data.project_budget_hours)}</p>
