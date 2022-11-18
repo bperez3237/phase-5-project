@@ -24,20 +24,15 @@
 }
 
 .edit-container {
-  display: flex;
-  justify-content: space-evenly;
-  width: 90%;
-  height: 300px;
+  display: grid;
+  /* justify-content: space-evenly; */
+  grid-template-columns: 1fr 1fr;
+  /* width: 90%; */
+  height: 200px;
 }
 
 .activity-container {
-  margin: auto;
-  display: flex;
   flex-direction: column;
-  align-items: top;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
 }
 
 .file-upload {
@@ -52,11 +47,15 @@
 }
 
 #upload-form {
-  margin: 10px;
-  /* display: flex;
-  flex-direction: column;
+  margin: 15px;
+  display: flex;
   justify-content: center;
-  text-align: center; */
+}
+#upload-form input {
+  margin: 15px;
+  width: 200px;
+  justify-content: center;
+
 }
 
 .delete-container {

@@ -23,16 +23,12 @@
     padding: 0;
     display: flex;
     min-height: calc(100vh - 80px);
-    max-height: calc(100vh - 80px);
-    /* height: 100vh; */
-    /* overflow: scroll; */
-    /* grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); */
 }
 
 
 .page-container {
     width: 100%;
-    
+
     padding: 15px;
     display: grid;
     position: relative;
