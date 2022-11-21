@@ -3,6 +3,7 @@
 .week-select {
     display: flex;
     justify-content: space-between;
+    max-height: 80px;
 }
 
 .project-info {
