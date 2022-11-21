@@ -4,9 +4,9 @@ import {Container, Row, Col} from 'react-bootstrap'
 function EnterQuantities() {
 
     return (
-        <Container>
+        <div className='page-container'>
             <Row><Col><QFormList /></Col></Row>
-        </Container>
+        </div>
     )
 }
 export default EnterQuantities
