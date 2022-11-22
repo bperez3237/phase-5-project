@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import '../../App.css';
 import './Navigation.css'
-import {AiOutlineBars, AiFillRocket, AiFillCloseSquare} from 'react-icons/ai'
-import {BiNetworkChart} from 'react-icons/bi'
+import {AiOutlineBars, AiFillCloseSquare} from 'react-icons/ai'
 import {ImHome} from 'react-icons/im'
 import {useHistory} from 'react-router-dom'
 import {VscOpenPreview} from 'react-icons/vsc'
@@ -10,7 +9,7 @@ import {MdOutlineConstruction} from 'react-icons/md'
 import {FaPencilRuler} from 'react-icons/fa'
 import {TbReportMoney} from 'react-icons/tb'
 
-function Sidebar() {
+function Sidebar({disable}) {
   const history = useHistory()
 
   const [showSidebar, setShowSidebar] = useState(false)

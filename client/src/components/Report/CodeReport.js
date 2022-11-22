@@ -14,7 +14,7 @@ function CodeReport({costCodeId, workWeekId}) {
     const estimatedValue = ((data?.last_week_quantity/budgetprodrate) - data?.last_week_hours)*(data?.last_week_cost/data?.last_week_hours)
     const clr = estimatedValue >= 0 ? 'green' : 'red'
     return(
-        <Container className='white m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <div className='white p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
             {loading && <Loading />}
             {error && <DismissableError error={error}  setError={setError}/>}
             <Row>
@@ -37,7 +37,7 @@ function CodeReport({costCodeId, workWeekId}) {
             <p>Budget Production Rate: {formatNumber(data?.budget_quantity/data?.budget_hours)}</p>
             </Col>
             </Row>
-        </Container>
+        </div>
     )
 }
 

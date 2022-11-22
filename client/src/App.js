@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Navigator from './components/Navigation/Navigator';
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import EnterQuantities from './components/Enter/EnterQuantities';
 import LoginPage from './components/Login/LoginPage';
 import Home from './components/Home/Home';
@@ -10,7 +9,6 @@ import ReportPage from './components/Report/ReportPage'
 import { UserContext } from './context/UserContext';
 import { WorkWeekContext } from './context/WorkWeekContext'
 import ViewPage from './components/View/ViewPage';
-// import DismissableError from './components/Error/DismissableError'
 import Sidebar from './components/Navigation/Sidebar';
 import Header from './components/Header';
 
@@ -19,6 +17,8 @@ function App() {
   const [user,setUser] = useState(null)
   // const [error, setError] = useState('')
   const [workWeek, setWorkWeek] = useState([])
+  const [toggleSidebar, setToggleSidebar] = useState(false)
+  const history = useHistory()
 
   useEffect(() => {
     // auto-login
@@ -39,6 +39,16 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    if (workWeek == []) {
+      setToggleSidebar(true)
+      history.push('/')
+    }
+    else {
+      setToggleSidebar(false)
+    }
+  }, [workWeek])
+
   if (!user) {
     return (
       <div className='Login'>
@@ -52,7 +62,7 @@ function App() {
         <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
           <Header workWeek={workWeek?.end_date} />
           <div className='App-Body'>
-            <Sidebar />
+            <Sidebar disable={toggleSidebar}/>
             <Switch>
               <Route path='/upload_review_activities'><Upload workWeek={workWeek} /></Route>
               <Route path='/enter'><EnterQuantities workWeek={workWeek} /></Route>
