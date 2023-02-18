@@ -8,10 +8,30 @@
     "build": "npm install --prefix client && npm run build --prefix client",
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+    "heroku-postbuild": "npm run clean && npm run build && npm run deploy",
+    "start": "tsc --watch"
   },
   "dependencies": {
     "react-popup-alert": "^2.0.0",
     "xlsx": "^0.18.5"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bperez3237/phase-5-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bperez3237/phase-5-project/issues"
+  },
+  "homepage": "https://github.com/bperez3237/phase-5-project#readme"
 }
