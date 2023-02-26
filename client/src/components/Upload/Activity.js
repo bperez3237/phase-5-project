@@ -1,4 +1,3 @@
-import {Button} from 'react-bootstrap'
 import { useState } from 'react';
 import EditActivityForm from './EditActivityForm'
 import CostList from './CostList';
@@ -9,7 +8,7 @@ function Activity({activity}) {
     const [toggleEdit, setToggleEdit] = useState(false)
 
     return(
-        <div className='white p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <div className='white m-3 p-3'>
             <h2>{activity.description} - {activity.total_hours}</h2>
             <div>
                     {!toggleEdit ? (
@@ -17,7 +16,7 @@ function Activity({activity}) {
                         <p>Cost Code: {activity.cost_code.code} - {activity.cost_code.name}</p>
                         <p>Total Hours: {activity.total_hours}</p>
                         <p>Total Cost: {formatCurrency(activity.total_cost)}</p>
-                        <Button onClick={()=>setToggleEdit(true)}>Edit</Button>
+                        <button id='button' onClick={()=>setToggleEdit(true)}>Edit</button>
                     </div>) : (
                         <EditActivityForm setToggleEdit={setToggleEdit} activity={activity}/>)}
                     <CostList costs={activity.costs} />

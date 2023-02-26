@@ -1,6 +1,5 @@
 import React from 'react'
 import {useState, useContext} from 'react'
-import {Button} from 'react-bootstrap'
 import { WorkWeekContext } from '../../context/WorkWeekContext'
 import { ActivitiesContext } from './context/ActivitiesContext'
 import {addCostToArray, formatUploadObj} from './format/formatUpload'
@@ -92,9 +91,9 @@ function UploadForm() {
             <h4>Upload Timesheet</h4>
             {error && <DismissableError error={error}  setError={setError}/>}
             <form id='upload-form'>
-                {/* <label htmlFor="upload">Upload File</label> */}
+                <label htmlFor="upload">Upload File</label>
                 <input type="file" onChange={readUploadFile} accept=".xlsx, .xls" />
-                <Button onClick={handleSubmitTimesheet}>Upload</Button>
+                <button id='button' onClick={handleSubmitTimesheet}>Upload</button>
             </form>
         </div>
         

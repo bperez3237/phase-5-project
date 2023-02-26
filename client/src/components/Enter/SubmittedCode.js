@@ -1,4 +1,3 @@
-import { Button } from 'react-bootstrap'
 import useFetch from '../../hooks/useFetch'
 import {formatCurrency} from '../../services/Format/FormatNumber'
 import Loading from '../Loading'
@@ -14,7 +13,7 @@ function SubmittedCode({setSubmittedStatus, workWeek, costCode}) {
             <h2>Code is submitted. </h2>
             <h3> Hours: {data?.last_week_hours} Units: {data?.last_week_quantity} {data?.unit_of_measure}</h3>
             <h3 style={{color:clr}}>Estimated Money Earned last week: {formatCurrency(data?.estimated_value)}</h3>
-            <Button onClick={()=>setSubmittedStatus(false)} className='justify-content-end' value={data?.code}>Edit</Button>
+            <button id='button' onClick={()=>setSubmittedStatus(false)} className='justify-content-end' value={data?.code}>Edit</button>
         </div>)
 }
 

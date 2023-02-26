@@ -1,4 +1,3 @@
-import { Button} from 'react-bootstrap'
 import { ActivitiesContext } from './context/ActivitiesContext'
 import {WorkWeekContext} from '../../context/WorkWeekContext'
 import {useContext, useState} from 'react'
@@ -26,7 +25,7 @@ function DeleteTimesheet() {
         <div className='white delete-container'>
             {error && <DismissableError error={error}  setError={setError}/>}
             <h4>Delete Timesheet</h4>
-            <Button className='m-3' onClick={handleDelete}> Delete Activities</Button>
+            <button id='button' className='m-3' onClick={handleDelete}> Delete Activities</button>
         </div>
     )
 }

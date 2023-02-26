@@ -4,11 +4,7 @@ import ActivityList from "./ActivityList";
 import {WorkWeekContext} from '../../context/WorkWeekContext'
 import useFetch from "../../hooks/useFetch";
 import {ActivitiesContext} from './context/ActivitiesContext'
-import ActivitiesStatus from "./ActivityStatus";
 import DeleteTimesheet from './DeleteTimesheet'
-// import DismissableError from "../Error/DismissableError";
-// import '../../App.css'
-
 
 
 function Upload() {
@@ -23,7 +19,7 @@ function Upload() {
                     <DeleteTimesheet />
                 </div>
                 <div className="activity-container">
-                    <ActivitiesStatus />
+                    <h2 style={{color:'white'}}>Activities</h2>
                     <ActivityList />
                 </div>
             </ActivitiesContext.Provider>

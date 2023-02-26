@@ -1,5 +1,29 @@
+:root {
+    --main-background-color: #293b5d;
+    --main-background-color-darker: #141d2d;
+    --main-text-color: #ffffff;
+
+    --div-background-color: #d0d0d0;
+    --div-background-color-lighter: #e0e0e0;
+    --div-text-color: #000000;
+
+    --border-color: #1b2435;
+    --border-width: 0.25px;
+
+
+    --accent-color: #5776af;
+
+    --button-background-color: #395587;
+    --button-text-color: #ffffff;
+    --invert-button-background-color: #ffffff;
+    --invert-button-text-color: #334971;
+
+    --hover-color: #465f8a;
+    --hover-text-color: #ffffff;
+}
+
 .App {
-    background-color: #293b5d;
+    background-color: var(--main-background-color);
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -12,8 +36,8 @@
     height: 80px;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(32, 32, 32);
-    color: white;
+    background-color: var(--main-background-color-darker);
+    color: var(--main-text-color);
 }
 
 .App-Body {
@@ -21,12 +45,14 @@
     padding: 0;
     display: flex;
     min-height: calc(100vh - 80px);
-    max-height:  calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
 }
 
 
 .page-container {
     width: 100%;
+    border: var(--border-width) solid var(--border-color);
+
     max-height: 100%;
     padding: 15px;
     display: flex;
@@ -38,7 +64,7 @@
 
 
 .Login {
-    background-color: #293b5d;
+    background-color: var(--main-background-color);
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -77,6 +103,15 @@ h1#app-title {
 
 
 .white {
-    background-color: aliceblue;
+    background-color: var(--div-background-color);
 }
 
+#button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    min-width: 70px;
+}

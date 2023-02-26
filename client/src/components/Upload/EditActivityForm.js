@@ -1,4 +1,4 @@
-import {Form, Button} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import {useState, useContext} from 'react'
 import {ActivitiesContext} from './context/ActivitiesContext'
 import {replace} from '../../services/UpdateTable/updateObj'
@@ -38,8 +38,8 @@ function EditActivityForm({activity, setToggleEdit}) {
                 <Form.Group>
                     <Form.Label>Cost Code: </Form.Label>
                     <Form.Control value={value} onChange={(e)=>setValue(e.target.value)}></Form.Control>
-                    <Button type='submit' onClick={editActivity}>Submit</Button>
-                    <Button onClick={()=>setToggleEdit(false)}>Cancel</Button>
+                    <button id='button' type='submit' onClick={editActivity}>Submit</button>
+                    <button id='button' onClick={()=>setToggleEdit(false)}>Cancel</button>
                 </Form.Group>
             </Form>
         </>

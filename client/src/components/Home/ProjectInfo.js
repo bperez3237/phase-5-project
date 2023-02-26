@@ -1,15 +1,13 @@
 import useFetch from "../../hooks/useFetch";
 import React from "react";
 import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
-import Loading from '../Loading'
 import DismissableError from '../Error/DismissableError'
 
 function ProjectInfo() {
-    const {data, loading, error} = useFetch('/project_summary')
+    const {data, error} = useFetch('/project_summary')
 
     return(
-        <div className='white project-info m-3' style={{border:'1px', borderStyle:'solid'}}>
-        {loading && <Loading />}
+        <div className='white project-info m-3' >
         {error && <DismissableError error={error} />}
             <header>
                 <h2>Project Summary:</h2>

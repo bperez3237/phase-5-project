@@ -1,4 +1,4 @@
-import {Button, ListGroup } from 'react-bootstrap'
+import { ListGroup } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 import SubmittedCode from './SubmittedCode'
 import DismissableError from '../Error/DismissableError'
@@ -37,6 +37,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
                 })
             } else {
                 r.json().then((err)=>setError(err.error))
+                setValue(0)
             }
         })
     }
@@ -60,7 +61,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
                 <>
                 <form className='d-flex'  onSubmit={handleSubmit}>
                     <input value={value} onChange={(e)=>setValue(e.target.value)}/>
-                    <Button type='submit' >Submit</Button>
+                    <button id='button' type='submit' >Submit</button>
                 </form>
                 <button className='accordion' onClick={handleClick}>Activities:</button>
                 <div className='panel' style={{display:toggle ? 'block' : 'none'}}>

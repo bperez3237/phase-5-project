@@ -1,6 +1,6 @@
 import React from 'react'
 import useFetch from '../../hooks/useFetch'
-import {Col, Container, Row} from 'react-bootstrap'
+import {Col, Row} from 'react-bootstrap'
 import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
 import Loading from '../Loading'
 import DismissableError from '../Error/DismissableError'
@@ -8,13 +8,12 @@ import DismissableError from '../Error/DismissableError'
 
 function CodeReport({costCodeId, workWeekId}) {
     const {data, loading, error, setError} = useFetch(`/work_weeks/${workWeekId}/cost_codes/${costCodeId}`)
-
     const budgetprodrate = Math.round(100*(data?.budget_quantity/data?.budget_hours))/100
 
     const estimatedValue = ((data?.last_week_quantity/budgetprodrate) - data?.last_week_hours)*(data?.last_week_cost/data?.last_week_hours)
     const clr = estimatedValue >= 0 ? 'green' : 'red'
     return(
-        <div className='white p-3 m-3' style={{border:'1px', borderStyle:'solid'}}>
+        <div className='white p-3 m-3' >
             {loading && <Loading />}
             {error && <DismissableError error={error}  setError={setError}/>}
             <Row>
