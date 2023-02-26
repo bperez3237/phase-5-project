@@ -40,14 +40,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (workWeek == []) {
+    if (workWeek === []) {
       setToggleSidebar(true)
       history.push('/')
     }
     else {
       setToggleSidebar(false)
     }
-  }, [workWeek])
+  }, [workWeek, history])
 
   if (!user) {
     return (
@@ -60,7 +60,7 @@ function App() {
       <BrowserRouter>
         <UserContext.Provider value={{user,setUser}}>
         <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>
-          <Header workWeek={workWeek?.end_date} />
+        <Header workWeek={workWeek?.end_date} />
           <div className='App-Body'>
             <Sidebar disable={toggleSidebar}/>
             <Switch>
