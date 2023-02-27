@@ -8,7 +8,7 @@ function Activity({activity}) {
     const [toggleEdit, setToggleEdit] = useState(false)
 
     return(
-        <div className='white m-3 p-3'>
+        <div className='element m-3 p-3'>
             <h2>{activity.description} - {activity.total_hours}</h2>
             <div>
                     {!toggleEdit ? (

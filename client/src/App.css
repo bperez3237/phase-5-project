@@ -53,12 +53,9 @@
 .page-container {
     width: 100%;
     border: var(--border-width) solid var(--border-color);
-
     max-height: 100%;
     padding: 15px;
     display: flex;
-    flex-direction: column;
-    position: relative;
     overflow-y: scroll;
 }
 
@@ -103,8 +100,11 @@ h1#app-title {
 }
 
 
-.white {
+.element {
     background-color: var(--div-background-color);
+    margin: 10px;
+    padding: 15px;
+    border-radius: 5px;
 }
 
 #button {

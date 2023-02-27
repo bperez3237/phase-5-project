@@ -2,13 +2,11 @@ import useFetch from "../../hooks/useFetch"
 import {useState, useContext } from 'react'
 import DismissableError from '../Error/DismissableError'
 import { WorkWeekContext } from "../../context/WorkWeekContext"
-import {DropdownButton, Dropdown, Badge} from 'react-bootstrap'
+import {DropdownButton, Dropdown} from 'react-bootstrap'
 
 function WeekSelect() {
     const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
     const [value, setValue] = useState(workWeek.id)
-    const activitiesExist = workWeek?.activities?.length > 0
-    const unitsExist = workWeek?.units?.length > 0  
     const {data} = useFetch('/work_weeks')
     const [error,setError] = useState('')
 
@@ -31,13 +29,12 @@ function WeekSelect() {
     const optionsElements = data?.map((workWeek)=><Dropdown.Item key={workWeek.id} eventKey={workWeek.id}>{workWeek.end_date}</Dropdown.Item>)
 
     return(
-        <div className="white week-select m-3 p-3">
-        {error && <DismissableError error={error} />}
+        <div className="element week-select">
+            {error && <DismissableError error={error} />}
+            <h4>Select Week:</h4>
             <DropdownButton onSelect={handleWeekChange} value={value} title="Select Work Week:">
                 {optionsElements}
             </DropdownButton>
-            <Badge bg={unitsExist ? 'success' : 'danger'}>Units {(unitsExist ? "" : "not ")+"submitted"}</Badge>
-            <Badge bg={activitiesExist ? 'success' : 'danger'}>Activities {(activitiesExist ? "" : "not ")+"submitted"}</Badge>
         </div>
     )
 }

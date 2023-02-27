@@ -23,7 +23,7 @@ function Sidebar({disable}) {
   }
 
   return (
-    <div className='Sidebar' style={{'width':(showSidebar ? '50px' : '300px'),'minWidth':(showSidebar ? '50px' : '300px')}}>
+    <div className='Sidebar' style={{'width':(showSidebar ? '50px' : '300px'),'minWidth':(showSidebar ? '50px' : '300px'), 'transition': 'minWidth 0.25s'}}>
             <ul className='Sidebar-list'>
                 <li id='Sidebar-heading' className='row'  onClick={()=>setShowSidebar(!showSidebar)}>
                     <div id='title' style={{display:(showSidebar ? 'none' : 'block')}}><h3>Menu</h3></div>

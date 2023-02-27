@@ -7,7 +7,7 @@ function ProjectInfo() {
     const {data, error} = useFetch('/project_summary')
 
     return(
-        <div className='white project-info m-3' >
+        <div className='element project-info' >
         {error && <DismissableError error={error} />}
             <header>
                 <h2>Project Summary:</h2>

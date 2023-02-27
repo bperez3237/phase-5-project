@@ -1,17 +1,43 @@
 
+.homepage {
+    flex-wrap: wrap;
+    gap: 10px;
+    row-gap: 10px;
+    column-gap: 10px;
+    
+}
 
 .week-select {
-    display: flex;
-    justify-content: space-between;
-    max-height: 80px;
+    display: grid;
+    min-height: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.week-status {
+    display: grid;
+    min-height: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.week-status .badge {
+    margin: 5px;
+    vertical-align: center;
 }
 
 .project-info {
     padding: 15px;
+    min-width: 400px;
+    max-height: 200px;
 }
 
 .pages-info {
     padding: 15px;
+
+    max-height: 200px;
 }
 
 .heading {

@@ -22,7 +22,7 @@ function DeleteTimesheet() {
     }
 
     return(
-        <div className='white delete-container'>
+        <div className='element delete-container'>
             {error && <DismissableError error={error}  setError={setError}/>}
             <h4>Delete Timesheet</h4>
             <button id='button' className='m-3' onClick={handleDelete}> Delete Activities</button>
