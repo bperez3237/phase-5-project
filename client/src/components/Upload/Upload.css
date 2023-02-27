@@ -1,4 +1,8 @@
 /* Style the buttons that are used to open and close the accordion panel */
+.upload-page {
+  flex-direction: column;
+}
+
 .accordion {
   background-color: var(--div-background-color-lighter);
   color: var(--div-text-color);
@@ -46,7 +50,9 @@
   margin: 15px;
   display: flex;
   justify-content: center;
+  width: var(50%-30px);
 }
+
 #upload-form input {
   margin: 15px;
   width: 200px;
@@ -59,4 +65,5 @@
   padding: 15px;
   justify-content: center;
   text-align: center;
+  width: var(50%-30px);
 }
