@@ -11,7 +11,7 @@ function LoginPage({setUser}) {
 
     return(
         <div className='login-container'>
-            <Logo />
+            <Logo size={1} />
             <div className='form'>
                 {showLogin ? 
                 (<LoginForm setUser={setUser} showLogin={showLogin} setShowLogin={setShowLogin} error={error} setError={setError}/>

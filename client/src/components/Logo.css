@@ -1,0 +1,23 @@
+
+
+.logo-container {
+    display: flex;
+    background-color: white;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* width: 100% */
+}
+
+#app-title {
+    margin: 0;
+}
+
+h1#app-title {
+    font-family: Impact;
+    text-align: right;
+    font-weight: bold;
+    color: black;
+}
+
+
