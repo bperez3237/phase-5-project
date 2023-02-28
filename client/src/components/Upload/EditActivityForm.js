@@ -39,7 +39,6 @@ function EditActivityForm({activity, setToggleEdit}) {
                     <Form.Label>Cost Code: </Form.Label>
                     <Form.Control value={value} onChange={(e)=>setValue(e.target.value)}></Form.Control>
                     <button id='button' type='submit' onClick={editActivity}>Submit</button>
-                    <button id='button' onClick={()=>setToggleEdit(false)}>Cancel</button>
                 </Form.Group>
             </Form>
         </>

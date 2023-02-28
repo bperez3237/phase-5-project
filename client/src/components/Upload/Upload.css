@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .accordion {
   background-color: var(--div-background-color-lighter);
   color: var(--div-text-color);
