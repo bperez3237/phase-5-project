@@ -1,8 +1,7 @@
 
 .homepage {
-    flex-wrap: grid;
+    flex: grid;
     flex-direction: column;
-    row-gap: 0;
 }
 
 .week-select {

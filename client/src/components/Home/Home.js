@@ -17,8 +17,10 @@ function Home() {
             <WeekSelect />
             <ProjectInfo />
             <PagesInfo /> */}
-            <WeekSelect />
-            <WeekStatus />
+            <div>
+                <WeekSelect />
+                <WeekStatus />
+            </div>
             <ProjectInfo />
             <PagesInfo />
         </div>
