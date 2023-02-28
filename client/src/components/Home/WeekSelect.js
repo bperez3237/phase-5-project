@@ -32,7 +32,7 @@ function WeekSelect() {
         <div className="element week-select">
             {error && <DismissableError error={error} />}
             <h4>Select Week:</h4>
-            <DropdownButton onSelect={handleWeekChange} value={value} title="Week Ending">
+            <DropdownButton id='button' onSelect={handleWeekChange} value={value} title="Week Ending">
                 {optionsElements}
             </DropdownButton>
         </div>

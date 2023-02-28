@@ -91,7 +91,6 @@ function UploadForm() {
             <h4>Upload Timesheet</h4>
             {error && <DismissableError error={error}  setError={setError}/>}
             <form id='upload-form'>
-                <label htmlFor="upload">Upload File</label>
                 <input type="file" onChange={readUploadFile} accept=".xlsx, .xls" />
                 <button id='button' onClick={handleSubmitTimesheet}>Upload</button>
             </form>

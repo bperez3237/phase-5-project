@@ -18,6 +18,7 @@ function Upload() {
                     <UploadForm />
                     <DeleteTimesheet />
                 </div>
+                <br/>
                 <div className="activity-container">
                     <h2 style={{color:'white'}}>Activities</h2>
                     <ActivityList />

@@ -1,26 +1,39 @@
 :root {
-    --main-background-color: #293b5d;
-    --main-background-color-darker: #141d2d;
-    --main-text-color: #ffffff;
-    --muted-text: #999999;
 
-    --div-background-color: #d0d0d0;
-    --div-background-color-lighter: #e0e0e0;
+    --dark: #0E0E17;
+    --medium-dark: #202033;
+    --medium: #4A4A69;
+    --medium-light: #B7B7C4;
+    --light: #CECED9;
+
+
+    --header-dark: var(--dark);
+    --main-background-color: var(--medium-dark);
+
+    --main-text-color: white;
+    --muted-text: var(--medium-light);
+
+    --div-background-color: var(--medium-light);
+    --div-background-color-lighter: var(--light);
+    
     --div-text-color: #000000;
 
-    --border-color: #1b2435;
+    --border-color: var(--dark);
     --border-width: 0.25px;
 
 
-    --accent-color: #5776af;
+    --button-background-color: var(--dark);
+    --button-text-color: white;
 
-    --button-background-color: #395587;
-    --button-text-color: #ffffff;
-    --invert-button-background-color: #ffffff;
-    --invert-button-text-color: #334971;
+    --hover-color: var(--medium);
+    --hover-text-color: white;
 
-    --hover-color: #465f8a;
-    --hover-text-color: #ffffff;
+
+    /* --accent-color: #5776af; */
+
+    /* --invert-button-background-color: #ffffff;
+    --invert-button-text-color: #334971; */
+
 }
 
 .App {
@@ -38,7 +51,7 @@
     height: 80px;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--main-background-color-darker);
+    background-color: var(--header-dark);
     color: var(--main-text-color);
 }
 

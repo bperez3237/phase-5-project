@@ -11,8 +11,8 @@ function WeekStatus() {
     const unitsExist = workWeek?.units?.length > 0  
     return (
         <div className='element week-status'>
-            <Badge bg={unitsExist ? 'success' : 'danger'}>Units {(unitsExist ? "" : "not ")+"submitted"}</Badge>
-            <Badge bg={activitiesExist ? 'success' : 'danger'}>Activities {(activitiesExist ? "" : "not ")+"submitted"}</Badge> 
+            <Badge bg={unitsExist ? 'success' : 'danger'}><p>Units {(unitsExist ? "" : "not ")+"submitted"}</p></Badge>
+            <Badge bg={activitiesExist ? 'success' : 'danger'}><p>Activities {(activitiesExist ? "" : "not ")+"submitted"}</p></Badge> 
         </div>
   )
 }
