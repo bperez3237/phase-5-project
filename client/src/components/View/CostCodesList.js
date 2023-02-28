@@ -10,7 +10,7 @@ function CostCodesList({value, costCodes}) {
         else { return false}
     }).map((costCode)=>{
         return(
-            <Card className='element' style={{border:'1px', borderStyle:'solid'}}>
+            <Card key={costCode?.id} className='element'>
                 <Card.Body>
                     <Card.Title>{costCode?.code} - {costCode?.name}</Card.Title>
                     <Card.Text>Budgted Hours: {formatNumber(costCode?.budget_hours)} - Hours to Date: {formatNumber(costCode?.current_hours)}</Card.Text>

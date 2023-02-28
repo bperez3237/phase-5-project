@@ -10,7 +10,7 @@ function WorkWeekList({value, workWeeks}) {
         else { return false}
     }).map((workWeek)=>{
         return(
-            <Card className='element' style={{border:'1px', borderStyle:'solid'}}>
+            <Card key={workWeek?.id} className='element'>
                 <Card.Body>
                     <Card.Title>Week: {workWeek?.end_date}</Card.Title>
                     <Card.Text>Total Hours: {formatNumber(workWeek?.total_hours)}</Card.Text>

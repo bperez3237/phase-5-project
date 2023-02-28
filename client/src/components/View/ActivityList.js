@@ -9,7 +9,7 @@ function ActivityList({value, activities}) {
         else { return false}
     }).map((activity)=>{
         return(
-            <Card className='element' style={{border:'1px', borderStyle:'solid'}}>
+            <Card key={activity?.id} className='element'>
                 <Card.Body>
                     <Card.Title>Description: {activity?.description} - Hours: {formatNumber(activity?.total_hours)}</Card.Title>
                     <Card.Text>{activity?.cost_code?.code} - {activity?.cost_code?.name}</Card.Text>

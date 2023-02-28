@@ -17,7 +17,7 @@ function Home() {
             <WeekSelect />
             <ProjectInfo />
             <PagesInfo /> */}
-            <div>
+            <div className='home-header'>
                 <WeekSelect />
                 <WeekStatus />
             </div>
