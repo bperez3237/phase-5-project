@@ -40,50 +40,57 @@ function UploadForm() {
         if (workWeek?.activities?.length > 0) {
             console.log('data already exists')
             setError({error:'Data Already Exists'})
-        } else {
-            setError('')
-            var newObjArray = []
-            activityObj.forEach((activity)=>{
-                if (workWeek) {
-                    fetch(`/work_weeks/${workWeek.id}/activities`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }, body: JSON.stringify(activity)
-                    })
-                        .then(r=>{
-                            if (r.ok) {
-                                r.json().then((newActivity)=>{
-                                    newObjArray.push(newActivity)
-                                    activity.costs.forEach((cost)=>{
-                                        fetch('/costs', {
-                                            method: 'POST',
-                                            headers: {
-                                                'Content-Type': 'application/json'
-                                            }, 
-                                                body: JSON.stringify({...cost, activity_id: newActivity.id})
-                                        })
-                                            .then(r=>{
-                                                if (r.ok) {
-                                                    r.json().then(newCost=>{
-                                                    newObjArray = addCostToArray(newObjArray,newCost)
-                                                    }).finally(()=>{
-                                                        setActivities(newObjArray)
-                                                        setWorkWeek({...workWeek,activities: newObjArray})
-                                                })} else{
-                                                    r.json().then((error=>setError(error)))
-                                                }
-                                            })
-                                        }
-                                    )
-                                })
-                            } else {
-                                        r.json().then((error)=>setError(error))
-                        }})
-                } else {console.log('not a valid workweek')}
-            
-            })
+            return;
+        } 
+
+        if (!workWeek) {
+            console.log('not a valid workweek')
+            return;
         }
+            
+        setError('')
+        var newObjArray = []
+        activityObj.forEach((activity)=>{  
+            fetch(`/work_weeks/${workWeek.id}/activities`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify(activity)
+                })
+                .then(r=>{
+                    if (!r.ok) {
+                        r.json().then((error)=>setError(error))
+                        return;
+                    }
+
+
+                    r.json().then((newActivity)=>{
+                        newObjArray.push(newActivity)
+                       activity.costs.forEach((cost)=>{
+                        fetch('/costs', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }, 
+                                body: JSON.stringify({...cost, activity_id: newActivity.id})
+                        })
+                            .then(r=>{
+                                if (!r.ok) {
+                                    r.json().then((error=>setError(error)))
+                                    return;
+                                }                    
+                                r.json().then(newCost=>{
+                                newObjArray = addCostToArray(newObjArray,newCost)
+                                }).finally(()=>{
+                                    setActivities(newObjArray)
+                                    setWorkWeek({...workWeek,activities: newObjArray})
+                                })
+                            })
+                        }) 
+                    })
+                })
+            })
+        
     }
 
     return (
