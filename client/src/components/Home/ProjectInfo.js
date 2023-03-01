@@ -10,7 +10,7 @@ function ProjectInfo() {
         <div className='element project-info' >
         {error && <DismissableError error={error} />}
             <header>
-                <h2>Project Summary:</h2>
+                <h3>Project Summary:</h3>
             </header>
             <div>
                 <p>Total Budgeted Hours: {formatNumber(data.project_budget_hours)}</p>

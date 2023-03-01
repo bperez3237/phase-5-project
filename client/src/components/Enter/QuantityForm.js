@@ -48,7 +48,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
     
 
     return (
-        <div className='element m-3 p-3' >
+        <div className='element' >
             <header>
                 <h3>{costCode.code} - {costCode.name}</h3>
                 <p><span style={{fontWeight:'bold'}}>Total Budget:</span> {formatCurrency(costCode.budget_hours*108)}</p>
@@ -59,7 +59,7 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
                 <SubmittedCode workWeek={workWeek} setSubmittedStatus={setSubmittedStatus} costCode={costCode} />
             ) : (
                 <>
-                <form className='d-flex'  onSubmit={handleSubmit}>
+                <form className='enter-units-form'  onSubmit={handleSubmit}>
                     <input value={value} onChange={(e)=>setValue(e.target.value)}/>
                     <button id='button' type='submit' >Submit</button>
                 </form>

@@ -12,7 +12,7 @@
     "start": "tsc --watch"
   },
   "dependencies": {
-    "react-popup-alert": "^2.0.0",
+    "react-popup-alert": "^1.0.7",
     "xlsx": "^0.18.5"
   },
   "version": "1.0.0",
