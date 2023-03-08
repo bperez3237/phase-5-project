@@ -1,5 +1,5 @@
 import ProjectInfo from "./ProjectInfo";
-import WeekSelect from "./WeekSelect";
+import ChangeWeek from "./ChangeWeek";
 import PagesInfo from './PagesInfo';
 import WeekStatus from './WeekStatus';
 import './Home.css'
@@ -9,7 +9,7 @@ function Home() {
     return(
         <div className='page-container homepage' >
             <div className='home-header'>
-                <WeekSelect />
+                <ChangeWeek />
                 <WeekStatus />
             </div>
             

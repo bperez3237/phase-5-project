@@ -11,6 +11,7 @@ import { WorkWeekContext } from './context/WorkWeekContext'
 import ViewPage from './components/View/ViewPage';
 import Sidebar from './components/Navigation/Sidebar';
 import Header from './components/Header';
+import SelectWeek from './components/SelectWeek';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
     )
   } else {return (
     <div className='App'>
+      {workWeek === [] ? <SelectWeek /> : null} 
       <BrowserRouter>
         <UserContext.Provider value={{user,setUser}}>
         <WorkWeekContext.Provider value={{workWeek, setWorkWeek}}>

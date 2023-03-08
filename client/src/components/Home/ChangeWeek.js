@@ -4,7 +4,7 @@ import DismissableError from '../Error/DismissableError'
 import { WorkWeekContext } from "../../context/WorkWeekContext"
 import {DropdownButton, Dropdown} from 'react-bootstrap'
 
-function WeekSelect() {
+function ChangeWeek() {
     const {workWeek, setWorkWeek} = useContext(WorkWeekContext)
     const [value, setValue] = useState(workWeek.id)
     const {data} = useFetch('/work_weeks')
@@ -27,11 +27,11 @@ function WeekSelect() {
     }
 
     const optionsElements = data?.map((workWeek)=><Dropdown.Item key={workWeek.id} eventKey={workWeek.id}>{workWeek.end_date}</Dropdown.Item>)
-
+    
     return(
         <div className="element week-select">
             {error && <DismissableError error={error} />}
-            <h4>Select Week:</h4>
+            <h4>Change Week:</h4>
             <DropdownButton id='button' onSelect={handleWeekChange} value={value} title="Week Ending">
                 {optionsElements}
             </DropdownButton>
@@ -39,4 +39,4 @@ function WeekSelect() {
     )
 }
 
-export default WeekSelect;
+export default ChangeWeek;
