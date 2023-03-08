@@ -2,14 +2,21 @@ import QuantityForm from './QuantityForm'
 import { useContext } from 'react'
 import {WorkWeekContext} from '../../context/WorkWeekContext'
 import './Enter.css'
+import useCostCodes from '../../hooks/useCostCodes'
 
 function EnterQuantities() {
     const {workWeek} = useContext(WorkWeekContext)
-    const costCodeElems = workWeek.cost_codes?.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} workWeek={workWeek}/>)
 
+    const {costCodes, isLoaded} = useCostCodes(workWeek.id)
+
+    // const costCodeElems = costCodes.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} workWeek={workWeek}/>)
+
+    console.log(costCodes)
     return (
         <div className='page-container enter'>
-            {costCodeElems}
+            {isLoaded ? costCodes.map((costCode)=>(
+                <QuantityForm key={costCode.id} costCode={costCode} workWeek={workWeek}/>
+                )) : (<h1>Loading...</h1>)}
         </div>
     )
 }

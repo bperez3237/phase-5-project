@@ -6,17 +6,19 @@ import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
 
 function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)
-    const [submittedStatus, setSubmittedStatus] = useState(false)
+    const [submittedStatus, setSubmittedStatus] = useState(costCode.units.length > 0)
     const [error, setError] = useState('')
     const [toggle, setToggle] = useState(false)
 
     function handleClick() {
         setToggle(!toggle)
     }
+    // console.log(costCode)
 
-    useEffect(()=> {
-        setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id===costCode.id).length>0 ? true : false)
-    },[workWeek, costCode])
+    // useEffect(()=> {
+    //     setSubmittedStatus(workWeek.units.filter((unit)=>unit.cost_code_id===costCode.id).length>0 ? true : false)
+    //     // setSubmittedStatus(co)
+    // },[workWeek, costCode])
 
     useEffect(()=>setValue(0),[error])
     
