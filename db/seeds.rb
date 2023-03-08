@@ -1,5 +1,4 @@
 require 'faker'
-require 'byebug'
 
 puts 'seeding work weeks'
 w1 = WorkWeek.create(end_date: '2022-09-25')
