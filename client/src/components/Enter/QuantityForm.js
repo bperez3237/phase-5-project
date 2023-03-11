@@ -52,7 +52,10 @@ function QuantityForm({costCode, workWeek, Col, Row}) {
     return (
         <div className='element' >
             <header>
-                <h3>{costCode.code} - {costCode.name}</h3>
+                <div className='top-row'>
+                    <h3>{costCode.code} - {costCode.name}</h3>
+                    {submittedStatus ? <button id='button' onClick={()=>setSubmittedStatus(false)} >Edit</button> : <div></div>}
+                </div>
                 <p><span style={{fontWeight:'bold'}}>Total Budget:</span> {formatCurrency(costCode.budget_hours*108)}</p>
                 <p><span style={{fontWeight:'bold'}}>Total Units:</span> {formatNumber(costCode.budget_quantity)}</p>
             </header>

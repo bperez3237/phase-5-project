@@ -10,3 +10,12 @@
     border: none;
     border-radius: 5px;
 }
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submitted-message {
+    margin: 30px 0;
+}
