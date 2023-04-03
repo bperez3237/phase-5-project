@@ -18,22 +18,28 @@ export const formatUploadObj = (excelData) => {
     const costDic = {}
     for (const date in excelData) {
         for (const row in excelData[date]) {
-            // conditional does work if !== is used instead of != because row is a string
-            if (row != 0) {
-                Object.keys(excelData[date][row]).forEach((key)=>{
-                    if (key!=='Employee') {
-                        if (!costDic[key]) {
-                            costDic[key] = {
-                                "date": (date === 'Monday' ? "07-22-2022" : (date === 'Tuesday' ? "07-23-2022" : "07-24-2022")),
-                                "cost_code": excelData[date][0][key],
-                                "costs": [{'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]}]
-                            }
-                        } else {
-                            costDic[key]['costs'].push({'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]})
-                        }
-                    }
-                })
+            // conditional doesn't work if !== is used instead of != because row is a string
+            if (row === '0') {
+                continue;
             }
+
+            Object.keys(excelData[date][row]).forEach((key)=>{
+                if (key==='Employee') {
+                    return;
+                }
+                    
+                if (!costDic[key]) {
+                    costDic[key] = {
+                        "date": (date === 'Monday' ? "07-22-2022" : (date === 'Tuesday' ? "07-23-2022" : "07-24-2022")),
+                        "cost_code": excelData[date][0][key],
+                        "costs": [{'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]}]
+                    }
+                } else {
+                    costDic[key]['costs'].push({'employee': excelData[date][row]["Employee"], "hours": excelData[date][row][key]})
+                }
+                
+            })
+            
         }
     }
     return (dicToArray(costDic))
