@@ -11,7 +11,7 @@ import { WorkWeekContext } from './context/WorkWeekContext'
 import ViewPage from './components/View/ViewPage';
 import Sidebar from './components/Navigation/Sidebar';
 import Header from './components/Header';
-import SelectWeek from './components/SelectWeek';
+import SelectWeek from './components/Home/SelectWeek';
 
 
 function App() {

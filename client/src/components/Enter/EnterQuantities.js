@@ -9,9 +9,6 @@ function EnterQuantities() {
 
     const {costCodes, isLoaded} = useCostCodes(workWeek.id)
 
-    // const costCodeElems = costCodes.map((costCode)=><QuantityForm key={costCode.id} costCode={costCode} workWeek={workWeek}/>)
-
-    console.log(costCodes)
     return (
         <div className='page-container enter'>
             {isLoaded ? costCodes.map((costCode)=>(

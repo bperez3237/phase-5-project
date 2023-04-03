@@ -81,14 +81,6 @@
     border-radius: 5px;
 }
 
-.select-week {
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
 
 #button {
     background-color: var(--button-background-color);
