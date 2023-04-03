@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import EditActivityForm from './EditActivityForm'
 import CostList from './CostList';
-import {formatCurrency} from '../../services/Format/FormatNumber'
+import {formatCurrency} from '../../services/Format/FormatNumber.ts'
 
 
 function Activity({activity}) {

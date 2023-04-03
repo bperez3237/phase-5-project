@@ -2,7 +2,7 @@ import { ListGroup } from 'react-bootstrap'
 import {useState, useEffect} from 'react'
 import SubmittedCode from './SubmittedCode'
 import DismissableError from '../Error/DismissableError'
-import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
+import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber.ts'
 
 function QuantityForm({costCode, workWeek, Col, Row}) {
     const [value, setValue] = useState(0)

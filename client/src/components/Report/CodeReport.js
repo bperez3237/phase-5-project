@@ -1,7 +1,7 @@
 import React from 'react'
 import useFetch from '../../hooks/useFetch'
 import {Col, Row} from 'react-bootstrap'
-import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
+import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber.ts'
 import Loading from '../Loading'
 import DismissableError from '../Error/DismissableError'
 

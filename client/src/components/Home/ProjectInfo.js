@@ -1,6 +1,6 @@
 import useFetch from "../../hooks/useFetch";
 import React from "react";
-import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
+import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber.ts'
 import DismissableError from '../Error/DismissableError'
 
 function ProjectInfo() {

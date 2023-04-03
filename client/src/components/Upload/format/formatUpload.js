@@ -1,4 +1,5 @@
 
+
 const dicToArray = (dic) => {
     const arr = []
     for (const activity in dic) {

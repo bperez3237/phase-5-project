@@ -1,5 +1,5 @@
 import useFetch from '../../hooks/useFetch'
-import {formatCurrency} from '../../services/Format/FormatNumber'
+import {formatCurrency} from '../../services/Format/FormatNumber.ts'
 
 function SubmittedCode({setSubmittedStatus, workWeek, costCode}) {
     const {data} = useFetch(`/work_weeks/${workWeek.id}/cost_codes/${costCode?.id}`)

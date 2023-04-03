@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card} from 'react-bootstrap'
-import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber'
+import {formatCurrency, formatNumber} from '../../services/Format/FormatNumber.ts'
 
 
 function WorkWeekList({value, workWeeks}) {
