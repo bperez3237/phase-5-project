@@ -4,10 +4,9 @@
 
 This project is called Work Week. It is made to assist review of weekly activities in a construction project. 
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+The app is created used a rails server and react frontend.
 
-The app is created used a rails server and react frontend. 
+See this app deployed through Render: https://hard-hat-manager.onrender.com/
 
 ## Getting Started
 
